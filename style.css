@@ -47,27 +47,33 @@ h1, h2, h3, h4, h5 {
 
 /* --- Navegación --- */
 .nav-container {
-    position: fixed;
+    position: fixed; /* Fijo en la parte superior */
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 100; /* Asegura que esté sobre otros elementos */
     padding: 1rem 0;
-    transition: all 0.3s ease;
-    background-color: rgba(10, 10, 10, 0);
+    transition: all 0.3s ease; /* Transición suave */
+    background-color: rgba(10, 10, 10, 0); /* Inicialmente transparente */
 }
+
+/* Estilo de Navegación al hacer Scroll */
 .nav-scrolled {
-    background-color: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-    padding: 0.7rem 0;
+    background-color: rgba(10, 10, 10, 0.95); /* Fondo oscuro semi-transparente */
+    backdrop-filter: blur(10px); /* Efecto blur */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    padding: 0.7rem 0; /* Padding reducido */
 }
+
+/* Menú de Navegación (Desktop) */
 .nav-menu {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Horizontal */
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Alineado a la derecha */
 }
+
+/* Links de Navegación */
 .nav-link {
     position: relative;
     display: inline-block;
@@ -78,29 +84,34 @@ h1, h2, h3, h4, h5 {
     text-transform: uppercase;
     color: var(--text-secondary);
     transition: all 0.3s ease;
-    text-decoration: none;
+    text-decoration: none; /* Quitar subrayado por defecto */
 }
+
+/* Línea inferior animada para links */
 .nav-link::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 0;
+    width: 0; /* Inicialmente sin ancho */
     height: 1px;
     background-color: var(--accent-color);
-    transition: width 0.3s ease;
+    transition: width 0.3s ease; /* Animación del ancho */
 }
+
+/* Efecto Hover en Links */
 .nav-link:hover {
     color: var(--text-primary);
 }
+
 .nav-link:hover::after {
-    width: 100%;
+    width: 100%; /* Expande la línea al 100% */
 }
 
 /* --- Hero Section --- */
 .hero {
     position: relative;
-    height: 100vh;
+    height: 100vh; /* Altura completa de la ventana */
     display: flex;
     /* align-items: center; */ /* Cambiado para alinear arriba */
     align-items: flex-start; /* <<-- CAMBIO AQUÍ */
@@ -271,13 +282,20 @@ h1, h2, h3, h4, h5 {
 .contact-text a:hover {
     color: var(--accent-color);
 }
+
+/* Contenedor específico para iconos sociales */
 .social-icons-container {
     display: flex;
-    flex-direction: row;
-    justify-content: center; /* Centrado horizontal */
-    gap: 0.8rem;
-    margin-top: 0.5rem;
+    flex-direction: row; /* Asegura dirección horizontal */
+    justify-content: center; /* <<-- Centrado horizontal */
+    gap: 0.8rem; /* Espacio entre iconos */
+    margin-top: 0.5rem; /* Espacio debajo del título "Redes Sociales" */
 }
+.social-icons-container .social-link {
+    /* Estilos específicos si fueran necesarios, pero .social-link general debería bastar */
+}
+
+/* Formulario de contacto */
 .contact-form { display: grid; gap: 1.5rem; }
 .form-group { display: grid; gap: 0.5rem; }
 .form-label { font-size: 0.9rem; color: var(--text-secondary); }
@@ -314,7 +332,7 @@ img { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select
      #contact .section-title::after { left: 50%; transform: translateX(-50%); }
      .contact-grid { grid-template-columns: 1fr; gap: 3rem; margin-top: 0; }
      .contact-info { justify-content: flex-start; }
-     .social-icons-container { justify-content: center; }
+     .social-icons-container { justify-content: center; } /* Centrar iconos en tablet */
     .about-img-container { order: -1; text-align: center; }
     .about-img { max-width: 70%; margin: 0 auto; }
     .modal-content { flex-direction: column; width: 95%; height: 95%; padding: 1rem; gap: 1rem; overflow-y: auto; }
@@ -335,11 +353,10 @@ img { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select
     .hero-content h2, .hero-subtitle, .hero-btn { text-shadow: 1px 1px 5px rgba(0,0,0,0.7); }
     /* Ajuste Hero móvil */
     .hero-content {
-        /* margin-top: -150px; */ /* Eliminado margen negativo */
         padding: 0 1rem;
         margin-left: 0;
         text-align: center;
-        padding-top: 20vh; /* <<-- CAMBIO AQUÍ: Añadido padding superior también en móvil */
+        padding-top: 20vh; /* <<-- Mantenido padding superior */
     }
     #contact > .container { gap: 1.5rem; }
     .contact-grid { gap: 2.5rem; }
@@ -347,17 +364,16 @@ img { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select
     .contact-form { padding: 0 0.5rem; }
     .modal-nav { padding: 0 0.5rem; }
     .modal-nav-btn { width: 35px; height: 35px; font-size: 1.2rem; }
-    .social-icons-container { justify-content: center; }
+    .social-icons-container { justify-content: center; } /* Centrar iconos en móvil */
 }
 @media (max-width: 640px) {
      body { font-size: 14px; }
     .container { padding: 0 1rem; }
-    .hero-content h2 { font-size: 2.2rem; } /* Reducido margen superior implícito por padding */
+    .hero-content h2 { font-size: 2.2rem; }
     .hero-subtitle { font-size: 1rem; margin-bottom: 1.5rem; }
     .hero-btn { padding: 0.8rem 1.8rem; font-size: 0.8rem; }
     .hero-content {
-        /* margin-top: -100px; */ /* Eliminado margen negativo */
-        padding-top: 15vh; /* <<-- CAMBIO AQUÍ: Padding superior más pequeño para móvil */
+        padding-top: 15vh; /* <<-- Padding superior más pequeño para móvil */
     }
     .gallery { padding: 4rem 0; }
     .gallery-grid { column-count: 1; gap: 1rem; }
@@ -400,6 +416,7 @@ img { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select
      .header-top { width: auto; padding: 0; }
      .nav-menu { flex-direction: row; justify-content: flex-end; flex-wrap: nowrap; width: auto; margin: 0; padding: 0; }
      .contact-info { justify-content: flex-start; }
-     .social-icons-container { justify-content: center; }
+     /* Asegurar que iconos sociales se centren en desktop */
+     .social-icons-container { justify-content: center; } /* <<-- Centrado aplicado */
  }
 
