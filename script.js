@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if(modalImg) modalImg.setAttribute('src', imgSrc);
         if(modalTitle) modalTitle.textContent = title;
         if(modalCategory) modalCategory.textContent = category;
-        if(modalDescription) modalDescription.textContent = description;
+        if(modalDescription) modalDescription.textContent = description; // Usar textContent para evitar interpretar HTML en descripción
 
         // Detectar orientación de imagen y aplicar clase 'vertical' al contenedor del contenido
         const tempImg = new Image();
@@ -245,14 +245,17 @@ const translations = {
     // Claves y traducciones [EN, ES]
     'nav-home': ['Home', 'Inicio'],
     'nav-gallery': ['Gallery', 'Galería'],
-    'nav-about': ['Profile', 'Perfil'], // <--- Link del menú ACTUALIZADO
+    'nav-about': ['Profile', 'Perfil'],
     'nav-contact': ['Contact', 'Contacto'],
-    'hero-subtitle': ['Exploring the intersection of imagination<br>and artificial intelligence', 'Explorando la intersección entre imaginación<br>e inteligencia artificial'],
+    'hero-subtitle': [
+        'Exploring the intersection of imagination<br>and artificial intelligence', // <<-- CAMBIO: Vuelve el <br>
+        'Explorando la intersección entre imaginación<br>e inteligencia artificial' // <<-- CAMBIO: Vuelve el <br>
+    ],
     'hero-btn': ['Discover Works', 'Ver Obras'],
     'section-gallery': ['Gallery', 'Galería'],
-    'section-about': ['Profile', 'Perfil'], // Título de la sección
+    'section-about': ['Profile', 'Perfil'],
     'section-contact': ['Contact', 'Contacto'],
-    'about-title': ['Santiago Narváez', 'Santiago Narváez'], // Título dentro de la sección about
+    'about-title': ['Santiago Narváez', 'Santiago Narváez'],
     'about-p1': [
          'As a photographer and visual creator, I explore the frontiers of AI-assisted creation, blending traditional artistic sensibilities with cutting-edge technology to transform unique moments into impactful visual experiences. My work delves into the intersection of human imagination and artificial intelligence, crafting dreamlike landscapes, surreal portraits, and futuristic visions in the liminal space between the real and the imagined.',
          'Como fotógrafo y creador visual, exploro las fronteras de la creación asistida por IA, combinando sensibilidades artísticas tradicionales con tecnología de vanguardia para transformar momentos únicos en experiencias visuales impactantes. Mi trabajo explora la intersección entre la imaginación humana y la inteligencia artificial, creando paisajes oníricos, retratos surrealistas y visiones futuristas en el espacio liminal entre lo real y lo imaginado.'
@@ -266,11 +269,11 @@ const translations = {
          'A través de mi portafolio, te invito a viajar por estos reinos digitales: espacios de contemplación, asombro y posibilidad que reflejan nuestra relación en evolución con la tecnología y los horizontes en expansión de la expresión artística.'
     ],
     'contact-location': ['Location', 'Ubicación'],
-    'contact-email': ['Email', 'Correo Electrónico'], // Usado para título y link
+    'contact-email': ['Email', 'Correo Electrónico'],
     'contact-social': ['Social Media', 'Redes Sociales'],
     'contact-name': ['Name', 'Nombre'],
     'contact-placeholder-name': ['Your Name', 'Tu Nombre'],
-    'contact-email-label': ['Email', 'Correo Electrónico'], // Etiqueta del input email
+    'contact-email-label': ['Email', 'Correo Electrónico'],
     'contact-placeholder-email': ['Your Email', 'Tu Correo Electrónico'],
     'contact-subject': ['Subject', 'Asunto'],
     'contact-placeholder-subject': ['Subject', 'Asunto'],
@@ -305,7 +308,7 @@ function updateLanguage(lang, languageToggle) {
                  } else {
                      // Actualiza contenido para otros elementos si data-translate coincide
                      if (el.hasAttribute('data-translate') && key === el.getAttribute('data-translate')) {
-                        el.innerHTML = translation;
+                        el.innerHTML = translation; // Usar innerHTML para interpretar el <br>
                      }
                  }
              }
