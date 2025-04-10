@@ -14,7 +14,15 @@
 
     <link rel="stylesheet" href="style.css">
 
-</head>
+    <style>
+        #generative-container {
+            width: 250px; /* Ancho deseado para la animación */
+            height: 40px; /* Alto deseado para la animación */
+            margin: 15px auto; /* Margen para centrarlo o posicionarlo */
+            /* border: 1px solid #333; /* Borde opcional para visualizarlo mientras ajustas */
+        }
+    </style>
+    </head>
 <body oncontextmenu="return false;">
 
     <header class="nav-container">
@@ -160,6 +168,8 @@
                 <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
                 <a href="https://www.linkedin.com/in/santiago-narv%C3%A1ez-garcia/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
             </div>
+
+            <div id="generative-container"></div> 
             <p class="copyright">&copy; 2025 Santiago Narváez. All rights reserved.</p>
         </div>
     </footer>
@@ -168,7 +178,11 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.js"></script>
+    
+    <script src="generative-footer.js"></script> 
+    
+    <script src="script.js"></script> 
 
-</body>
+    </body>
 </html>
