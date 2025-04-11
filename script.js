@@ -5,30 +5,140 @@ let currentIndex = 0;
 document.addEventListener('DOMContentLoaded', function() {
 
     // --- Funcionalidad del botón Back to Top ---
-    // ... (código sin cambios) ...
     const backToTopBtn = document.getElementById('backToTop');
-    if (backToTopBtn) { /* ... listeners ... */ }
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) { backToTopBtn.classList.add('visible'); } 
+            else { backToTopBtn.classList.remove('visible'); }
+        });
+    }
 
     // --- Efecto de navegación en scroll ---
-    // ... (código sin cambios) ...
     const nav = document.querySelector('.nav-container');
-    if (nav) { /* ... listener ... */ }
+    if (nav) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) { nav.classList.add('nav-scrolled'); } 
+            else { nav.classList.remove('nav-scrolled'); }
+        });
+    }
 
     // --- Navegación suave para links internos (anclas #) ---
-     // ... (código sin cambios) ...
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => { /* ... listener ... */ });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.length > 1) {
+                try {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault(); 
+                        const offsetTop = target.offsetTop;
+                        let headerOffset = 0;
+                        if (nav && getComputedStyle(nav).position === 'fixed') {
+                            headerOffset = nav.offsetHeight;
+                        }
+                        window.scrollTo({ top: offsetTop - headerOffset, behavior: 'smooth' });
+                    }
+                } catch (error) { console.error("Error finding target:", href, error); }
+            }
+        });
+    });
 
-    // --- Funcionalidad del modal de imagen ---
-     // ... (código sin cambios, incluyendo openModal y listeners) ...
+    // --- Funcionalidad del modal de imagen (CÓDIGO VERIFICADO Y COMPLETO) ---
     const modal = document.getElementById('imageModal');
-    // ... (resto de variables y código del modal) ...
-    const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
-    function openModal(index) { /* ... código de openModal sin cambios ... */ }
-    galleryItems.forEach((item, index) => { item.addEventListener('click', function() { openModal(index); }); });
-    if (modal) { /* ... listeners del modal sin cambios ... */ }
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalDescription = document.getElementById('modalDescription');
+    const closeBtn = modal ? modal.querySelector('.modal-close') : null;
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const galleryItems = Array.from(document.querySelectorAll('.gallery-item')); // Asegúrate que esto selecciona tus items
+    
+    // Función para abrir el modal (Verificada)
+    function openModal(index) { 
+        if (!modal || galleryItems.length === 0) return; 
+
+        // Lógica de navegación circular
+        if (index < 0) index = galleryItems.length - 1; 
+        if (index >= galleryItems.length) index = 0; 
+
+        currentIndex = index; // Actualiza índice global
+        const item = galleryItems[currentIndex];
+        const imgElement = item.querySelector('img');
+        if (!imgElement) return; 
+
+        // Obtener datos del item
+        const imgSrc = imgElement.getAttribute('src');
+        const title = item.getAttribute('data-title') || '';
+        const category = item.getAttribute('data-category') || '';
+        const currentLang = document.documentElement.lang || 'es';
+        const descriptionAttr = currentLang === 'es' ? 'data-description-es' : 'data-description';
+        let description = item.getAttribute(descriptionAttr) || item.getAttribute('data-description') || ''; 
+
+        // Actualizar contenido del modal
+        if(modalImg) modalImg.setAttribute('src', imgSrc);
+        if(modalTitle) modalTitle.textContent = title;
+        if(modalCategory) modalCategory.textContent = category;
+        if(modalDescription) modalDescription.textContent = description; 
+
+        // Comprobar orientación (Verificado)
+        const tempImg = new Image();
+        tempImg.onload = function() {
+            const aspectRatio = tempImg.naturalWidth / tempImg.naturalHeight;
+            const modalContent = modal.querySelector('.modal-content');
+            if (modalContent) {
+                 if (aspectRatio < 1) { modalContent.classList.add('vertical'); } 
+                 else { modalContent.classList.remove('vertical'); }
+            }
+        };
+        tempImg.onerror = function() { console.error("Error loading image for aspect ratio check:", imgSrc); };
+        tempImg.src = imgSrc; 
+
+        // Mostrar modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; 
+    }
+
+    // Añadir listeners a los items de la galería (Verificado)
+    galleryItems.forEach((item, index) => { 
+        item.addEventListener('click', function() { openModal(index); }); 
+    });
+
+    // Añadir listeners a los botones del modal y teclado (Verificado)
+    if (modal) { 
+       if(closeBtn) { 
+           closeBtn.addEventListener('click', function() { 
+               modal.classList.remove('active'); 
+               document.body.style.overflow = 'auto'; 
+           }); 
+       }
+       modal.addEventListener('click', function(e) { 
+           if (e.target === modal) { 
+               modal.classList.remove('active'); 
+               document.body.style.overflow = 'auto'; 
+           } 
+       });
+       if(prevBtn) { 
+           prevBtn.addEventListener('click', function() { openModal(currentIndex - 1); }); 
+       }
+       if(nextBtn) { 
+           nextBtn.addEventListener('click', function() { openModal(currentIndex + 1); }); 
+       }
+       document.addEventListener('keydown', function(e) { 
+           if (!modal.classList.contains('active')) return; 
+           if (e.key === 'ArrowLeft') { openModal(currentIndex - 1); } 
+           else if (e.key === 'ArrowRight') { openModal(currentIndex + 1); } 
+           else if (e.key === 'Escape') { 
+               modal.classList.remove('active'); 
+               document.body.style.overflow = 'auto'; 
+           } 
+       });
+    } 
+    // --- Fin Funcionalidad del modal de imagen ---
 
 
-    // --- Manejo de envío de formulario con AJAX y Feedback Mejorado ---
+    // --- Manejo de envío de formulario con AJAX y Feedback Mejorado (Verificado) ---
     const contactForm = document.querySelector('.contact-form');
     const formStatusMessage = document.getElementById('form-status-message'); 
 
@@ -89,22 +199,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'POST',
                 body: formData,
                 headers: {
-                    'Accept': 'application/json' // Aún pedimos JSON por si acaso
+                    'Accept': 'application/json' 
                 }
             })
             .then(response => {
-                // *** LÓGICA SIMPLIFICADA ***
+                // Comprobar si la respuesta HTTP fue exitosa (status 2xx)
                 if (response.ok) {
-                    // Si la respuesta HTTP es exitosa (200-299), asumimos éxito directamente.
-                    return Promise.resolve({ success: true }); // Resolvemos para pasar al siguiente .then
+                    console.log('FormSubmit request successful (response.ok)');
+                    return Promise.resolve({ success: true }); // Asumir éxito
                 } else {
-                    // Si la respuesta HTTP indica error (4xx, 5xx), lanzamos un error para ir al .catch
-                    throw new Error(`Error HTTP: ${response.status}`);
+                    // Si la respuesta HTTP indica error (4xx, 5xx)
+                    throw new Error(`Error HTTP: ${response.status}`); // Lanzar error genérico
                 }
             })
             .then(data => {
-                // Este bloque se ejecuta si el .then anterior resolvió exitosamente
-                console.log('Fetch resolved successfully.'); 
+                // Se ejecuta si el .then anterior resolvió exitosamente
+                console.log('Processing success...'); 
                 const successText = currentLang === 'es' ? '¡Mensaje enviado con éxito!' : 'Message sent successfully!';
                 formStatusMessage.textContent = successText;
                 formStatusMessage.classList.remove('error');
@@ -122,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 // Captura errores de red O el error lanzado desde el bloque !response.ok
-                console.error('Fetch failed or server returned error:', error);
+                console.error('Error submitting form:', error);
                 const errorText = currentLang === 'es' ? 'Error al enviar el mensaje. Intenta de nuevo más tarde.' : 'Error sending message. Please try again later.';
                 formStatusMessage.textContent = errorText;
                 formStatusMessage.classList.remove('success');
@@ -151,8 +261,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Inicialización del Idioma ---
     const languageToggle = document.getElementById('languageToggle');
     let pageCurrentLang = localStorage.getItem('language') || 'es'; 
-    if (languageToggle) { /* ... listener e inicialización ... */ } 
-    else { updateLanguage(pageCurrentLang, null); }
+    if (languageToggle) {
+        languageToggle.addEventListener('click', function() {
+            const newLang = pageCurrentLang === 'en' ? 'es' : 'en';
+            pageCurrentLang = newLang; 
+            updateLanguage(newLang, languageToggle); 
+        });
+        updateLanguage(pageCurrentLang, languageToggle); 
+    } else {
+         updateLanguage(pageCurrentLang, null);
+    }
 
 }); // Fin DOMContentLoaded principal
 

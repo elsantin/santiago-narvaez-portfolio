@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Título Principal -->
     <title>Santiago Narváez | Digital Artist</title>
 
-    <!-- =====> META TAGS BÁSICOS Y PARA REDES SOCIALES <===== -->
     <meta name="description" content="Santiago Narváez's artistic portfolio exploring the intersection between photography, imagination, and artificial intelligence.">
     <meta property="og:title" content="Santiago Narváez | Digital Artist & Photographer"> 
     <meta property="og:description" content="Santiago Narváez's artistic portfolio exploring the intersection between photography, imagination, and artificial intelligence."> 
@@ -19,22 +17,54 @@
     <meta name="twitter:title" content="Santiago Narváez | Digital Artist & Photographer"> 
     <meta name="twitter:description" content="Santiago Narváez's artistic portfolio exploring the intersection between photography, imagination, and artificial intelligence."> 
     <meta name="twitter:image" content="https://elsantin.github.io/portfolio-/hero.png"> 
-    <!-- ================================================== -->
-
-    <!-- External CSS -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person", // Puedes usar "Artist" si prefieres, es más específico
+          "name": "Santiago Narváez",
+          "url": "https://elsantin.github.io/portfolio-/", // URL principal del portafolio
+          "description": "Photographer and visual creator exploring the intersection of imagination and artificial intelligence through AI-generated imagery.", // Descripción del artista
+          "image": "https://elsantin.github.io/portfolio-/About%20me.jpg", // !! REEMPLAZA SI LA RUTA O NOMBRE ES DIFERENTE, O BORRA SI NO EXISTE !!
+          "sameAs": [ // !! REEMPLAZA CON TUS URLs REALES !!
+            "https://www.linkedin.com/in/santiago-narv%C3%A1ez-garcia/", 
+            "URL_DE_TU_INSTAGRAM_AQUI", 
+            "URL_DE_TU_TWITTER_AQUI",    
+            "URL_DE_TU_BEHANCE_AQUI"     
+          ],
+           "knowsAbout": ["Photography", "Artificial Intelligence", "Digital Art", "Surrealism", "Visual Arts"] // Temas que dominas
+        },
+        {
+          "@type": "WebSite",
+          "name": "Santiago Narváez Portfolio",
+          "url": "https://elsantin.github.io/portfolio-/",
+          "description": "Santiago Narváez's artistic portfolio exploring the intersection between photography, imagination, and artificial intelligence.", // Descripción del sitio
+          "image": "https://elsantin.github.io/portfolio-/hero.png", // Imagen principal del sitio
+          "creator": { // Quién creó el sitio web (el artista)
+            "@type": "Person",
+            "name": "Santiago Narváez",
+             "url": "https://elsantin.github.io/portfolio-/" // Enlace al perfil del creador
+          },
+          "publisher": { // Quién publica el sitio (puede ser el mismo artista)
+            "@type": "Person",
+            "name": "Santiago Narváez"
+          },
+          "inLanguage": ["es", "en"], // Indica los idiomas disponibles
+          "keywords": "AI art, digital art, photography, portfolio, artificial intelligence, surrealism, Venezuela, Santiago Narvaez" // Palabras clave relevantes
+        }
+      ]
+    }
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Your Custom CSS -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Styles for Footer Animation Container -->
-    <!-- Es mejor mover estos estilos a style.css -->
     <style>
         #generative-container {
             width: 250px; 
@@ -79,8 +109,7 @@
         <div class="container">
             <h2 class="section-title" data-translate="section-gallery">Gallery</h2>
             <div class="gallery-grid">
-                <!-- Contenido completo de la galería -->
-                 <div class="gallery-item" data-index="0" data-title="Ethereal Smoke" data-category="Portrait" data-description="A harmonious interplay of warm amber tones creates an atmospheric portrait cloaked in smoke. The delicate textural elements evoke the ephemerality of human presence amid the surreal environment." data-description-es="Una armoniosa interacción de tonos ámbar cálidos crea un retrato atmosférico envuelto en humo. Los delicados elementos texturales evocan la fugacidad de la presencia humana en medio del entorno surrealista."> <img src="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/v1/base64_upload/1883135334576f2f235a24a669d8d44f" alt="Ethereal Smoke" class="gallery-img"> </div> 
+                <div class="gallery-item" data-index="0" data-title="Ethereal Smoke" data-category="Portrait" data-description="A harmonious interplay of warm amber tones creates an atmospheric portrait cloaked in smoke. The delicate textural elements evoke the ephemerality of human presence amid the surreal environment." data-description-es="Una armoniosa interacción de tonos ámbar cálidos crea un retrato atmosférico envuelto en humo. Los delicados elementos texturales evocan la fugacidad de la presencia humana en medio del entorno surrealista."> <img src="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/v1/base64_upload/1883135334576f2f235a24a669d8d44f" alt="Ethereal Smoke" class="gallery-img"> </div> 
                  <div class="gallery-item" data-index="1" data-title="Aurora Embrace" data-category="Landscape" data-description="A celestial convergence of earthly stillness and cosmic energy under the vibrant Nordic skies. The electric greens of the aurora create breathtaking contrast against the glacial blue foreground, showcasing nature's most magnificent light display." data-description-es="Una convergencia celestial de quietud terrenal y energía cósmica bajo los vibrantes cielos nórdicos. Los verdes eléctricos de la aurora crean un contraste impresionante contra el primer plano azul glacial, mostrando la exhibición de luz más magnífica de la naturaleza."> <img src="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/v1/base64_upload/79fc62de68de5ac8e7c427058fc10ec4" alt="Aurora Embrace" class="gallery-img"> </div> 
                  <div class="gallery-item" data-index="2" data-title="Tranquil Contemplation" data-category="Portrait" data-description="A study in cross-cultural aesthetic fusion within a traditional Japanese garden setting. The vibrant hair creates chromatic juxtaposition against the serene architectural elements, highlighting the intersection between tradition and contemporary identity." data-description-es="Un estudio de fusión estética transcultural en un entorno de jardín japonés tradicional. El cabello vibrante crea una yuxtaposición cromática contra los serenos elementos arquitectónicos, destacando la intersección entre tradición e identidad contemporánea."> <img src="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/v1/base64_upload/87832f3c40fda7c959342f55d2d9c5ce" alt="Tranquil Contemplation" class="gallery-img"> </div> 
                  <div class="gallery-item" data-index="3" data-title="Neon Currents" data-category="Abstract" data-description="Fluid dynamics visualized through complementary spectral wavelengths of orange and blue. The digital brushstrokes capture the essence of perpetual motion, creating an abstract expression of energy in constant flux." data-description-es="Dinámica de fluidos visualizada a través de longitudes de onda espectrales complementarias de naranja y azul. Las pinceladas digitales capturan la esencia del movimiento perpetuo, creando una expresión abstracta de energía en constante flujo."> <img src="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/v1/base64_upload/7f8ce07441cdc79c7da26bc03f168164" alt="Neon Currents" class="gallery-img"> </div> 
@@ -144,8 +173,7 @@
          <div class="container">
             <h2 class="section-title" data-translate="section-contact">Contact</h2>
              <div class="contact-grid">
-                 <!-- Contenido de Contact Info -->
-                <div class="contact-info">
+                 <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="contact-text">
@@ -174,46 +202,26 @@
                     </div>
                 </div>
                 
-                 <!-- Contenedor para Formulario y Mensaje -->
-                <div> 
-                    <!-- Formulario con Integración FormSubmit -->
-                    <!-- EMAIL DEL USUARIO INSERTADO -->
-                    <form class="contact-form" action="https://formsubmit.co/santiago.narvaez.84@gmail.com" method="POST"> 
-                        
-                        <!-- Campos Opcionales FormSubmit -->
-                        <input type="hidden" name="_subject" value="Nuevo Mensaje desde Portafolio!"> 
-                        <input type="text" name="_honey" style="display:none"> 
-                        <input type="hidden" name="_captcha" value="false"> 
-                        <input type="hidden" name="_template" value="table"> 
-                        <!-- <input type="hidden" name="_next" value="https://elsantin.github.io/portfolio-/gracias.html"> --> <!-- Quitada redirección para AJAX -->
-
-
-                        <!-- Campos Visibles -->
-                        <div class="form-group">
-                            <label for="name" class="form-label" data-translate="contact-name">Name</label>
-                            <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" data-translate="contact-placeholder-name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label" data-translate="contact-email-label">Email</label>
-                            <input type="email" id="email" name="email" class="form-input" placeholder="Your Email" data-translate="contact-placeholder-email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject" class="form-label" data-translate="contact-subject">Subject</label>
-                            <input type="text" id="subject" name="subject" class="form-input" placeholder="Subject" data-translate="contact-placeholder-subject">
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label" data-translate="contact-message">Message</label>
-                            <textarea id="message" name="message" class="form-textarea" placeholder="Your Message" data-translate="contact-placeholder-message" required></textarea>
-                        </div>
-                        <button type="submit" class="form-button" data-translate="contact-send">Send Message</button>
+                 <form class="contact-form" action="#" method="POST"> 
+                    <div class="form-group">
+                        <label for="name" class="form-label" data-translate="contact-name">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" data-translate="contact-placeholder-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label" data-translate="contact-email-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Your Email" data-translate="contact-placeholder-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label" data-translate="contact-subject">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-input" placeholder="Subject" data-translate="contact-placeholder-subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label" data-translate="contact-message">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Your Message" data-translate="contact-placeholder-message" required></textarea>
+                    </div>
+                    <button type="submit" class="form-button" data-translate="contact-send">Send Message</button>
                     </form>
-                    <!-- Div para Mensajes (Fuera del Form) -->
-                    <div id="form-status-message" class="form-message" role="status" aria-live="polite"></div> 
-                </div> <!-- Fin contenedor adicional -->
-
-            </div> <!-- Fin contact-grid -->
-        </div> <!-- Fin container -->
-    </section>
+                 </div> </div> </section>
 
     <footer class="footer">
         <div class="container">
@@ -240,7 +248,6 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Scripts al final -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.js"></script>
     <script src="generative-footer.js"></script> 
     <script src="script.js"></script> 
