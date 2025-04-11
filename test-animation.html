@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Animación Hero</title>
+    <style>
+        /* Estilos mínimos necesarios */
+        body {
+            margin: 0;
+            background-color: #0a0a0a; /* Fondo oscuro similar */
+        }
+
+        .hero {
+            position: relative; 
+            height: 100vh; /* Ocupa toda la altura */
+            overflow: hidden; /* Necesario para el zoom */
+            background-image: url('hero.png'); /* Asegúrate que hero.png esté en la misma carpeta */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center; 
+            
+            /* Usamos los valores exagerados para la prueba */
+            animation: subtlePanZoom 5s infinite alternate ease-in-out; 
+        }
+
+        /* Keyframes de la animación */
+        @keyframes subtlePanZoom {
+            0% {
+                background-position: 55% 50%; 
+                transform: scale(1);         
+            }
+            100% {
+                background-position: 45% 50%; 
+                transform: scale(1.05);      /* Zoom exagerado */
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero"></section> 
+</body>
+</html>

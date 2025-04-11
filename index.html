@@ -13,16 +13,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
-
+    
     <style>
         #generative-container {
-            width: 250px; /* Ancho deseado para la animación */
-            height: 40px; /* Alto deseado para la animación */
-            margin: 15px auto; /* Margen para centrarlo o posicionarlo */
-            /* border: 1px solid #333; /* Borde opcional para visualizarlo mientras ajustas */
+            width: 250px; 
+            height: 40px; 
+            margin: 15px auto; 
+            position: relative; 
+           /* border: 1px solid red; */
         }
     </style>
-    </head>
+
+</head>
 <body oncontextmenu="return false;">
 
     <header class="nav-container">
@@ -110,14 +112,14 @@
                             <p>Isla de Margarita, Venezuela</p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                     <div class="contact-item">
                         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                         <div class="contact-text">
                             <h4 data-translate="contact-email">Email</h4>
                             <p><a href="mailto:santiago.narvaez.84@gmail.com">santiago.narvaez.84@gmail.com</a></p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                     <div class="contact-item">
                         <div class="contact-icon"><i class="fas fa-globe"></i></div>
                         <div class="contact-text">
                             <h4 data-translate="contact-social">Redes Sociales</h4>
@@ -130,7 +132,11 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" action="#" method="POST">
+                
+                <form class="contact-form" action="https://formsubmit.co/santiago.narvaez.84@gmail.com" method="POST"> 
+                    <input type="hidden" name="_subject" value="Nuevo Mensaje desde Portafolio!"> 
+                    <input type="text" name="_honey" style="display:none"> 
+                    <input type="hidden" name="_captcha" value="false"> 
                     <div class="form-group">
                         <label for="name" class="form-label" data-translate="contact-name">Name</label>
                         <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" data-translate="contact-placeholder-name" required>
@@ -148,8 +154,11 @@
                         <textarea id="message" name="message" class="form-textarea" placeholder="Your Message" data-translate="contact-placeholder-message" required></textarea>
                     </div>
                     <button type="submit" class="form-button" data-translate="contact-send">Send Message</button>
+                    
+                    <div id="form-status-message" class="form-message" role="status" aria-live="polite"></div> 
+                    
                 </form>
-            </div>
+                 </div>
         </div>
     </section>
 
@@ -163,10 +172,10 @@
                 <a href="#contact" class="footer-link" data-translate="nav-contact">Contact</a>
             </div>
             <div class="footer-social">
-                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
-                <a href="https://www.linkedin.com/in/santiago-narv%C3%A1ez-garcia/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                 <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                 <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                 <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                 <a href="https://www.linkedin.com/in/santiago-narv%C3%A1ez-garcia/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
             </div>
 
             <div id="generative-container"></div> 
@@ -179,10 +188,8 @@
     </button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.js"></script>
-    
     <script src="generative-footer.js"></script> 
-    
     <script src="script.js"></script> 
 
-    </body>
+</body>
 </html>

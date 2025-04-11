@@ -5,6 +5,8 @@
     --accent-color: #a67c52;
     --text-primary: #f5f5f5;
     --text-secondary: #d1d1d1;
+    --success-color: #28a745; /* Verde para éxito (AÑADIDO) */
+    --error-color: #dc3545;   /* Rojo para error (AÑADIDO) */
 }
 
 /* Reset Básico */
@@ -20,7 +22,7 @@ body {
     color: var(--text-primary);
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
-    overflow-x: hidden; /* Previene scroll horizontal */
+    overflow-x: hidden; 
 }
 
 /* Estilos para Encabezados */
@@ -33,9 +35,9 @@ h1, h2, h3, h4, h5 {
 /* Contenedor Principal */
 .container {
     width: 100%;
-    max-width: 1440px; /* Ancho máximo del contenido */
-    margin: 0 auto; /* Centrado */
-    padding: 0 1.5rem; /* Espaciado lateral */
+    max-width: 1440px; 
+    margin: 0 auto; 
+    padding: 0 1.5rem; 
 }
 
 /* Contenedor del Header (Logo + Nav) */
@@ -47,32 +49,32 @@ h1, h2, h3, h4, h5 {
 
 /* --- Navegación --- */
 .nav-container {
-    position: fixed; /* Fijo en la parte superior */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100; /* Asegura que esté sobre otros elementos */
+    z-index: 100; 
     padding: 1rem 0;
-    transition: all 0.3s ease; /* Transición suave */
-    background-color: rgba(10, 10, 10, 0); /* Inicialmente transparente */
+    transition: all 0.3s ease; 
+    background-color: rgba(10, 10, 10, 0); 
 }
 .nav-scrolled {
-    background-color: rgba(10, 10, 10, 0.95); /* Fondo oscuro semi-transparente */
-    backdrop-filter: blur(10px); /* Efecto blur */
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-    padding: 0.7rem 0; /* Padding reducido */
+    background-color: rgba(10, 10, 10, 0.95); 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2); 
+    padding: 0.7rem 0; 
 }
 .nav-menu {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center; /* Centrado por defecto (Desktop) */
+    justify-content: center; 
     width: 100%;
 }
 .nav-link {
     position: relative;
     display: inline-block;
-    font-size: 1.4rem; /* Tamaño base/desktop */
+    font-size: 1.4rem; 
     letter-spacing: 1px;
     padding: 0.5rem 0;
     margin: 0 0.8rem;
@@ -106,38 +108,50 @@ h1, h2, h3, h4, h5 {
 
 
 /* --- Hero Section --- */
+/* Regla .hero SIN background ni animation */
 .hero {
-    position: relative;
+    position: relative; 
     height: 100vh;
     display: flex;
-    align-items: flex-start; /* Alinea contenido arriba */
+    align-items: flex-start; 
     justify-content: center;
-    overflow: hidden;
+    overflow: hidden; 
+}
+
+/* Pseudo-elemento ::before CON background y animation */
+.hero::before {
+    content: ''; 
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    z-index: 0; /* Detrás del contenido */
+
+    /* Fondo */
     background-image: url('hero.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center; 
+
+    /* Máscara */
     -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
     mask-image: radial-gradient(circle, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+
+    /* Animación SUTIL */
+    animation: subtlePanZoom 45s infinite alternate ease-in-out; 
 }
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 1;
-}
+
+/* Contenido del Hero por encima del fondo animado */
 .hero-content {
-    position: relative;
-    z-index: 2;
+    position: relative; 
+    z-index: 1; /* Encima del ::before */
     text-align: left;
     margin-left: 5%;
-    padding-top: 16vh; /* Mantenemos ajuste vertical */
+    padding-top: 16vh; 
     width: 100%;
 }
+/* (Resto de estilos .hero-content y sus hijos) */
 .hero-content h2 {
     font-size: 4rem;
     line-height: 1.1;
@@ -146,7 +160,7 @@ h1, h2, h3, h4, h5 {
     animation: fadeUp 1s forwards 0.5s;
 }
 .hero-subtitle {
-    font-size: 1.7rem; /* Tamaño desktop */
+    font-size: 1.7rem; 
     font-weight: 300;
     margin-bottom: 1rem;
     opacity: 0;
@@ -236,6 +250,7 @@ h1, h2, h3, h4, h5 {
 .contact { padding: 8rem 0; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; align-items: start; }
 .contact-info { display: flex; flex-direction: column; gap: 2rem; justify-content: flex-start; }
+/* (Resto de .contact-info, .contact-item, etc.) */
 .contact-item { display: flex; align-items: flex-start; }
 .contact-icon { margin-right: 1rem; font-size: 1.5rem; color: var(--accent-color); width: 25px; text-align: center; flex-shrink: 0; }
 .contact-text h4 { margin-bottom: 0.5rem; font-size: 1.2rem; }
@@ -247,31 +262,65 @@ h1, h2, h3, h4, h5 {
 .form-label { font-size: 0.9rem; color: var(--text-secondary); }
 .form-input, .form-textarea { width: 100%; padding: 1rem; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; color: var(--text-primary); font-family: 'Montserrat', sans-serif; transition: border-color 0.3s ease; }
 .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--accent-color); }
+/* Estilo para inputs inválidos (AÑADIDO) */
+.form-input.invalid, 
+.form-textarea.invalid {
+    border-color: var(--error-color) !important; /* !important para asegurar que anule otros bordes */
+}
 .form-textarea { resize: vertical; min-height: 150px; }
 .form-button { padding: 1rem 2rem; background-color: transparent; border: 1px solid var(--accent-color); color: var(--text-primary); font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; justify-self: start; }
 .form-button:hover { background-color: var(--accent-color); color: var(--primary-bg); }
-.form-button:disabled { opacity: 0.7; cursor: not-allowed; }
+.form-button:disabled { opacity: 0.7; cursor: not-allowed; background-color: #555; border-color: #555;}
+
+/* =====> ESTILOS PARA MENSAJES DEL FORMULARIO (AÑADIDOS) <===== */
+.form-message {
+    padding: 1rem;
+    margin-top: 1.5rem; 
+    border-radius: 4px;
+    font-size: 0.95rem;
+    text-align: center;
+    display: none; /* Oculto por defecto */
+    border: 1px solid transparent;
+    opacity: 0; 
+    transition: opacity 0.4s ease-in-out; 
+}
+.form-message.visible {
+    display: block; 
+    opacity: 1;
+}
+.form-message.success {
+    background-color: rgba(40, 167, 69, 0.1); 
+    border-color: rgba(40, 167, 69, 0.5);
+    color: var(--success-color); 
+}
+.form-message.error {
+    background-color: rgba(220, 53, 69, 0.1); 
+    border-color: rgba(220, 53, 69, 0.5);
+    color: var(--error-color); 
+}
+/* =========================================================== */
+
 
 /* --- Footer --- */
 .footer { 
     padding: 4rem 0; 
     background-color: var(--secondary-bg); 
     text-align: center; 
-    position: relative; /* <-- MODIFICADO: Añadido position: relative */
+    position: relative; 
 }
 
-/* --- Estilos para el Contenedor de la Animación --- */
-/* REGLA NUEVA AÑADIDA */
+/* --- Estilos para el Contenedor de la Animación del Footer --- */
 #generative-container {
-    width: 250px;       /* Ancho deseado (ajústalo si quieres) */
-    height: 40px;       /* Alto deseado (ajústalo si quieres) */
-    margin: 15px auto;  /* Margen (ajústalo para posicionarlo vertical/horizontalmente) */
-    position: relative; /* Necesario para que el canvas absoluto se posicione respecto a él */
-    overflow: hidden;   /* Opcional: Para asegurar que la animación no se salga del div */
-   /* border: 1px solid red; /* Borde temporal para visualizar (quítalo después) */
+    width: 250px;       
+    height: 40px;       
+    margin: 15px auto;  
+    position: relative; 
+    overflow: hidden;   
+   /* border: 1px solid red; */
 }
-/* ================================================== */
+/* ========================================================= */
 
+/* (Resto de estilos del footer) */
 .footer-logo { font-size: 2rem; margin-bottom: 2rem; letter-spacing: 3px; font-family: 'Cormorant Garamond', serif; }
 .footer-nav { display: flex; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 0.5rem 1rem; }
 .footer-link { color: var(--text-secondary); text-decoration: none; text-transform: uppercase; font-size: 0.9rem; transition: color 0.3s ease; }
@@ -333,7 +382,7 @@ img { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select
     }
     .section-title { font-size: 2.2rem; margin-top: 3rem; margin-bottom: 2rem; }
     #contact .section-title { margin-bottom: 2rem; }
-    .hero::before { background: rgba(0, 0, 0, 0.5); }
+    /* .hero::before { background: rgba(0, 0, 0, 0.5); } /* Comentado: El ::before ahora es para la imagen animada */
     .hero-content h2, .hero-subtitle, .hero-btn { text-shadow: 1px 1px 5px rgba(0,0,0,0.7); }
     .hero-content { padding: 0 1rem; margin-left: 0; text-align: left; padding-top: 13vh; }
     #contact > .container { gap: 1.5rem; }
@@ -441,3 +490,17 @@ img { -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select
      }
      .lang-button-container { margin-left: 1rem; position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); }
  }
+
+/* =====> KEYFRAMES PARA LA ANIMACIÓN DEL HERO <===== */
+@keyframes subtlePanZoom {
+    0% {
+        background-position: 55% 50%; 
+        transform: scale(1);         
+    }
+    100% {
+        background-position: 45% 50%; 
+        transform: scale(1.05);      /* Zoom sutil (5%) */
+    }
+}
+/* ============================================================================= */
+
