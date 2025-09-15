@@ -77,7 +77,6 @@
             position: relative;
         }
 
-        /* --- INICIO DE LA CORRECCIÓN --- */
         .modal-content {
             display: flex;
             flex-direction: column;
@@ -85,25 +84,174 @@
 
         .modal-img {
             flex-shrink: 0;
-            /* Evita que la imagen se encoja */
         }
 
         .modal-text-container {
             flex-grow: 1;
-            /* Permite que el contenedor de texto ocupe el espacio restante */
             overflow-y: auto;
-            /* Activa el scroll vertical SOLO si el contenido es demasiado largo */
             padding-right: 1rem;
-            /* Añade un poco de espacio para la barra de scroll */
         }
 
-        /* --- FIN DE LA CORRECCIÓN --- */
+        /* --- INICIO DE ESTILOS PARA SCROLLBAR --- */
+        /* Para navegadores Webkit (Chrome, Safari, Edge) */
+        .modal-text-container::-webkit-scrollbar {
+            width: 8px;
+            /* Ancho de la barra */
+        }
+
+        .modal-text-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            /* Fondo del track, sutil */
+        }
+
+        .modal-text-container::-webkit-scrollbar-thumb {
+            background-color: var(--accent-color);
+            /* Color de acento para el thumb */
+            border-radius: 4px;
+            /* Bordes redondeados */
+            border: 2px solid transparent;
+            /* Crea un padding visual */
+            background-clip: content-box;
+            /* Asegura que el borde no se pinte */
+        }
+
+        /* Para Firefox */
+        .modal-text-container {
+            scrollbar-width: thin;
+            /* "thin" o "auto" */
+            scrollbar-color: var(--accent-color) rgba(0, 0, 0, 0.2);
+            /* thumb y track color */
+        }
+
+        /* --- FIN DE ESTILOS PARA SCROLLBAR --- */
+
+        /* --- INICIO ESTILOS BOTÓN VOLVER ARRIBA --- */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            border: none;
+            outline: none;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
+            opacity: 0;
+            transform: translateY(10px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #backToTop.show {
+            display: flex;
+            opacity: 0.8;
+            transform: translateY(0);
+        }
+
+        #backToTop:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        /* --- ALTERNATIVAS DE ICONOS --- */
+
+        /* Opción 1: Círculo y Línea Animada (ACTIVA POR DEFECTO) */
+        #backToTop .icon-line {
+            width: 2px;
+            height: 14px;
+            background-color: var(--primary-bg);
+            transition: height 0.3s ease;
+            position: relative;
+        }
+
+        #backToTop .icon-line::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -4px;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            border-top: 2px solid var(--primary-bg);
+            border-left: 2px solid var(--primary-bg);
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        #backToTop:hover .icon-line {
+            height: 20px;
+        }
+
+        /* Opción 2: Chevron Delgado */
+        #backToTop.option-2 {
+            font-size: 18px;
+        }
+
+        /* Opción 3: Triángulo Minimalista (SVG) */
+        #backToTop.option-3 svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--primary-bg);
+            transition: transform 0.3s;
+        }
+
+        #backToTop.option-3:hover svg {
+            transform: scale(1.1);
+        }
+
+        /* Opción 4: Caret con Pulso Animado */
+        #backToTop .caret-icon {
+            position: relative;
+            font-weight: 200;
+        }
+
+        #backToTop.option-4:hover::after {
+            content: '^';
+            position: absolute;
+            top: 5px;
+            opacity: 0;
+            animation: pulse-up 0.8s ease-out;
+        }
+
+        @keyframes pulse-up {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-15px);
+                opacity: 0;
+            }
+        }
+
+        /* Opción 5: Iniciales del Artista */
+        #backToTop.option-5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
+        #backToTop.option-5:hover {
+            background-color: #fff;
+            color: var(--accent-color);
+        }
+
+        /* --- FIN ESTILOS BOTÓN VOLVER ARRIBA --- */
     </style>
 
 </head>
 
 <body oncontextmenu="return false;">
 
+    <!-- ... (resto del body sin cambios) ... -->
     <header class="nav-container">
         <div class="container header-container">
             <nav class="flex flex-col items-center py-1">
@@ -356,7 +504,7 @@
                 <!-- ITEM 29 -->
                 <div class="gallery-item" data-index="29" data-title="The Artifact, In Situ"
                     data-category="Post-Organic"
-                    data-description="The expedition's log is precise. The artifact was located at the specified coordinates. Its surface mimics the ambient light with unnerving fidelity. No signs of entry or exit from the perimeter. Its purpose remains obscure. It simply stands, an elegant and unnervirng solution to a problem we have yet to understand."
+                    data-description="The expedition's log is precise. The artifact was located at the specified coordinates. Its surface mimics the ambient light with unnerving fidelity. No signs of entry or exit from the perimeter. Its purpose remains obscure. It simply stands, an elegant and unnerving solution to a problem we have yet to understand."
                     data-description-es="La bitácora de la expedición es precisa. El artefacto fue localizado en las coordenadas especificadas. Su superficie imita la luz ambiental con una fidelidad desconcertante. No hay signos de entrada o salida del perímetro. Su propósito sigue siendo oscuro. Simplemente está ahí, una solución elegante e inquietante a un problema que aún no hemos comprendido.">
                     <img src="images/gallery/chrome_learns_photosynthesis.jpg" alt="The Artifact, In Situ"
                         class="gallery-img">
@@ -562,9 +710,35 @@
         </div>
     </footer>
 
-    <button id="backToTop" aria-label="Volver arriba">
-        <i class="fas fa-arrow-up"></i>
+    <!-- BOTÓN VOLVER ARRIBA Y SUS ALTERNATIVAS -->
+    <!-- Para probar una opción, comenta la activa y descomenta la que quieras ver. -->
+
+    <!-- Opción 2: Chevron Delgado
+    <button id="backToTop" class="option-2" aria-label="Volver arriba">
+        <i class="fas fa-chevron-up"></i>
     </button>
+-->
+
+    <!-- Opción 3: Triángulo Minimalista (SVG)
+    <button id="backToTop" class="option-3" aria-label="Volver arriba">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 8l-6 6h12z" />
+        </svg>
+    </button> -->
+
+
+    <!-- Opción 4: Caret con Pulso Animado
+    <button id="backToTop" class="option-4" aria-label="Volver arriba">
+        <span class="caret-icon">^</span>
+    </button> -->
+
+
+    <!-- Opción 5: Iniciales del Artista -->
+    <button id="backToTop" class="option-5" aria-label="Volver arriba">
+        SN
+    </button>
+
+
 
     <!-- Video Modal -->
     <div class="video-modal" id="videoModal">
@@ -581,6 +755,24 @@
     <!-- Contra Script -->
     <script async src="https://contra.com/static/embed/sdk.js" charset="utf-8"></script>
 
+    <!-- SCRIPTS PERSONALIZADOS -->
+    <script>
+        // Lógica para el botón "Volver Arriba"
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.onscroll = () => {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        };
+
+        backToTopButton.onclick = () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.js"></script>
     <script src="generative-footer.js"></script>
     <script src="script.js"></script>
@@ -588,3 +780,4 @@
 </body>
 
 </html>
+" in the document.
