@@ -20,7 +20,7 @@ body {
   color: var(--text-primary);
   font-family: "Montserrat", sans-serif;
   line-height: 1.6;
-  overflow-x: hidden; /* Previene scroll horizontal */
+  overflow-x: hidden;
 }
 
 /* Estilos para Encabezados */
@@ -37,12 +37,12 @@ h5 {
 /* Contenedor Principal */
 .container {
   width: 100%;
-  max-width: 1440px; /* Ancho máximo del contenido */
-  margin: 0 auto; /* Centrado */
-  padding: 0 1.5rem; /* Espaciado lateral */
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-/* Contenedor del Header (Logo + Nav) */
+/* Contenedor del Header */
 .header-container {
   display: flex;
   align-items: center;
@@ -51,33 +51,36 @@ h5 {
 
 /* --- Navegación --- */
 .nav-container {
-  position: fixed; /* Fijo en la parte superior */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100; /* Asegura que esté sobre otros elementos */
+  z-index: 100;
   padding: 1rem 0;
   transition: background-color 0.3s ease, box-shadow 0.3s ease,
-    padding 0.3s ease; /* Transición suave */
-  background-color: rgba(10, 10, 10, 0); /* Inicialmente transparente */
+    padding 0.3s ease;
+  background-color: rgba(10, 10, 10, 0);
 }
+
 .nav-scrolled {
-  background-color: rgba(10, 10, 10, 0.95); /* Fondo oscuro semi-transparente */
-  backdrop-filter: blur(10px); /* Efecto blur */
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-  padding: 0.7rem 0; /* Padding reducido */
+  background-color: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  padding: 0.7rem 0;
 }
+
 .nav-menu {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center; /* Centrado por defecto (Desktop) */
+  justify-content: center;
   width: 100%;
 }
+
 .nav-link {
   position: relative;
   display: inline-block;
-  font-size: 1.4rem; /* Tamaño base/desktop */
+  font-size: 1.4rem;
   letter-spacing: 1px;
   padding: 0.5rem 0;
   margin: 0 0.8rem;
@@ -86,6 +89,7 @@ h5 {
   transition: color 0.3s ease;
   text-decoration: none;
 }
+
 .nav-link::after {
   content: "";
   position: absolute;
@@ -96,12 +100,15 @@ h5 {
   background-color: var(--accent-color);
   transition: width 0.3s ease;
 }
+
 .nav-link:hover {
   color: var(--text-primary);
 }
+
 .nav-link:hover::after {
   width: 100%;
 }
+
 .lang-button-container {
   position: absolute;
   right: 1.5rem;
@@ -111,12 +118,12 @@ h5 {
 
 /* --- Hero Section --- */
 .hero {
-  position: relative; /* Necesario para pseudo-elementos */
+  position: relative;
   height: 100vh;
   display: flex;
-  align-items: flex-start; /* Alinea contenido arriba */
+  align-items: flex-start;
   justify-content: center;
-  overflow: hidden; /* Importante para contener el zoom del ::after */
+  overflow: hidden;
   -webkit-mask-image: radial-gradient(
     circle,
     rgba(0, 0, 0, 1) 70%,
@@ -128,7 +135,7 @@ h5 {
     rgba(0, 0, 0, 0) 100%
   );
 }
-/* Overlay oscuro (se mantiene igual) */
+
 .hero::before {
   content: "";
   position: absolute;
@@ -137,9 +144,9 @@ h5 {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
-  z-index: 1; /* Encima del ::after, debajo del contenido */
+  z-index: 1;
 }
-/* Pseudo-elemento para la imagen de fondo y animación */
+
 .hero::after {
   content: "";
   position: absolute;
@@ -151,28 +158,28 @@ h5 {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: -1; /* Detrás del contenido y del overlay ::before */
-  /* Aplicar la animación con nuevos valores */
-  animation: heroZoom 45s linear infinite alternate; /* Duración 45s */
+  z-index: -1;
+  animation: heroZoom 45s linear infinite alternate;
 }
-/* Definición de la animación */
+
 @keyframes heroZoom {
   0% {
-    transform: scale(1); /* Estado inicial */
+    transform: scale(1);
   }
   100% {
-    transform: scale(1.05); /* Estado final (zoom 5%) */
+    transform: scale(1.05);
   }
 }
 
 .hero-content {
   position: relative;
-  z-index: 2; /* Asegurar que el contenido esté sobre los pseudo-elementos */
+  z-index: 2;
   text-align: left;
   margin-left: 5%;
   padding-top: 16vh;
   width: 100%;
 }
+
 .hero-content h2 {
   font-size: 4rem;
   line-height: 1.1;
@@ -180,6 +187,7 @@ h5 {
   transform: translateY(30px);
   animation: fadeUp 1s forwards 0.5s;
 }
+
 .hero-subtitle {
   font-size: 1.7rem;
   font-weight: 300;
@@ -189,6 +197,7 @@ h5 {
   animation: fadeUp 1s forwards 1s;
   line-height: 1.3;
 }
+
 .hero-btn {
   display: inline-block;
   padding: 1rem 2.5rem;
@@ -203,10 +212,12 @@ h5 {
   transform: translateY(30px);
   animation: fadeUp 1s forwards 1.5s;
 }
+
 .hero-btn:hover {
   background-color: var(--accent-color);
   color: var(--primary-bg);
 }
+
 @keyframes fadeUp {
   to {
     opacity: 1;
@@ -222,10 +233,12 @@ h5 {
   display: block;
   text-align: center;
 }
+
 #contact .section-title {
   margin-top: 0;
   margin-bottom: 3rem;
 }
+
 .section-title::after {
   content: "";
   position: absolute;
@@ -241,10 +254,12 @@ h5 {
 .gallery {
   padding: 8rem 0;
 }
+
 .gallery-grid {
   column-count: 3;
   column-gap: 1.5rem;
 }
+
 .gallery-item {
   break-inside: avoid;
   margin-bottom: 1.5rem;
@@ -253,6 +268,7 @@ h5 {
   border-radius: 4px;
   cursor: pointer;
 }
+
 .gallery-img {
   width: 100%;
   display: block;
@@ -261,37 +277,36 @@ h5 {
   user-select: none;
   -webkit-user-drag: none;
 }
+
 .gallery-item:hover .gallery-img {
   transform: scale(1.05);
 }
 
-/* --- Modal de Imagen --- */
+/* --- Modal de Imagen OPTIMIZADO --- */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
-  display: none; /* Cambia a flex con JS */
-  align-items: center; /* Centra verticalmente el contenido */
-  justify-content: center; /* Centra horizontalmente el contenido */
+  display: none;
+  align-items: center;
+  justify-content: center;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.9); /* Fondo base */
+  background-color: rgba(0, 0, 0, 0.9);
   padding: 1rem;
   z-index: 1000;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
 }
+
 .modal.active {
   display: flex;
   opacity: 1;
   pointer-events: auto;
 }
-/* --- ELIMINADO: Fondo más oscuro para modo enfoque --- */
-/* .modal.modal-focus-active { ... } */
 
 .modal-content {
-  /* Contenedor normal */
   position: relative;
   width: 95%;
   height: auto;
@@ -303,32 +318,27 @@ h5 {
   align-items: center;
   gap: 1rem;
   background-color: var(--secondary-bg);
-  padding: 1rem; /* Padding reducido */
+  padding: 1rem;
   border-radius: 4px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
   overflow: hidden;
-  /* --- ELIMINADO: Transición de opacidad/visibility del contenedor --- */
-  /* opacity: 1; */
-  /* visibility: visible; */
-  /* transition: opacity 0.25s ease-in 0.1s, visibility 0s linear 0s; */
 }
+
 .modal-img {
-  /* Estilo normal de la imagen */
   position: relative;
   width: auto;
   max-width: 100%;
   height: auto;
-  object-fit: contain; /* Muestra imagen entera por defecto */
+  object-fit: contain;
   display: block;
   border-radius: 4px;
   pointer-events: auto;
   user-select: none;
   -webkit-user-drag: none;
   flex-shrink: 0;
-  /* --- ELIMINADO: Cursor zoom --- */
-  /* cursor: zoom-in; */
   z-index: 1;
 }
+
 .modal-details {
   position: relative;
   width: 100%;
@@ -336,20 +346,11 @@ h5 {
   flex-grow: 0;
   flex-shrink: 0;
   min-height: 0;
-  overflow-y: auto;
   padding: 0 0.5rem 0.5rem 0.5rem;
   color: var(--text-primary);
   margin: 0 auto;
   z-index: 1;
 }
-/* --- ELIMINADO: Estilo loading-image --- */
-/* .modal-content.loading-image { ... } */
-
-/* --- ELIMINADO: Estilos para Modo Enfoque --- */
-/* .modal-content.focus-mode { ... } */
-/* .modal-content.focus-mode .modal-details, ... { ... } */
-/* .modal-content.focus-mode .modal-img { ... } */
-/* .modal.modal-focus-active .modal-nav { ... } */
 
 .modal-close {
   position: absolute;
@@ -368,17 +369,20 @@ h5 {
   justify-content: center;
   cursor: pointer;
   transition: color 0.3s ease, background-color 0.3s ease;
-  z-index: 10; /* Debe estar sobre modal-content normal */
+  z-index: 10;
 }
+
 .modal-close:hover {
   color: var(--accent-color);
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .modal-title {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   font-family: "Cormorant Garamond", serif;
 }
+
 .modal-category {
   font-size: 0.9rem;
   color: var(--text-secondary);
@@ -386,26 +390,28 @@ h5 {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
 .modal-description {
   font-size: 0.95rem;
   color: var(--text-primary);
   line-height: 1.6;
   overflow-wrap: break-word;
-  /* La justificación/alineación/hyphens se aplica en media queries */
 }
+
 .modal-nav {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  max-width: 1400px; /* Aumentado para botones */
-  display: flex; /* Asegurar que sea visible por defecto */
+  max-width: 1400px;
+  display: flex;
   justify-content: space-between;
-  pointer-events: none; /* El contenedor no captura eventos */
-  z-index: 5; /* Debajo de modal-close */
+  pointer-events: none;
+  z-index: 5;
   padding: 0 10px;
 }
+
 .modal-nav-btn {
   background: rgba(0, 0, 0, 0.4);
   border: none;
@@ -413,7 +419,7 @@ h5 {
   font-size: 1.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  pointer-events: auto; /* Los botones sí capturan eventos */
+  pointer-events: auto;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -421,23 +427,23 @@ h5 {
   align-items: center;
   justify-content: center;
 }
+
 .modal-nav-btn:hover {
   color: var(--accent-color);
   background: rgba(0, 0, 0, 0.6);
 }
 
-/* --- Estilos para Layout Vertical (Imagen al lado del Texto) --- */
-/* Aplicar solo en pantallas más grandes (ej. > 768px) */
+/* --- Layouts Específicos para Desktop --- */
 @media (min-width: 769px) {
-  /* --- MODIFICADO: Simplificar selectores quitando :not(.focus-mode) --- */
+  /* Layout Vertical - MANTENER COMO ESTÁ */
   .modal-content.layout-vertical {
     flex-direction: row;
-    align-items: center; /* Centrar items verticalmente */
+    align-items: center;
     gap: 1.5rem;
-    max-width: 1300px; /* Igualar ancho al horizontal */
+    max-width: 1300px;
     background-color: var(--secondary-bg);
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
-    padding: 1rem; /* Padding reducido */
+    padding: 1rem;
     overflow: hidden;
     position: relative;
     width: 95%;
@@ -447,11 +453,10 @@ h5 {
   }
 
   .modal-content.layout-vertical .modal-img {
-    flex: 0 0 55%; /* Ajustar proporción a 55% Imagen */
+    flex: 0 0 55%;
     max-width: 55%;
     max-height: 90vh;
     width: auto;
-    /* cursor: zoom-in; */ /* Eliminado */
     position: static;
     z-index: 1;
     border-radius: 4px;
@@ -459,15 +464,15 @@ h5 {
   }
 
   .modal-content.layout-vertical .modal-details {
-    flex: 1 1 45%; /* Ajustar proporción a 45% Texto */
+    flex: 1 1 45%;
     max-width: 45%;
-    height: auto; /* Permitir altura natural */
-    max-height: 90vh; /* Mantener límite por si el texto es muy largo */
-    overflow-y: auto;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto; /* MANTENER scroll solo en verticales */
     padding: 0.5rem;
     text-align: left;
-    margin: 0; /* Resetear margen auto */
-    display: block; /* Asegurar que sea visible */
+    margin: 0;
+    display: block;
   }
 
   .modal-content.layout-vertical .modal-title,
@@ -477,10 +482,11 @@ h5 {
 
   .modal-content.layout-vertical .modal-description {
     text-align: justify;
-    /* hyphens: auto; */ /* Eliminado en V8 */
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
-  /* Estilos normales para layout horizontal */
+  /* Layout Horizontal OPTIMIZADO - SIN SCROLL */
   .modal-content:not(.layout-vertical) {
     padding: 1rem;
     background-color: var(--secondary-bg);
@@ -491,46 +497,87 @@ h5 {
     overflow: hidden;
     width: 95%;
     height: auto;
-    gap: 1rem;
+    gap: 0.8rem; /* Reducido para más espacio */
     align-items: center;
+    flex-direction: column;
   }
+
   .modal-content:not(.layout-vertical) .modal-img {
     position: static;
     z-index: 1;
     max-width: 100%;
-    max-height: 75vh;
+    max-height: 62vh; /* OPTIMIZADO: Reducido de 75vh */
     width: auto;
     height: auto;
-    /* cursor: zoom-in; */ /* Eliminado */
     border-radius: 4px;
     object-fit: contain;
-  }
-  .modal-content:not(.layout-vertical) .modal-details {
-    display: block; /* Asegurar que sea visible */
+    flex-shrink: 0;
   }
 
-  /* Justificar descripción también en layout horizontal en desktop */
+  .modal-content:not(.layout-vertical) .modal-details {
+    display: block;
+    width: 100%;
+    max-width: 900px; /* Ligeramente más ancho */
+    height: auto;
+    max-height: 30vh; /* NUEVO: Altura máxima fija */
+    overflow: hidden; /* SIN SCROLL */
+    padding: 0.5rem 1rem;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  /* Optimización Tipográfica para Layout Horizontal */
+  .modal-content:not(.layout-vertical) .modal-title {
+    font-size: 1.35rem; /* Optimizado */
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-category {
+    font-size: 0.8rem; /* Optimizado */
+    margin-bottom: 0.6rem;
+    line-height: 1.1;
+  }
+
   .modal-content:not(.layout-vertical) .modal-description {
+    font-size: 0.88rem; /* Optimizado */
+    line-height: 1.45; /* Más compacto */
     text-align: justify;
-    hyphens: auto; /* Mantenemos hyphens aquí por si acaso */
+    hyphens: auto;
+    overflow: hidden;
+    /* Efecto fade-out sutil para texto largo */
+    mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+  }
+
+  /* Alineación general */
+  .modal-details {
+    text-align: left;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-title,
+  .modal-content:not(.layout-vertical) .modal-category {
+    text-align: left;
   }
 }
 
 /* --- Sección About --- */
-/* ... (resto del CSS igual) ... */
 .about {
   padding: 8rem 0;
   background-color: var(--secondary-bg);
 }
+
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
 }
+
 .about-img-container {
   text-align: center;
 }
+
 .about-img {
   width: 100%;
   max-width: 450px;
@@ -553,10 +600,12 @@ h5 {
   aspect-ratio: 1 / 1;
   object-fit: cover;
 }
+
 .about-content h3 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
+
 .about-content p {
   margin-bottom: 1rem;
   font-weight: 300;
@@ -568,6 +617,7 @@ h5 {
 .contact {
   padding: 8rem 0;
 }
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -575,16 +625,19 @@ h5 {
   margin-top: 3rem;
   align-items: start;
 }
+
 .contact-info {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   justify-content: flex-start;
 }
+
 .contact-item {
   display: flex;
   align-items: flex-start;
 }
+
 .contact-icon {
   margin-right: 1rem;
   font-size: 1.5rem;
@@ -593,19 +646,23 @@ h5 {
   text-align: center;
   flex-shrink: 0;
 }
+
 .contact-text h4 {
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
 }
+
 .contact-text p,
 .contact-text a {
   color: var(--text-secondary);
   text-decoration: none;
   word-break: break-word;
 }
+
 .contact-text a:hover {
   color: var(--accent-color);
 }
+
 .social-icons-container {
   display: flex;
   flex-direction: row;
@@ -613,18 +670,22 @@ h5 {
   gap: 0.8rem;
   margin-top: 0.5rem;
 }
+
 .contact-form {
   display: grid;
   gap: 1.5rem;
 }
+
 .form-group {
   display: grid;
   gap: 0.5rem;
 }
+
 .form-label {
   font-size: 0.9rem;
   color: var(--text-secondary);
 }
+
 .form-input,
 .form-textarea {
   width: 100%;
@@ -636,15 +697,18 @@ h5 {
   font-family: "Montserrat", sans-serif;
   transition: border-color 0.3s ease;
 }
+
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
   border-color: var(--accent-color);
 }
+
 .form-textarea {
   resize: vertical;
   min-height: 150px;
 }
+
 .form-button {
   padding: 1rem 2rem;
   background-color: transparent;
@@ -658,10 +722,12 @@ h5 {
   transition: all 0.3s ease;
   justify-self: start;
 }
+
 .form-button:hover {
   background-color: var(--accent-color);
   color: var(--primary-bg);
 }
+
 .form-button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
@@ -673,12 +739,14 @@ h5 {
   background-color: var(--secondary-bg);
   text-align: center;
 }
+
 .footer-logo {
   font-size: 2rem;
   margin-bottom: 2rem;
   letter-spacing: 3px;
   font-family: "Cormorant Garamond", serif;
 }
+
 .footer-nav {
   display: flex;
   justify-content: center;
@@ -686,6 +754,7 @@ h5 {
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
 }
+
 .footer-link {
   color: var(--text-secondary);
   text-decoration: none;
@@ -693,15 +762,18 @@ h5 {
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }
+
 .footer-link:hover {
   color: var(--accent-color);
 }
+
 .footer-social {
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
   gap: 0.5rem;
 }
+
 .social-link {
   display: flex;
   align-items: center;
@@ -715,11 +787,13 @@ h5 {
   transition: all 0.3s ease;
   font-size: 1.1rem;
 }
+
 .social-link:hover {
   background-color: var(--accent-color);
   color: var(--primary-bg);
   border-color: var(--accent-color);
 }
+
 .copyright {
   color: var(--text-secondary);
   font-size: 0.9rem;
@@ -737,6 +811,7 @@ img {
   height: auto;
   display: block;
 }
+
 #backToTop {
   position: fixed;
   bottom: 30px;
@@ -758,432 +833,19 @@ img {
   z-index: 999;
   font-size: 1.2rem;
 }
+
 #backToTop.visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
+
 #backToTop:hover {
   background-color: var(--accent-color);
   color: var(--primary-bg);
   box-shadow: 0 0 15px rgba(166, 124, 82, 0.4);
 }
 
-/* --- Media Queries (Responsividad) --- */
-/* ... (media queries sin cambios relevantes aquí, excepto asegurar resets si es necesario) ... */
-@media (max-width: 1024px) {
-  .gallery-grid {
-    column-count: 2;
-  }
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  #contact .section-title {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  #contact .section-title::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    margin-top: 0;
-  }
-  .contact-info {
-    justify-content: flex-start;
-  }
-  .social-icons-container {
-    justify-content: center;
-  }
-  .about-img-container {
-    order: -1;
-    text-align: center;
-  }
-  .about-img {
-    max-width: 70%;
-    margin: 0 auto;
-  }
-
-  /* Ajustes modal tablet - Usará layout vertical si > 768px */
-  .modal-content {
-    max-width: 85%; /* Ajustar ancho en tablet */
-    padding: 1rem; /* Reducir padding superior en tablet */
-    min-height: 50vh; /* Reducir altura mínima */
-  }
-  .modal-img {
-    max-height: 65vh; /* Altura imagen tablet */
-  }
-  .modal-details {
-    max-width: 95%; /* Permitir más ancho de texto en tablet horizontal */
-  }
-}
-@media (max-width: 768px) {
-  body {
-    font-size: 15px;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    letter-spacing: 0.5px;
-  }
-  .hero-content h2 {
-    font-size: 3rem;
-  }
-  .hero-subtitle {
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-  .section-title {
-    font-size: 2.2rem;
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-  }
-  #contact .section-title {
-    margin-bottom: 2rem;
-  }
-  .hero::before {
-    background: rgba(0, 0, 0, 0.5);
-  }
-  .hero-content h2,
-  .hero-subtitle,
-  .hero-btn {
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
-  }
-  .hero-content {
-    padding: 0 1rem;
-    margin-left: 0;
-    text-align: left;
-    padding-top: 13vh;
-  }
-  .contact-grid {
-    gap: 2.5rem;
-  }
-  .contact-info {
-    gap: 1.5rem;
-  }
-  .contact-form {
-    padding: 0 0.5rem;
-  }
-  .modal-nav {
-    padding: 0 0.5rem;
-  }
-  .modal-nav-btn {
-    width: 35px;
-    height: 35px;
-    font-size: 1.2rem;
-  }
-  .social-icons-container {
-    justify-content: center;
-  }
-  .nav-link {
-    font-size: 0.8rem;
-  }
-
-  /* Ajustes modal móvil */
-  .modal-content {
-    width: 95%;
-    height: 90vh; /* Altura fija en móvil */
-    max-height: 90vh;
-    padding: 1rem; /* Padding original móvil */
-    gap: 0.5rem; /* Reducir gap */
-    overflow: hidden; /* Evita overflow general */
-    flex-direction: column; /* Asegura layout columna en móvil */
-    align-items: center; /* Asegurar centrado horizontal móvil */
-    min-height: 0; /* Resetear min-height */
-  }
-  .modal-img {
-    max-height: 50vh; /* Más altura imagen móvil */
-    flex-shrink: 0; /* Evita que se encoja */
-  }
-  .modal-details {
-    width: 100%;
-    text-align: left; /* Asegura alineación izquierda en móvil */
-    flex-grow: 1; /* Ocupa espacio restante */
-    min-height: 0; /* Para que overflow funcione */
-    overflow-y: auto; /* Scroll si es necesario */
-    padding: 0.5rem; /* Padding uniforme */
-    margin: 0; /* Resetear margen auto */
-    max-width: 100%; /* Ocupar todo el ancho en móvil */
-  }
-  .modal-description {
-    text-align: left; /* Asegura alineación izquierda en móvil */
-    font-size: 0.9rem; /* Ajustar tamaño fuente móvil */
-  }
-  .modal-close {
-    top: 0.5rem;
-    right: 0.5rem;
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-  }
-  .modal-nav {
-    width: 100%;
-    max-width: none;
-    left: 0;
-    transform: translateY(-50%);
-    padding: 0 0.5rem;
-  }
-}
-@media (max-width: 640px) {
-  body {
-    font-size: 14px;
-  }
-  .container {
-    padding: 0 1rem;
-  }
-  .hero-content h2 {
-    font-size: 2.2rem;
-  }
-  .hero-subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.4;
-  }
-  .hero-btn {
-    padding: 0.8rem 1.8rem;
-    font-size: 0.8rem;
-  }
-  .hero-content {
-    padding-top: 10vh;
-  }
-  .gallery {
-    padding: 4rem 0;
-  }
-  .gallery-grid {
-    column-count: 1;
-    gap: 1rem;
-  }
-  .gallery-item {
-    margin-bottom: 1rem;
-  }
-  .about {
-    padding: 4rem 0;
-  }
-  .about-grid {
-    gap: 2rem;
-  }
-  .about-img {
-    max-width: 80%;
-  }
-  .about-content h3 {
-    font-size: 1.8rem;
-  }
-  .contact {
-    padding: 4rem 0;
-  }
-  .contact-form {
-    padding: 0;
-  }
-  .nav-container {
-    padding: 0.5rem 0;
-  }
-  .nav-container.nav-scrolled {
-    padding: 0.3rem 0;
-  }
-  .header-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 0 0.5rem;
-  }
-  .header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0 0.5rem 0 0;
-    margin-top: 0;
-  }
-  /* .logo { font-size: 1.2rem; } */ /* No existe .logo en el HTML */
-  .nav-menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    row-gap: 0.2rem;
-    column-gap: 0.8rem;
-    flex-grow: 1;
-    padding: 0.3rem 0;
-    margin-top: 0;
-  }
-  .nav-link {
-    margin: 0;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    padding: 0.2rem 0;
-  }
-  .nav-link::after {
-    display: none;
-  }
-  .lang-button-container {
-    margin-left: 0.5rem;
-    flex-shrink: 0;
-    position: static;
-    transform: none;
-  } /* Ajuste para móvil */
-  #languageToggle {
-    font-size: 10px;
-    padding: 0.2rem 0.4rem;
-  }
-  .footer {
-    padding: 3rem 0;
-  }
-  .footer-nav {
-    gap: 0.3rem 0.8rem;
-    margin-bottom: 1.5rem;
-  }
-  .footer-link {
-    font-size: 0.8rem;
-  }
-  .footer-social {
-    gap: 0.8rem;
-    margin-bottom: 1.5rem;
-  }
-  .social-link {
-    width: 35px;
-    height: 35px;
-    font-size: 1rem;
-  }
-  .copyright {
-    font-size: 0.8rem;
-  }
-  #backToTop {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-    right: 15px;
-    bottom: 15px;
-  }
-}
-@media (min-width: 1600px) {
-  body {
-    font-size: 17px;
-  }
-  .container {
-    max-width: 1540px;
-  }
-  .hero-content h2 {
-    font-size: 5.5rem;
-  }
-  .hero-subtitle {
-    font-size: 2rem;
-    line-height: 1.2;
-  }
-  .section-title {
-    font-size: 3.5rem;
-  }
-  .nav-link {
-    font-size: 1.6rem;
-  }
-  .modal-nav {
-    max-width: 1500px; /* Aumentado para botones */
-  }
-  /* Ajustes para layout vertical en pantallas muy grandes si es necesario */
-  .modal-content.layout-vertical {
-    max-width: 1300px;
-    gap: 2rem;
-  } /* Igualamos ancho máx */
-  .modal-content.layout-vertical .modal-img {
-    flex-basis: 55%;
-    max-width: 55%;
-  }
-  .modal-content.layout-vertical .modal-details {
-    flex-basis: 45%;
-    max-width: 45%;
-  }
-  /* Ajustes para layout horizontal en pantallas muy grandes */
-  .modal-content:not(.layout-vertical) {
-    max-width: 1400px; /* Aumentado aquí también */
-  }
-  .modal-content:not(.layout-vertical) .modal-img {
-    max-height: 80vh; /* Mantenemos altura aumentada */
-  }
-  .modal-content:not(.layout-vertical) .modal-details {
-    max-width: 1000px;
-  } /* Aumentar ancho texto */
-}
-/* Ajustes generales Desktop (>768px) */
-@media (min-width: 769px) {
-  .nav-link {
-    font-size: 1.4rem;
-    margin: 0 1.5rem;
-  }
-  .nav-link::after {
-    display: block;
-  }
-  .header-container {
-    flex-direction: row;
-    padding: 0 1.5rem;
-    justify-content: center;
-  }
-  .header-top {
-    width: auto;
-    padding: 0;
-    justify-content: center;
-    flex-grow: 1;
-  }
-  .nav-menu {
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: nowrap;
-    width: auto;
-    margin: 0;
-    padding: 0;
-    flex-grow: 0;
-  }
-  .contact-info {
-    justify-content: flex-start;
-  }
-  .social-icons-container {
-    justify-content: center;
-  }
-  .hero-subtitle {
-    font-size: 1.7rem;
-    line-height: 1.3;
-  }
-  .lang-button-container {
-    margin-left: 1rem;
-    position: absolute;
-    right: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .modal-nav {
-    max-width: 95%; /* Ajustar ancho nav relativo */
-  }
-
-  /* Alineación izquierda por defecto para .modal-details */
-  .modal-details {
-    text-align: left;
-  }
-
-  /* Asegurar alineación izquierda explícita para título y categoría en layout horizontal */
-  .modal-content:not(.layout-vertical) .modal-title,
-  .modal-content:not(.layout-vertical) .modal-category {
-    text-align: left;
-  }
-
-  /* Aumentar altura imagen horizontal */
-  .modal-img {
-    max-height: 75vh; /* Mantenemos altura aumentada */
-  }
-
-  /* Sobreescribe alineación para layout vertical (ya estaba left) */
-  .modal-content.layout-vertical .modal-details {
-    text-align: left;
-  }
-}
 /* --- Featured Projects Section --- */
 .featured-projects {
   padding: 8rem 0;
@@ -1374,286 +1036,7 @@ img {
   transform: rotate(90deg);
 }
 
-/* Responsive para Featured Projects */
-@media (max-width: 1024px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .featured-projects {
-    padding: 4rem 0;
-  }
-
-  .project-image {
-    height: 250px;
-  }
-
-  .project-info {
-    padding: 1.5rem;
-  }
-
-  .project-info h3 {
-    font-size: 1.5rem;
-  }
-
-  .video-container {
-    max-width: 100%;
-  }
-
-  .video-close {
-    top: 10px;
-    right: 10px;
-  }
-}
-
-@media (max-width: 640px) {
-  .projects-grid {
-    margin-top: 2rem;
-  }
-
-  .project-image {
-    height: 200px;
-  }
-}
-Copy/* --- Featured Projects Section --- */
-.featured-projects {
-  padding: 8rem 0;
-  background: linear-gradient(
-    180deg,
-    var(--primary-bg) 0%,
-    var(--secondary-bg) 100%
-  );
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 3rem;
-  margin-top: 4rem;
-}
-
-.project-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(166, 124, 82, 0.15);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent-color);
-  box-shadow: 0 20px 40px rgba(166, 124, 82, 0.2);
-}
-
-.project-image {
-  position: relative;
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-  background: #000;
-}
-
-.project-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-.project-card:hover .project-img {
-  transform: scale(1.08);
-}
-
-.project-badge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(166, 124, 82, 0.9);
-  backdrop-filter: blur(10px);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 500;
-}
-
-.play-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.3);
-  transition: background 0.3s ease;
-}
-
-.project-card:hover .play-overlay {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.play-icon {
-  width: 70px;
-  height: 70px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  padding-left: 5px;
-  color: var(--primary-bg);
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover .play-icon {
-  transform: scale(1.1);
-}
-
-.project-info {
-  padding: 2rem;
-}
-
-.project-info h3 {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-}
-
-.project-info p {
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  font-weight: 300;
-}
-
-.project-cta {
-  color: var(--accent-color);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 500;
-}
-
-/* --- Video Modal --- */
-.video-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.95);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  padding: 2rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.video-modal.active {
-  display: flex;
-  opacity: 1;
-}
-
-.video-container {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  aspect-ratio: 16/9;
-  background: #000;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.video-close {
-  position: absolute;
-  top: -40px;
-  right: 0;
-  font-size: 2rem;
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.video-close:hover {
-  background: var(--accent-color);
-  transform: rotate(90deg);
-}
-
-/* Responsive para Featured Projects */
-@media (max-width: 1024px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .featured-projects {
-    padding: 4rem 0;
-  }
-
-  .project-image {
-    height: 250px;
-  }
-
-  .project-info {
-    padding: 1.5rem;
-  }
-
-  .project-info h3 {
-    font-size: 1.5rem;
-  }
-
-  .video-container {
-    max-width: 100%;
-  }
-
-  .video-close {
-    top: 10px;
-    right: 10px;
-  }
-}
-
-@media (max-width: 640px) {
-  .projects-grid {
-    margin-top: 2rem;
-    grid-template-columns: 1fr;
-  }
-
-  .project-image {
-    height: 200px;
-  }
-}
-/* Contra Button Styling */
+/* --- Contra Button Styling --- */
 .contact-cta {
   text-align: center;
   margin-top: 4rem;
@@ -1678,7 +1061,6 @@ Copy/* --- Featured Projects Section --- */
   margin: 2rem 0;
 }
 
-/* Ajuste para que el botón se vea bien en fondo oscuro */
 .contra-hire-me-button {
   filter: none;
   transition: transform 0.3s ease;
@@ -1687,7 +1069,7 @@ Copy/* --- Featured Projects Section --- */
 .contra-hire-me-button:hover {
   transform: translateY(-3px);
 }
-/* Contra Button in Contact Info */
+
 .contra-inline-container {
   margin-top: 1rem;
   display: flex;
@@ -1695,7 +1077,7 @@ Copy/* --- Featured Projects Section --- */
 }
 
 .contact-item .contra-hire-me-button {
-  transform: scale(0.9); /* Slightly smaller to fit better */
+  transform: scale(0.9);
   transform-origin: left center;
   transition: transform 0.3s ease;
 }
@@ -1704,8 +1086,231 @@ Copy/* --- Featured Projects Section --- */
   transform: scale(0.9) translateY(-2px);
 }
 
-/* Responsive adjustment */
+/* --- Media Queries --- */
+@media (max-width: 1024px) {
+  .gallery-grid {
+    column-count: 2;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  #contact .section-title {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #contact .section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-top: 0;
+  }
+
+  .contact-info {
+    justify-content: flex-start;
+  }
+
+  .social-icons-container {
+    justify-content: center;
+  }
+
+  .about-img-container {
+    order: -1;
+    text-align: center;
+  }
+
+  .about-img {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
+  .modal-content {
+    max-width: 85%;
+    padding: 1rem;
+    min-height: 50vh;
+  }
+
+  .modal-img {
+    max-height: 65vh;
+  }
+
+  .modal-details {
+    max-width: 95%;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    letter-spacing: 0.5px;
+  }
+
+  .hero-content h2 {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  #contact .section-title {
+    margin-bottom: 2rem;
+  }
+
+  .hero::before {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-content h2,
+  .hero-subtitle,
+  .hero-btn {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-content {
+    padding: 0 1rem;
+    margin-left: 0;
+    text-align: left;
+    padding-top: 13vh;
+  }
+
+  .contact-grid {
+    gap: 2.5rem;
+  }
+
+  .contact-info {
+    gap: 1.5rem;
+  }
+
+  .contact-form {
+    padding: 0 0.5rem;
+  }
+
+  .modal-nav {
+    padding: 0 0.5rem;
+  }
+
+  .modal-nav-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+
+  .social-icons-container {
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+  }
+
+  /* Modal móvil */
+  .modal-content {
+    width: 95%;
+    height: 90vh;
+    max-height: 90vh;
+    padding: 1rem;
+    gap: 0.5rem;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    min-height: 0;
+  }
+
+  .modal-img {
+    max-height: 50vh;
+    flex-shrink: 0;
+  }
+
+  .modal-details {
+    width: 100%;
+    text-align: left;
+    flex-grow: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0.5rem;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .modal-description {
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  .modal-close {
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+  }
+
+  .modal-nav {
+    width: 100%;
+    max-width: none;
+    left: 0;
+    transform: translateY(-50%);
+    padding: 0 0.5rem;
+  }
+
+  .featured-projects {
+    padding: 4rem 0;
+  }
+
+  .project-image {
+    height: 250px;
+  }
+
+  .project-info {
+    padding: 1.5rem;
+  }
+
+  .project-info h3 {
+    font-size: 1.5rem;
+  }
+
+  .video-container {
+    max-width: 100%;
+  }
+
+  .video-close {
+    top: 10px;
+    right: 10px;
+  }
+
   .contra-inline-container {
     justify-content: center;
     margin-top: 1.5rem;
@@ -1714,5 +1319,529 @@ Copy/* --- Featured Projects Section --- */
   .contact-item .contra-hire-me-button {
     transform: scale(1);
     transform-origin: center;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .hero-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+
+  .hero-btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.8rem;
+  }
+
+  .hero-content {
+    padding-top: 10vh;
+  }
+
+  .gallery {
+    padding: 4rem 0;
+  }
+
+  .gallery-grid {
+    column-count: 1;
+    gap: 1rem;
+  }
+
+  .gallery-item {
+    margin-bottom: 1rem;
+  }
+
+  .about {
+    padding: 4rem 0;
+  }
+
+  .about-grid {
+    gap: 2rem;
+  }
+
+  .about-img {
+    max-width: 80%;
+  }
+
+  .about-content h3 {
+    font-size: 1.8rem;
+  }
+
+  .contact {
+    padding: 4rem 0;
+  }
+
+  .contact-form {
+    padding: 0;
+  }
+
+  .nav-container {
+    padding: 0.5rem 0;
+  }
+
+  .nav-container.nav-scrolled {
+    padding: 0.3rem 0;
+  }
+
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0 0.5rem;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 0.5rem 0 0;
+    margin-top: 0;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    row-gap: 0.2rem;
+    column-gap: 0.8rem;
+    flex-grow: 1;
+    padding: 0.3rem 0;
+    margin-top: 0;
+  }
+
+  .nav-link {
+    margin: 0;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    padding: 0.2rem 0;
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  .lang-button-container {
+    margin-left: 0.5rem;
+    flex-shrink: 0;
+    position: static;
+    transform: none;
+  }
+
+  #languageToggle {
+    font-size: 10px;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .footer {
+    padding: 3rem 0;
+  }
+
+  .footer-nav {
+    gap: 0.3rem 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-link {
+    font-size: 0.8rem;
+  }
+
+  .footer-social {
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .social-link {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+  }
+
+  #backToTop {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .projects-grid {
+    margin-top: 2rem;
+    grid-template-columns: 1fr;
+  }
+
+  .project-image {
+    height: 200px;
+  }
+}
+
+@media (min-width: 1600px) {
+  body {
+    font-size: 17px;
+  }
+
+  .container {
+    max-width: 1540px;
+  }
+
+  .hero-content h2 {
+    font-size: 5.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .section-title {
+    font-size: 3.5rem;
+  }
+
+  .nav-link {
+    font-size: 1.6rem;
+  }
+
+  .modal-nav {
+    max-width: 1500px;
+  }
+
+  .modal-content.layout-vertical {
+    max-width: 1300px;
+    gap: 2rem;
+  }
+
+  .modal-content.layout-vertical .modal-img {
+    flex-basis: 55%;
+    max-width: 55%;
+  }
+
+  .modal-content.layout-vertical .modal-details {
+    flex-basis: 45%;
+    max-width: 45%;
+  }
+
+  .modal-content:not(.layout-vertical) {
+    max-width: 1400px;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-img {
+    max-height: 80vh;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-details {
+    max-width: 1000px;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-link {
+    font-size: 1.4rem;
+    margin: 0 1.5rem;
+  }
+
+  .nav-link::after {
+    display: block;
+  }
+
+  .header-container {
+    flex-direction: row;
+    padding: 0 1.5rem;
+    justify-content: center;
+  }
+
+  .header-top {
+    width: auto;
+    padding: 0;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+  .nav-menu {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    flex-grow: 0;
+  }
+
+  .contact-info {
+    justify-content: flex-start;
+  }
+
+  .social-icons-container {
+    justify-content: center;
+  }
+
+  .hero-subtitle {
+    font-size: 1.7rem;
+    line-height: 1.3;
+  }
+
+  .lang-button-container {
+    margin-left: 1rem;
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .modal-nav {
+    max-width: 95%;
+  }
+
+  .modal-details {
+    text-align: left;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-title,
+  .modal-content:not(.layout-vertical) .modal-category {
+    text-align: left;
+  }
+
+  .modal-img {
+    max-height: 75vh;
+  }
+
+  .modal-content.layout-vertical .modal-details {
+    text-align: left;
+  }
+}
+/* Layout Horizontal OPTIMIZADO - SIN SCROLL - VERSIÓN 2 */
+@media (min-width: 769px) {
+  /* ... mantén el layout vertical como está ... */
+
+  /* Layout Horizontal - ELIMINAR SCROLL COMPLETAMENTE */
+  .modal-content:not(.layout-vertical) {
+    padding: 0.8rem;
+    background-color: var(--secondary-bg);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    max-width: 1300px;
+    max-height: 95vh;
+    min-height: 60vh;
+    overflow: hidden;
+    width: 95%;
+    height: auto;
+    gap: 0.5rem; /* Más reducido aún */
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-img {
+    position: static;
+    z-index: 1;
+    max-width: 100%;
+    max-height: 58vh; /* REDUCIDO AÚN MÁS */
+    width: auto;
+    height: auto;
+    border-radius: 4px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    max-height: 32vh; /* Ligeramente más espacio */
+    overflow: hidden; /* CRÍTICO: Sin scroll */
+    padding: 0.3rem 1rem;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  /* NUEVA ESTRATEGIA: Contenedor flexible para descripción */
+  .modal-content:not(.layout-vertical) .modal-title {
+    font-size: 1.25rem; /* Más pequeño */
+    margin-bottom: 0.2rem;
+    line-height: 1.15;
+    flex-shrink: 0;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-category {
+    font-size: 0.75rem; /* Más pequeño */
+    margin-bottom: 0.4rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-description {
+    font-size: 0.82rem; /* Más pequeño aún */
+    line-height: 1.35; /* Más compacto */
+    text-align: justify;
+    hyphens: auto;
+    overflow: hidden;
+    flex: 1 1 auto; /* Ocupa el espacio restante */
+    min-height: 0; /* Importante para flexbox */
+    /* Efecto fade más pronunciado */
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 75%,
+      transparent 95%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 75%,
+      transparent 95%,
+      transparent 100%
+    );
+  }
+}
+
+/* Para pantallas muy grandes, ajustar proporcionalmente */
+@media (min-width: 1600px) {
+  .modal-content:not(.layout-vertical) .modal-img {
+    max-height: 60vh; /* Un poco más en pantallas grandes */
+  }
+
+  .modal-content:not(.layout-vertical) .modal-details {
+    max-height: 34vh;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-description {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+}
+/* PARCHE TEMPORAL - Modal sin scroll */
+@media (min-width: 769px) {
+  .modal-content:not(.layout-vertical) {
+    gap: 0.5rem !important;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-img {
+    max-height: 58vh !important;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-details {
+    max-height: 32vh !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-title {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-category {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-description {
+    font-size: 0.82rem !important;
+    line-height: 1.35 !important;
+    flex: 1 1 auto !important;
+    overflow: hidden !important;
+    mask-image: linear-gradient(
+      to bottom,
+      black 75%,
+      transparent 100%
+    ) !important;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 75%,
+      transparent 100%
+    ) !important;
+  }
+}
+/* PARCHE - Título superpuesto estilo Netflix */
+@media (min-width: 769px) {
+  .modal-content:not(.layout-vertical) {
+    position: relative !important;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-img {
+    max-height: 75vh !important;
+    position: relative !important;
+  }
+
+  /* Crear overlay oscuro en la parte inferior */
+  .modal-content:not(.layout-vertical)::before {
+    content: "" !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 50% !important;
+    background: linear-gradient(
+      to top,
+      rgba(17, 17, 17, 1) 0%,
+      rgba(17, 17, 17, 0.8) 20%,
+      transparent 60%
+    ) !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-details {
+    position: absolute !important;
+    bottom: 1rem !important;
+    left: 2rem !important;
+    right: 2rem !important;
+    z-index: 3 !important;
+    max-height: 35% !important;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-title,
+  .modal-content:not(.layout-vertical) .modal-category {
+    color: white !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9) !important;
+  }
+
+  .modal-content:not(.layout-vertical) .modal-description {
+    color: rgba(255, 255, 255, 0.95) !important;
+    max-height: 15vh !important;
+    overflow: hidden !important;
+  }
+}
+/* FADE OPTIMIZADO - Mejor legibilidad */
+@media (min-width: 769px) {
+  .modal-content:not(.layout-vertical) .modal-description {
+    color: rgba(255, 255, 255, 0.95) !important;
+    max-height: 15vh !important;
+    overflow: hidden !important;
+    /* Fade muy sutil solo en las últimas 2 líneas */
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 88%,
+      /* 88% completamente legible */ rgba(0, 0, 0, 0.95) 94%,
+      /* Fade muy suave */ rgba(0, 0, 0, 0.7) 98%,
+      /* Un poco más de fade */ transparent 100%
+    ) !important;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 88%,
+      rgba(0, 0, 0, 0.95) 94%,
+      rgba(0, 0, 0, 0.7) 98%,
+      transparent 100%
+    ) !important;
   }
 }

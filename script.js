@@ -9,22 +9,19 @@ const translations = {
   "nav-gallery": ["Gallery", "Galería"],
   "nav-featured": ["Projects", "Proyectos"],
   "nav-about": ["Profile", "Perfil"],
-  "nav-contact": ["Contact", "Contacto"],
+  "nav-contact": ["Contact", "Contacto"], // Hero
 
-  // Hero
   "hero-subtitle": [
     "Exploring the intersection of imagination<br>and artificial intelligence",
     "Explorando la intersección entre imaginación<br>e inteligencia artificial",
   ],
-  "hero-btn": ["Discover Works", "Ver Obras"],
+  "hero-btn": ["Discover Works", "Ver Obras"], // Secciones
 
-  // Secciones
   "section-gallery": ["Gallery", "Galería"],
   "section-featured": ["Featured Projects", "Proyectos Destacados"],
   "section-about": ["Profile", "Perfil"],
-  "section-contact": ["Contact", "Contacto"],
+  "section-contact": ["Contact", "Contacto"], // Featured Projects
 
-  // Featured Projects
   "chakana-title": ["Chakana Rebelde", "Chakana Rebelde"],
   "chakana-desc": [
     "At 4,000 meters high, where authenticity is not a choice: it is survival. A visual journey through reimagined Andean cultural resistance.",
@@ -39,9 +36,8 @@ const translations = {
     "Spatio-temporal anomaly where reality distorts and perception fragments in an infinite loop.",
     "Anomalía espacio-temporal donde la realidad se distorsiona y la percepción se fragmenta en un bucle infinito.",
   ],
-  "video-watch": ["Watch video", "Ver video"],
+  "video-watch": ["Watch video", "Ver video"], // Profile Content
 
-  // Profile Content
   "about-title": ["Santiago Narváez", "Santiago Narváez"],
   "about-p1": [
     "As a digital artist exploring the frontiers of AI-assisted creation, I blend traditional artistic sensibilities with cutting-edge technology to craft immersive visual experiences that challenge perceptions and evoke emotion.",
@@ -58,9 +54,8 @@ const translations = {
   "about-p4": [
     "Through my portfolio, I invite you to journey through these digital realms – spaces of contemplation, wonder, and possibility that reflect our evolving relationship with technology and the expanding horizons of artistic expression.",
     "A través de mi portafolio, te invito a viajar por estos reinos digitales: espacios de contemplación, asombro y posibilidad que reflejan nuestra relación en evolución con la tecnología y los horizontes en expansión de la expresión artística.",
-  ],
+  ], // Contact
 
-  // Contact
   "contact-location": ["Location", "Ubicación"],
   "contact-email": ["Email", "Email"],
   "contact-social": ["Social Media", "Redes Sociales"],
@@ -80,9 +75,8 @@ const translations = {
 // Espera a que el contenido HTML esté completamente cargado
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize gallery items
-  galleryItems = Array.from(document.querySelectorAll(".gallery-item"));
+  galleryItems = Array.from(document.querySelectorAll(".gallery-item")); // --- Funcionalidad del botón Back to Top ---
 
-  // --- Funcionalidad del botón Back to Top ---
   const backToTopBtn = document.getElementById("backToTop");
   if (backToTopBtn) {
     backToTopBtn.addEventListener("click", function () {
@@ -95,9 +89,8 @@ document.addEventListener("DOMContentLoaded", function () {
         backToTopBtn.classList.remove("visible");
       }
     });
-  }
+  } // --- Efecto de navegación en scroll ---
 
-  // --- Efecto de navegación en scroll ---
   const nav = document.querySelector(".nav-container");
   if (nav) {
     window.addEventListener("scroll", function () {
@@ -107,81 +100,44 @@ document.addEventListener("DOMContentLoaded", function () {
         nav.classList.remove("nav-scrolled");
       }
     });
-  }
+  } // --- Navegación suave para links internos ---
 
-  // --- Navegación suave para links internos ---
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       const href = this.getAttribute("href");
-      // Ensure it's a valid internal link longer than just "#"
       if (href && href.length > 0 && href.startsWith("#")) {
-        e.preventDefault(); // Prevent default jump
+        e.preventDefault();
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+          const headerOffset = nav ? nav.offsetHeight : 0;
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition =
+            elementPosition + window.pageYOffset - headerOffset - 50; // 50px buffer
 
-        if (href === "#home" || href === "#") {
-          // Si es el enlace a Inicio
           window.scrollTo({
-            top: 0, // Ir al principio de todo
+            top: offsetPosition,
             behavior: "smooth",
           });
-        } else {
-          // Para otros enlaces internos (#gallery, #about, #contact)
-          try {
-            const targetSection = document.querySelector(href);
-            if (targetSection) {
-              // Calcular scroll basado en el título de la sección
-              const targetTitle = targetSection.querySelector(".section-title");
-              // Usar el offset del título si existe, si no, el de la sección
-              const elementTop = targetTitle
-                ? targetTitle.offsetTop
-                : targetSection.offsetTop;
-
-              let headerOffset = 0;
-              // Calcular offset del header fijo
-              if (nav && getComputedStyle(nav).position === "fixed") {
-                headerOffset = nav.offsetHeight;
-              }
-
-              // Calcular posición final: top del elemento - altura header - buffer deseado
-              // Dejamos 50px de espacio *sobre* el título (debajo del header)
-              const scrollToPosition = elementTop - headerOffset - 50; // Ajusta el -50 si quieres más/menos espacio
-
-              window.scrollTo({
-                top: scrollToPosition,
-                behavior: "smooth",
-              });
-            }
-          } catch (error) {
-            // Log error if the selector is invalid
-            console.error(
-              "Error finding target or invalid selector:",
-              href,
-              error
-            );
-          }
         }
       }
     });
-  });
+  }); // --- Modal de Imagen ---
 
-  // --- Modal de Imagen ---
   const modal = document.getElementById("imageModal");
-  const modalContent = modal ? modal.querySelector(".modal-content") : null;
-  // Elementos visibles
+  const modalContent = modal.querySelector(".modal-content");
   const modalImg = document.getElementById("modalImg");
-  const modalDetails = document.getElementById("modalDetails");
+  const modalTitleContainer = document.getElementById("modalTitleContainer");
   const modalTitle = document.getElementById("modalTitle");
   const modalCategory = document.getElementById("modalCategory");
+  const modalDescriptionContainer = document.getElementById(
+    "modalDescriptionContainer"
+  );
   const modalDescription = document.getElementById("modalDescription");
-
-  const closeBtn = modal ? modal.querySelector(".modal-close") : null;
+  const closeBtn = modal.querySelector(".modal-close");
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
 
-  // Función para abrir el modal (simplificada, sin buffer ni focus)
   function openModal(index) {
-    // Basic checks & index wrapping
-    if (!modal || !modalContent || !modalDetails || galleryItems.length === 0)
-      return;
     if (index < 0) index = galleryItems.length - 1;
     if (index >= galleryItems.length) index = 0;
     currentIndex = index;
@@ -189,11 +145,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const imgElement = item.querySelector("img");
     if (!imgElement) return;
 
-    // 1. Obtener datos
     const imgSrc = imgElement.getAttribute("src");
-    const title = item.getAttribute("data-title") || "";
-    const category = item.getAttribute("data-category") || "";
     const currentLang = document.documentElement.lang || "es";
+    const titleAttr = currentLang === "es" ? "data-title-es" : "data-title";
+    const title =
+      item.getAttribute(titleAttr) || item.getAttribute("data-title") || "";
+    const category = item.getAttribute("data-category") || "";
     const descriptionAttr =
       currentLang === "es" ? "data-description-es" : "data-description";
     const description =
@@ -201,76 +158,41 @@ document.addEventListener("DOMContentLoaded", function () {
       item.getAttribute("data-description") ||
       "";
 
-    // 2. Resetear estilos (layout y max-width texto)
-    modalContent.classList.remove("layout-vertical");
-    if (modalDetails) modalDetails.style.maxWidth = ""; // Resetear max-width
+    modalTitle.textContent = title;
+    modalCategory.textContent = category;
+    modalDescription.textContent = description;
 
-    // 3. Actualizar texto
-    if (modalTitle) modalTitle.textContent = title;
-    if (modalCategory) modalCategory.textContent = category;
-    if (modalDescription) modalDescription.textContent = description;
+    modalImg.src = "";
+    modalImg.onload = () => {
+      const isVertical = modalImg.naturalHeight > modalImg.naturalWidth;
+      const isWideScreen = window.innerWidth >= 769;
 
-    // 4. Actualizar imagen y listeners (sin buffer)
-    if (modalImg) {
-      modalImg.src = ""; // Vaciar src para posible mejora de transición (opcional)
-      modalImg.onload = null; // Limpiar handlers anteriores
-      modalImg.onerror = null;
+      modalContent.classList.remove("layout-vertical", "layout-horizontal");
 
-      modalImg.onload = () => {
-        // Calcular layout y ancho de texto para horizontal
-        const isVertical = modalImg.naturalWidth / modalImg.naturalHeight < 1;
-        const isWideScreen = window.innerWidth >= 769;
-        let calculatedMaxWidth = "";
+      if (isVertical && isWideScreen) {
+        modalContent.classList.add("layout-vertical");
+      } else {
+        modalContent.classList.add("layout-horizontal");
+      }
+    };
+    modalImg.setAttribute("src", imgSrc);
 
-        if (isVertical && isWideScreen) {
-          modalContent.classList.add("layout-vertical");
-          if (modalDetails) modalDetails.style.maxWidth = ""; // Resetear
-        } else {
-          modalContent.classList.remove("layout-vertical");
-          // Calcular max-width para el texto si es horizontal
-          const imageWidth = modalImg.clientWidth;
-          if (imageWidth > 0) {
-            calculatedMaxWidth = imageWidth + "px";
-          }
-          if (modalDetails) modalDetails.style.maxWidth = calculatedMaxWidth;
-        }
-      };
-      modalImg.onerror = () => {
-        console.error("Failed to load modal image:", imgSrc);
-        modalContent.classList.remove("layout-vertical");
-        if (modalDetails) modalDetails.style.maxWidth = ""; // Resetear en caso de error
-      };
-
-      modalImg.setAttribute("src", imgSrc); // Asignar nueva fuente
-    }
-
-    // 5. Mostrar modal
     modal.classList.add("active");
     document.body.style.overflow = "hidden";
   }
 
-  // Function to close the modal (simplificada)
   function closeModal() {
-    if (!modal || !modalContent || !modalDetails) return;
     modal.classList.remove("active");
     document.body.style.overflow = "auto";
-    if (modalImg) {
-      modalImg.src = ""; // Vaciar src al cerrar
-    }
-    modalContent.classList.remove("layout-vertical");
-    if (modalDetails) modalDetails.style.maxWidth = ""; // Resetear max-width
   }
 
-  // Event Listeners for gallery items
   galleryItems.forEach((item, index) => {
     item.addEventListener("click", () => openModal(index));
   });
 
-  // Modal controls (sin checks de focus mode)
   if (modal) {
     if (closeBtn) closeBtn.addEventListener("click", closeModal);
     modal.addEventListener("click", (e) => {
-      // Cerrar si se hace clic fuera
       if (e.target === modal) {
         closeModal();
       }
@@ -278,18 +200,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (prevBtn) {
       prevBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        openModal(currentIndex - 1); // Siempre funciona
+        openModal(currentIndex - 1);
       });
     }
     if (nextBtn) {
       nextBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        openModal(currentIndex + 1); // Siempre funciona
+        openModal(currentIndex + 1);
       });
     }
     document.addEventListener("keydown", (e) => {
       if (!modal.classList.contains("active")) return;
-      // Navegación con flechas siempre activa
       switch (e.key) {
         case "ArrowLeft":
           openModal(currentIndex - 1);
@@ -299,12 +220,11 @@ document.addEventListener("DOMContentLoaded", function () {
           break;
         case "Escape":
           closeModal();
-          break; // Escape siempre cierra
+          break;
       }
     });
-  }
+  } // --- Video Modal Functionality ---
 
-  // --- Video Modal Functionality ---
   const videoModal = document.getElementById("videoModal");
   const videoTriggers = document.querySelectorAll("[data-video-trigger]");
   const youtubePlayer = document.getElementById("youtubePlayer");
@@ -312,7 +232,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ? videoModal.querySelector(".video-close")
     : null;
 
-  // Open video modal
   videoTriggers.forEach((trigger) => {
     trigger.addEventListener("click", function (e) {
       e.preventDefault();
@@ -325,7 +244,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Close video modal
   if (videoClose) {
     videoClose.addEventListener("click", function () {
       if (videoModal && youtubePlayer) {
@@ -336,7 +254,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Close on background click
   if (videoModal) {
     videoModal.addEventListener("click", function (e) {
       if (e.target === videoModal) {
@@ -347,7 +264,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Close video on Escape key
   document.addEventListener("keydown", function (e) {
     if (
       e.key === "Escape" &&
@@ -358,9 +274,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (youtubePlayer) youtubePlayer.src = "";
       document.body.style.overflow = "auto";
     }
-  });
+  }); // --- Contact Form Handling ---
 
-  // --- Contact Form Handling ---
   const contactForm = document.querySelector(".contact-form");
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
@@ -382,9 +297,8 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Please fill in all required fields.");
       }
     });
-  }
+  } // --- Language Toggle ---
 
-  // --- Language Toggle ---
   const languageToggle = document.getElementById("languageToggle");
   let currentLang = localStorage.getItem("language") || "es";
   function updateLanguage(lang) {
@@ -425,7 +339,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     if (languageToggle)
       languageToggle.textContent = lang === "es" ? "EN" : "ES";
-    // Actualizar modal si está abierto (usará la nueva lógica de openModal)
     if (modal && modal.classList.contains("active")) {
       openModal(currentIndex);
     }
@@ -435,10 +348,8 @@ document.addEventListener("DOMContentLoaded", function () {
       currentLang = currentLang === "en" ? "es" : "en";
       updateLanguage(currentLang);
     });
-    // Set initial language on page load
     updateLanguage(currentLang);
   } else {
-    // Fallback or default language setup if toggle doesn't exist
-    updateLanguage("es"); // Or 'en' based on preference
+    updateLanguage("es");
   }
 });
