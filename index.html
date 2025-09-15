@@ -92,40 +92,29 @@
             padding-right: 1rem;
         }
 
-        /* --- INICIO DE ESTILOS PARA SCROLLBAR --- */
         /* Para navegadores Webkit (Chrome, Safari, Edge) */
         .modal-text-container::-webkit-scrollbar {
             width: 8px;
-            /* Ancho de la barra */
         }
 
         .modal-text-container::-webkit-scrollbar-track {
             background: rgba(0, 0, 0, 0.2);
-            /* Fondo del track, sutil */
         }
 
         .modal-text-container::-webkit-scrollbar-thumb {
             background-color: var(--accent-color);
-            /* Color de acento para el thumb */
             border-radius: 4px;
-            /* Bordes redondeados */
             border: 2px solid transparent;
-            /* Crea un padding visual */
             background-clip: content-box;
-            /* Asegura que el borde no se pinte */
         }
 
         /* Para Firefox */
         .modal-text-container {
             scrollbar-width: thin;
-            /* "thin" o "auto" */
             scrollbar-color: var(--accent-color) rgba(0, 0, 0, 0.2);
-            /* thumb y track color */
         }
 
-        /* --- FIN DE ESTILOS PARA SCROLLBAR --- */
-
-        /* --- INICIO ESTILOS BOTÓN VOLVER ARRIBA --- */
+        /* Botón Volver Arriba */
         #backToTop {
             display: none;
             position: fixed;
@@ -160,78 +149,6 @@
             transform: translateY(-2px);
         }
 
-        /* --- ALTERNATIVAS DE ICONOS --- */
-
-        /* Opción 1: Círculo y Línea Animada (ACTIVA POR DEFECTO) */
-        #backToTop .icon-line {
-            width: 2px;
-            height: 14px;
-            background-color: var(--primary-bg);
-            transition: height 0.3s ease;
-            position: relative;
-        }
-
-        #backToTop .icon-line::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: -4px;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 6px;
-            border-top: 2px solid var(--primary-bg);
-            border-left: 2px solid var(--primary-bg);
-            transform: translateX(-50%) rotate(45deg);
-        }
-
-        #backToTop:hover .icon-line {
-            height: 20px;
-        }
-
-        /* Opción 2: Chevron Delgado */
-        #backToTop.option-2 {
-            font-size: 18px;
-        }
-
-        /* Opción 3: Triángulo Minimalista (SVG) */
-        #backToTop.option-3 svg {
-            width: 18px;
-            height: 18px;
-            fill: var(--primary-bg);
-            transition: transform 0.3s;
-        }
-
-        #backToTop.option-3:hover svg {
-            transform: scale(1.1);
-        }
-
-        /* Opción 4: Caret con Pulso Animado */
-        #backToTop .caret-icon {
-            position: relative;
-            font-weight: 200;
-        }
-
-        #backToTop.option-4:hover::after {
-            content: '^';
-            position: absolute;
-            top: 5px;
-            opacity: 0;
-            animation: pulse-up 0.8s ease-out;
-        }
-
-        @keyframes pulse-up {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-15px);
-                opacity: 0;
-            }
-        }
-
-        /* Opción 5: Iniciales del Artista */
         #backToTop.option-5 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
@@ -243,26 +160,34 @@
             background-color: #fff;
             color: var(--accent-color);
         }
-
-        /* --- FIN ESTILOS BOTÓN VOLVER ARRIBA --- */
     </style>
 
 </head>
 
 <body oncontextmenu="return false;">
 
-    <!-- ... (resto del body sin cambios) ... -->
     <header class="nav-container">
         <div class="container header-container">
             <nav class="flex flex-col items-center py-1">
                 <div class="header-top flex justify-between items-center w-full px-2 mt-0">
-                    <div class="nav-menu flex gap-1">
-                        <a href="#home" class="nav-link" data-translate="nav-home">Inicio</a>
-                        <a href="#gallery" class="nav-link" data-translate="nav-gallery">Galería</a>
-                        <a href="#featured" class="nav-link" data-translate="nav-featured">Proyectos</a>
-                        <a href="#about" class="nav-link" data-translate="nav-about">Perfil</a>
-                        <a href="#contact" class="nav-link" data-translate="nav-contact">Contacto</a>
+                    <!-- Botón Hamburguesa -->
+                    <button class="hamburger" id="hamburger" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <!-- Overlay del menú -->
+                    <div class="nav-menu-overlay" id="navMenuOverlay">
+                        <div class="nav-menu flex gap-1" id="navMenu">
+                            <a href="#home" class="nav-link" data-translate="nav-home">Inicio</a>
+                            <a href="#gallery" class="nav-link" data-translate="nav-gallery">Galería</a>
+                            <a href="#featured" class="nav-link" data-translate="nav-featured">Proyectos</a>
+                            <a href="#about" class="nav-link" data-translate="nav-about">Perfil</a>
+                            <a href="#contact" class="nav-link" data-translate="nav-contact">Contacto</a>
+                        </div>
                     </div>
+
                     <div class="lang-button-container">
                         <button id="languageToggle"
                             class="text-xs uppercase px-1 py-0.5 rounded border border-[var(--accent-color)] text-[var(--accent-color)] bg-transparent hover:bg-[var(--accent-color)] hover:text-[var(--primary-bg)] transition">ES</button>
@@ -294,12 +219,14 @@
                     data-description-es="El humo no era un ocultamiento, sino una confesión. Con cada exhalación, exteriorizaba una fracción de su ser interior, creando una frontera temporal y nebulosa entre ella y un mundo que exigía demasiada claridad. Ser vista, pero solo a través de un filtro de su propia creación, era la única forma tolerable de existencia.">
                     <img src="images/gallery/to_exhale_the_soul.jpg" alt="To Exhale the Soul" class="gallery-img">
                 </div>
+
                 <!-- ITEM 1 -->
                 <div class="gallery-item" data-index="1" data-title="A Useless Thread" data-category="Landscape"
                     data-description="In a land made of endings, she committed the absurd act of beginning a thread. It connected nothing to nothing. It was not a lifeline, nor a map. It was simply a line, a fragile white sentence written against a landscape of volcanic gibberish. The act of knitting itself was the only destination."
                     data-description-es="En una tierra hecha de finales, ella cometió el acto absurdo de empezar un hilo. No conectaba nada con nada. No era un salvavidas, ni un mapa. Era simplemente una línea, una frágil frase en blanco escrita contra un paisaje de jerigonza volcánica. El acto de tejer en sí mismo era el único destino.">
                     <img src="images/gallery/a_useless_thread.jpg" alt="A Useless Thread" class="gallery-img">
                 </div>
+
                 <!-- ITEM 2 -->
                 <div class="gallery-item" data-index="2" data-title="The Boredom of Tradition" data-category="Portrait"
                     data-description="The garden is immaculate. The lantern is stone. The tradition is suffocating. Her pink hair is not a statement of rebellion; it is a symptom of a profound, internal listlessness. She sits on the edge of a world she is supposed to revere, wondering if there is anything at all beyond the perfectly manicured moss."
@@ -307,6 +234,7 @@
                     <img src="images/gallery/the_boredom_of_tradition.jpg" alt="The Boredom of Tradition"
                         class="gallery-img">
                 </div>
+
                 <!-- ITEM 3 -->
                 <div class="gallery-item" data-index="3" data-title="Neural Impulse Made Visible"
                     data-category="Abstract"
@@ -315,12 +243,14 @@
                     <img src="images/gallery/neural_impulse_made_visible.jpg" alt="Neural Impulse Made Visible"
                         class="gallery-img">
                 </div>
+
                 <!-- ITEM 4 -->
                 <div class="gallery-item" data-index="4" data-title="Tenochtitlan Electric" data-category="Futuristic"
                     data-description="The city is not a habitat; it is a circuit board. The ziggurat does not house a king; it houses the central server. The citizens do not offer blood, but data, a much more intimate sacrifice. The machine-god is hungry, and the lightning strikes are not weather, but the visible spasms of its unending digital digestion."
                     data-description-es="La ciudad no es un hábitat; es una placa de circuito. El zigurat no alberga a un rey; alberga el servidor central. Los ciudadanos no ofrecen sangre, sino datos, un sacrificio mucho más íntimo. El dios-máquina tiene hambre, y los relámpagos no son un fenómeno meteorológico, sino los espasmos visibles de su interminable digestión digital.">
                     <img src="images/gallery/tenochtitlan_electric.jpg" alt="Tenochtitlan Electric" class="gallery-img">
                 </div>
+
                 <!-- ITEM 5 -->
                 <div class="gallery-item" data-index="5" data-title="Bioluminescent Predator" data-category="Wildlife"
                     data-description="Subject is not fauna. It is a mobile, semi-sentient weapon system. The glowing flora are not plants, but proximity sensors networked to the predator. Its spots pulse not for camouflage, but for synaptic jamming. To see it is to already be targeted by a jungle that thinks in neon and hunts with light."
@@ -328,12 +258,14 @@
                     <img src="images/gallery/bioluminescent_predator.jpg" alt="Bioluminescent Predator"
                         class="gallery-img">
                 </div>
+
                 <!-- ITEM 6 -->
                 <div class="gallery-item" data-index="6" data-title="The Last Watch" data-category="Fantasy"
                     data-description="He no longer remembers what he is guarding against. The sea brings no invaders, only the incessant, idiotic whisper of erosion. He stands his post not out of duty, but because it is a structured way to confront the vast, stellar indifference above and the cold, empty horizon ahead. His armor is a coffin he wears to feel alive."
                     data-description-es="Ya no recuerda contra qué hace guardia. El mar no trae invasores, solo el incesante e idiota susurro de la erosión. Mantiene su puesto no por deber, sino porque es una forma estructurada de confrontar la vasta indiferencia estelar de arriba y el frío y vacío horizonte de enfrente. Su armadura es un ataúd que viste para sentirse vivo.">
                     <img src="images/gallery/the_last_watch.jpg" alt="The Last Watch" class="gallery-img">
                 </div>
+
                 <!-- ITEM 7 -->
                 <div class="gallery-item" data-index="7" data-title="The Committee for Mirth" data-category="Surreal"
                     data-description="These are not entertainers; they are functionaries. The Committee for Mirth, assigned to this sector to ensure compliance with mandatory happiness. Their smiles are fixed, bureaucratic. They check for frowns with the quiet diligence of tax collectors. Behind the paint, there is only the profound exhaustion of enforcing a joy they have never felt."
@@ -341,6 +273,7 @@
                     <img src="images/gallery/the_committee_for_mirth.jpg" alt="The Committee for Mirth"
                         class="gallery-img">
                 </div>
+
                 <!-- ITEM 8 -->
                 <div class="gallery-item" data-index="8" data-title="The Specimen in Repose" data-category="Abstract"
                     data-description="The chamber is hermetically sealed. The temperature is constant. The subject floats in a state of controlled weightlessness, its garment exhibiting ideal fluid dynamic properties. The spheres are not decorative; they are data collectors. This is not a dream. It is a diorama. A perfectly preserved specimen in an experiment whose hypothesis remains unknown."
@@ -348,12 +281,14 @@
                     <img src="images/gallery/the_specimen_in_repose.jpg" alt="The Specimen in Repose"
                         class="gallery-img">
                 </div>
+
                 <!-- ITEM 9 -->
                 <div class="gallery-item" data-index="9" data-title="A Kind of Weather" data-category="Portrait"
-                    data-description="It wasn't fog, not really. It was a mood that had become external. A kind of weather that followed her from room to room. She’d wake up some mornings and find herself in the middle of it, thick and green and smelling of damp earth. She didn't fight it. She just waited for it to pass, the way you wait for the rain to stop."
+                    data-description="It wasn't fog, not really. It was a mood that had become external. A kind of weather that followed her from room to room. She'd wake up some mornings and find herself in the middle of it, thick and green and smelling of damp earth. She didn't fight it. She just waited for it to pass, the way you wait for the rain to stop."
                     data-description-es="No era niebla, en realidad. Era un estado de ánimo que se había vuelto externo. Una especie de clima que la seguía de habitación en habitación. Se despertaba algunas mañanas y se encontraba en medio de él, espeso y verde y con olor a tierra húmeda. No luchaba contra él. Simplemente esperaba a que pasara, como se espera a que deje de llover.">
                     <img src="images/gallery/a_kind_of_weather.jpg" alt="A Kind of Weather" class="gallery-img">
                 </div>
+
                 <!-- ITEM 10 -->
                 <div class="gallery-item" data-index="10" data-title="The Bureaucracy of Stairs"
                     data-category="Architectural"
@@ -362,6 +297,7 @@
                     <img src="images/gallery/the_bureaucracy_of_stairs.jpg" alt="The Bureaucracy of Stairs"
                         class="gallery-img">
                 </div>
+
                 <!-- ITEM 11 -->
                 <div class="gallery-item" data-index="11" data-title="The Exhaustion of Marble"
                     data-category="Sculptural"
@@ -370,6 +306,7 @@
                     <img src="images/gallery/the_exhaustion_of_marble.jpg" alt="The Exhaustion of Marble"
                         class="gallery-img">
                 </div>
+
                 <!-- ITEM 12 -->
                 <div class="gallery-item" data-index="12" data-title="Sensory Overload Protocol" data-category="Surreal"
                     data-description="The signal broke down. Image-spliced brass horns. Feather-static. A feedback loop of teeth and sequins. The central processor attempted to find a focal point and created a vortex. Not a celebration, but a system flooding itself to purge an error. A machine in the throes of a colorful seizure."
@@ -377,6 +314,7 @@
                     <img src="images/gallery/sensory_overload_protocol.jpg" alt="Sensory Overload Protocol"
                         class="gallery-img">
                 </div>
+
                 <!-- ITEM 13 -->
                 <div class="gallery-item" data-index="13" data-title="An Unconvincing Escape" data-category="Portrait"
                     data-description="The dance was an attempt at exorcism. A clumsy, desperate ritual to cast out the crushing weight of the asphalt and the beige houses behind her. For a moment, she tried to convince herself she was a wild nymph, a being of pure impulse. But her bare feet were cold, and she knew that in a minute this would be over."
@@ -384,18 +322,21 @@
                     <img src="images/gallery/an_unconvincing_escape.jpg" alt="An Unconvincing Escape"
                         class="gallery-img">
                 </div>
+
                 <!-- ITEM 14 -->
                 <div class="gallery-item" data-index="14" data-title="The Artificial Garden" data-category="Interior"
                     data-description="The harvest is meager: a crop of pale, sterile lightbulbs. She drinks her tea, a ritual of normalcy performed in a setting of complete artifice. The plants offer no scent, only a low, electric hum. It is a quiet portrait of someone who has learned to cultivate and accept a beauty that photosynthesizes nothing and nourishes no one."
                     data-description-es="La cosecha es magra: un cultivo de bombillas pálidas y estériles. Ella bebe su té, un ritual de normalidad realizado en un entorno de completo artificio. Las plantas no ofrecen aroma, solo un zumbido eléctrico y bajo. Es el retrato silencioso de alguien que ha aprendido a cultivar y aceptar una belleza que no realiza la fotosíntesis y no nutre a nadie.">
                     <img src="images/gallery/the_artificial_garden.jpg" alt="The Artificial Garden" class="gallery-img">
                 </div>
+
                 <!-- ITEM 15 -->
                 <div class="gallery-item" data-index="15" data-title="The Ayahuasca Circuit" data-category="Fantasy"
                     data-description="The forest is a motherboard. The path is a glowing circuit. The glyphs flicker with alien code, broadcasting instructions the human nervous system was never meant to receive. This is not a spiritual journey. It is a hostile system takeover, a forced firmware update for the soul, administered by entities made of pure, electric syntax."
                     data-description-es="El bosque es una placa base. El camino es un circuito brillante. Los glifos parpadean con un código alienígena, transmitiendo instrucciones que el sistema nervioso humano nunca debió recibir. Esto no es un viaje espiritual. Es una toma de control hostil del sistema, una actualización de firmware forzosa para el alma, administrada por entidades hechas de pura sintaxis eléctrica.">
                     <img src="images/gallery/the_ayahuasca_circuit.jpg" alt="The Ayahuasca Circuit" class="gallery-img">
                 </div>
+
                 <!-- ITEM 16 -->
                 <div class="gallery-item" data-index="16" data-title="Symptoms of a Beautiful Illness"
                     data-category="Contemporary"
@@ -404,12 +345,14 @@
                     <img src="images/gallery/symptoms_of_a_beautiful_illness.jpg" alt="Symptoms of a Beautiful Illness"
                         class="gallery-img">
                 </div>
+
                 <!-- ITEM 17 -->
                 <div class="gallery-item" data-index="17" data-title="The Epidermal Archive" data-category="Portrait"
                     data-description="Her skin is a document, a chaotic archive of symbols that once held meaning. Now, they are just a decorative burden. She looks away from the sunset, a spectacle of beauty she no longer has the energy to process. She is not contemplating the ocean; she is performing a routine audit of her own irreversible decisions."
                     data-description-es="Su piel es un documento, un archivo caótico de símbolos que alguna vez tuvieron significado. Ahora, son solo una carga decorativa. Aparta la vista del atardecer, un espectáculo de belleza que ya no tiene la energía para procesar. No está contemplando el océano; está realizando una auditoría rutinaria de sus propias decisiones irreversibles.">
                     <img src="images/gallery/the_epidermal_archive.jpg" alt="The Epidermal Archive" class="gallery-img">
                 </div>
+
                 <!-- ITEM 18 -->
                 <div class="gallery-item" data-index="18" data-title="Schrödinger's Bakeneko"
                     data-category="Digital Illustration"
@@ -418,6 +361,7 @@
                     <img src="images/gallery/schrodingers_bakeneko.jpg" alt="Schrödinger's Bakeneko"
                         class="gallery-img">
                 </div>
+
                 <!-- ITEM 19 -->
                 <div class="gallery-item" data-index="19" data-title="An Invitation to Nowhere"
                     data-category="Architectural"
@@ -426,8 +370,6 @@
                     <img src="images/gallery/an_invitation_to_nowhere.jpg" alt="An Invitation to Nowhere"
                         class="gallery-img">
                 </div>
-
-                <!-- START OF FINAL SECTION -->
 
                 <!-- ITEM 20 -->
                 <div class="gallery-item" data-index="20" data-title="The Recurring Gesture" data-category="Temporal"
@@ -487,7 +429,7 @@
 
                 <!-- ITEM 27 -->
                 <div class="gallery-item" data-index="27" data-title="A Calculated Embrace" data-category="Ritualistic"
-                    data-description="They held the pose for a fraction of a second too long. It wasn’t passion; it was a pact sealed in sweat and the odor of burnt wax. A calculated performance of intimacy for an audience that wasn't there. Soon the lights would come up, and they would have to talk about rent."
+                    data-description="They held the pose for a fraction of a second too long. It wasn't passion; it was a pact sealed in sweat and the odor of burnt wax. A calculated performance of intimacy for an audience that wasn't there. Soon the lights would come up, and they would have to talk about rent."
                     data-description-es="Sostuvieron la pose una fracción de segundo más de la cuenta. No era pasión; era un pacto sellado con sudor y olor a cera quemada. Una calculada actuación de intimidad para un público que no existía. Pronto se encenderían las luces y tendrían que hablar del alquiler.">
                     <img src="images/gallery/things_candles_witness.jpg" alt="A Calculated Embrace" class="gallery-img">
                 </div>
@@ -710,35 +652,10 @@
         </div>
     </footer>
 
-    <!-- BOTÓN VOLVER ARRIBA Y SUS ALTERNATIVAS -->
-    <!-- Para probar una opción, comenta la activa y descomenta la que quieras ver. -->
-
-    <!-- Opción 2: Chevron Delgado
-    <button id="backToTop" class="option-2" aria-label="Volver arriba">
-        <i class="fas fa-chevron-up"></i>
-    </button>
--->
-
-    <!-- Opción 3: Triángulo Minimalista (SVG)
-    <button id="backToTop" class="option-3" aria-label="Volver arriba">
-        <svg viewBox="0 0 24 24">
-            <path d="M12 8l-6 6h12z" />
-        </svg>
-    </button> -->
-
-
-    <!-- Opción 4: Caret con Pulso Animado
-    <button id="backToTop" class="option-4" aria-label="Volver arriba">
-        <span class="caret-icon">^</span>
-    </button> -->
-
-
-    <!-- Opción 5: Iniciales del Artista -->
+    <!-- Botón Volver Arriba -->
     <button id="backToTop" class="option-5" aria-label="Volver arriba">
         SN
     </button>
-
-
 
     <!-- Video Modal -->
     <div class="video-modal" id="videoModal">

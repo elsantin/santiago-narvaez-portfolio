@@ -1845,3 +1845,150 @@ img {
     ) !important;
   }
 }
+/* MENÚ HAMBURGUESA PARA MÓVIL */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 24px;
+  position: relative;
+  z-index: 1001;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: var(--text-primary);
+  margin: 5px 0;
+  transition: all 0.3s ease;
+  transform-origin: left center;
+}
+
+/* Animación X cuando está activo */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+  width: 28px;
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  width: 28px;
+}
+
+/* Overlay del menú móvil */
+.nav-menu-overlay {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  /* Mostrar hamburguesa */
+  .hamburger {
+    display: block;
+  }
+
+  /* Header simplificado */
+  .header-container {
+    padding: 0 1rem;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Overlay fullscreen */
+  .nav-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Menú vertical centrado */
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease 0.1s;
+  }
+
+  .nav-menu-overlay.active .nav-menu {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .nav-link {
+    font-size: 1.5rem;
+    font-family: var(--font-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus::after {
+    width: 100%;
+  }
+
+  /* Botón de idioma en el header */
+  .lang-button-container {
+    position: absolute;
+    right: 50px; /* Espacio para hamburguesa */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  #languageToggle {
+    font-size: 11px;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+/* Bloquear scroll cuando menú está abierto */
+body.menu-open {
+  overflow: hidden;
+}
