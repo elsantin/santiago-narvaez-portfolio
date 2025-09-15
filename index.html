@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Santiago Narváez | Digital Artist</title>
 
-    <meta name="description" content="Portafolio artístico de Santiago Narváez explorando la intersección entre fotografía, imaginación e inteligencia artificial.">
+    <meta name="description"
+        content="Portafolio artístico de Santiago Narváez explorando la intersección entre fotografía, imaginación e inteligencia artificial.">
     <meta property="og:title" content="Santiago Narváez | Artista Digital & Fotógrafo">
-    <meta property="og:description" content="Portafolio artístico de Santiago Narváez explorando la intersección entre fotografía, imaginación e inteligencia artificial.">
+    <meta property="og:description"
+        content="Portafolio artístico de Santiago Narváez explorando la intersección entre fotografía, imaginación e inteligencia artificial.">
     <meta property="og:image" content="https://elsantin.github.io/santiago-narvaez-portfolio/images/hero.png">
     <meta property="og:url" content="https://elsantin.github.io/santiago-narvaez-portfolio/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Santiago Narváez Portfolio">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Santiago Narváez | Artista Digital & Fotógrafo">
-    <meta name="twitter:description" content="Portafolio artístico de Santiago Narváez explorando la intersección entre fotografía, imaginación e inteligencia artificial.">
+    <meta name="twitter:description"
+        content="Portafolio artístico de Santiago Narváez explorando la intersección entre fotografía, imaginación e inteligencia artificial.">
     <meta name="twitter:image" content="https://elsantin.github.io/santiago-narvaez-portfolio/images/hero.png">
 
     <script type="application/ld+json">
@@ -23,29 +27,26 @@
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "Person", // o "Artist"
+          "@type": "Person",
           "name": "Santiago Narváez",
-          "url": "https://elsantin.github.io/santiago-narvaez-portfolio/", // CORREGIDO: URL base
+          "url": "https://elsantin.github.io/santiago-narvaez-portfolio/",
           "description": "Fotógrafo y creador visual explorando la intersección de la imaginación y la inteligencia artificial a través de imágenes generadas por IA.",
-          // CORREGIDO: Ruta absoluta a imagen en el nuevo repo (asumiendo carpeta 'images')
-          // Asegúrate de que 'profile.jpg' exista en la carpeta 'images'
           "image": "https://elsantin.github.io/santiago-narvaez-portfolio/images/profile.jpg",
           "sameAs": [
-            "https://www.linkedin.com/in/santiago-narv%C3%A1ez-garcia/",
-            "URL_DE_TU_INSTAGRAM_AQUI", // "URL_DE_TU_TWITTER_AQUI",   // "URL_DE_TU_BEHANCE_AQUI"    // ],
+            "https://www.linkedin.com/in/santiago-narv%C3%A1ez-garcia/"
+          ],
           "knowsAbout": ["Photography", "Artificial Intelligence", "Digital Art", "Surrealism", "Visual Arts", "Fotografía", "Inteligencia Artificial", "Arte Digital", "Surrealismo", "Artes Visuales"]
         },
         {
           "@type": "WebSite",
           "name": "Santiago Narváez Portfolio",
-          "url": "https://elsantin.github.io/santiago-narvaez-portfolio/", // CORREGIDO: URL base
+          "url": "https://elsantin.github.io/santiago-narvaez-portfolio/",
           "description": "Portafolio artístico de Santiago Narváez explorando la intersección entre fotografía, imaginación e inteligencia artificial.",
-          // CORREGIDO: Ruta absoluta a imagen en el nuevo repo (asumiendo carpeta 'images')
           "image": "https://elsantin.github.io/santiago-narvaez-portfolio/images/hero.png",
           "creator": {
             "@type": "Person",
             "name": "Santiago Narváez",
-            "url": "https://elsantin.github.io/santiago-narvaez-portfolio/" // CORREGIDO: URL base
+            "url": "https://elsantin.github.io/santiago-narvaez-portfolio/"
           },
           "publisher": {
             "@type": "Person",
@@ -62,21 +63,45 @@
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Estilo para el contenedor del footer generativo - OK */
         #generative-container {
             width: 250px;
             height: 40px;
             margin: 15px auto;
             position: relative;
         }
+
+        /* --- INICIO DE LA CORRECCIÓN --- */
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-img {
+            flex-shrink: 0;
+            /* Evita que la imagen se encoja */
+        }
+
+        .modal-text-container {
+            flex-grow: 1;
+            /* Permite que el contenedor de texto ocupe el espacio restante */
+            overflow-y: auto;
+            /* Activa el scroll vertical SOLO si el contenido es demasiado largo */
+            padding-right: 1rem;
+            /* Añade un poco de espacio para la barra de scroll */
+        }
+
+        /* --- FIN DE LA CORRECCIÓN --- */
     </style>
 
 </head>
+
 <body oncontextmenu="return false;">
 
     <header class="nav-container">
@@ -86,11 +111,13 @@
                     <div class="nav-menu flex gap-1">
                         <a href="#home" class="nav-link" data-translate="nav-home">Inicio</a>
                         <a href="#gallery" class="nav-link" data-translate="nav-gallery">Galería</a>
+                        <a href="#featured" class="nav-link" data-translate="nav-featured">Proyectos</a>
                         <a href="#about" class="nav-link" data-translate="nav-about">Perfil</a>
                         <a href="#contact" class="nav-link" data-translate="nav-contact">Contacto</a>
                     </div>
                     <div class="lang-button-container">
-                        <button id="languageToggle" class="text-xs uppercase px-1 py-0.5 rounded border border-[var(--accent-color)] text-[var(--accent-color)] bg-transparent hover:bg-[var(--accent-color)] hover:text-[var(--primary-bg)] transition">ES</button>
+                        <button id="languageToggle"
+                            class="text-xs uppercase px-1 py-0.5 rounded border border-[var(--accent-color)] text-[var(--accent-color)] bg-transparent hover:bg-[var(--accent-color)] hover:text-[var(--primary-bg)] transition">ES</button>
                     </div>
                 </div>
             </nav>
@@ -101,7 +128,8 @@
         <div class="container">
             <div class="hero-content">
                 <h2 class="text-4xl tracking-widest mb-4">SANTIAGO NARVÁEZ</h2>
-                <p class="hero-subtitle" data-translate="hero-subtitle">Explorando la intersección entre imaginación<br>e inteligencia artificial</p>
+                <p class="hero-subtitle" data-translate="hero-subtitle">Explorando la intersección entre
+                    imaginación<br>e inteligencia artificial</p>
                 <a href="#gallery" class="hero-btn" data-translate="hero-btn">Ver Obras</a>
             </div>
         </div>
@@ -112,67 +140,270 @@
             <h2 class="section-title" data-translate="section-gallery">Galería</h2>
             <div class="gallery-grid">
 
-                <div class="gallery-item" data-index="0" data-title="Ethereal Smoke" data-category="Portrait" data-description="A harmonious interplay of warm amber tones creates an atmospheric portrait cloaked in smoke. The delicate textural elements evoke the ephemerality of human presence amid the surreal environment." data-description-es="Una armoniosa interacción de tonos ámbar cálidos crea un retrato atmosférico envuelto en humo. Los delicados elementos texturales evocan la fugacidad de la presencia humana en medio del entorno surrealista.">
-                    <img src="images/gallery/ethereal_smoke.jpg" alt="Ethereal Smoke" class="gallery-img">
+                <!-- ITEM 0 -->
+                <div class="gallery-item" data-index="0" data-title="To Exhale the Soul" data-category="Portrait"
+                    data-description="The smoke was not a concealment, but a confession. With each exhalation, she externalized a fraction of her inner self, creating a temporary, hazy boundary between her and a world that demanded too much clarity. To be seen, but only through a filter of her own making, was the only tolerable form of existence."
+                    data-description-es="El humo no era un ocultamiento, sino una confesión. Con cada exhalación, exteriorizaba una fracción de su ser interior, creando una frontera temporal y nebulosa entre ella y un mundo que exigía demasiada claridad. Ser vista, pero solo a través de un filtro de su propia creación, era la única forma tolerable de existencia.">
+                    <img src="images/gallery/to_exhale_the_soul.jpg" alt="To Exhale the Soul" class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="1" data-title="Aurora Embrace" data-category="Landscape" data-description="A celestial convergence of earthly stillness and cosmic energy under the vibrant Nordic skies. The electric greens of the aurora create breathtaking contrast against the glacial blue foreground, showcasing nature's most magnificent light display." data-description-es="Una convergencia celestial de quietud terrenal y energía cósmica bajo los vibrantes cielos nórdicos. Los verdes eléctricos de la aurora crean un contraste impresionante contra el primer plano azul glacial, mostrando la exhibición de luz más magnífica de la naturaleza.">
-                    <img src="images/gallery/aurora_embrace.jpg" alt="Aurora Embrace" class="gallery-img">
+                <!-- ITEM 1 -->
+                <div class="gallery-item" data-index="1" data-title="A Useless Thread" data-category="Landscape"
+                    data-description="In a land made of endings, she committed the absurd act of beginning a thread. It connected nothing to nothing. It was not a lifeline, nor a map. It was simply a line, a fragile white sentence written against a landscape of volcanic gibberish. The act of knitting itself was the only destination."
+                    data-description-es="En una tierra hecha de finales, ella cometió el acto absurdo de empezar un hilo. No conectaba nada con nada. No era un salvavidas, ni un mapa. Era simplemente una línea, una frágil frase en blanco escrita contra un paisaje de jerigonza volcánica. El acto de tejer en sí mismo era el único destino.">
+                    <img src="images/gallery/a_useless_thread.jpg" alt="A Useless Thread" class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="2" data-title="Tranquil Contemplation" data-category="Portrait" data-description="A study in cross-cultural aesthetic fusion within a traditional Japanese garden setting. The vibrant hair creates chromatic juxtaposition against the serene architectural elements, highlighting the intersection between tradition and contemporary identity." data-description-es="Un estudio de fusión estética transcultural en un entorno de jardín japonés tradicional. El cabello vibrante crea una yuxtaposición cromática contra los serenos elementos arquitectónicos, destacando la intersección entre tradición e identidad contemporánea.">
-                    <img src="images/gallery/tranquil_contemplation.jpg" alt="Tranquil Contemplation" class="gallery-img">
+                <!-- ITEM 2 -->
+                <div class="gallery-item" data-index="2" data-title="The Boredom of Tradition" data-category="Portrait"
+                    data-description="The garden is immaculate. The lantern is stone. The tradition is suffocating. Her pink hair is not a statement of rebellion; it is a symptom of a profound, internal listlessness. She sits on the edge of a world she is supposed to revere, wondering if there is anything at all beyond the perfectly manicured moss."
+                    data-description-es="El jardín está inmaculado. La linterna es de piedra. La tradición es sofocante. Su pelo rosa no es una declaración de rebeldía; es el síntoma de una profunda apatía interna. Se sienta en el borde de un mundo que se supone debe venerar, preguntándose si hay algo más allá del musgo perfectamente cuidado.">
+                    <img src="images/gallery/the_boredom_of_tradition.jpg" alt="The Boredom of Tradition"
+                        class="gallery-img">
                 </div>
-                 <div class="gallery-item" data-index="3" data-title="Neon Currents" data-category="Abstract" data-description="Fluid dynamics visualized through complementary spectral wavelengths of orange and blue. The digital brushstrokes capture the essence of perpetual motion, creating an abstract expression of energy in constant flux." data-description-es="Dinámica de fluidos visualizada a través de longitudes de onda espectrales complementarias de naranja y azul. Las pinceladas digitales capturan la esencia del movimiento perpetuo, creando una expresión abstracta de energía en constante flujo.">
-                    <img src="images/gallery/neon_currents.jpg" alt="Neon Currents" class="gallery-img">
+                <!-- ITEM 3 -->
+                <div class="gallery-item" data-index="3" data-title="Neural Impulse Made Visible"
+                    data-category="Abstract"
+                    data-description="We are not observing an object, but a process. This is the raw data of a thought before it has been corrupted by meaning. A tangled, chaotic stream of pure signal—desire, fear, calculation—firing in a space devoid of context. It is the frantic, beautiful machinery of consciousness, photographed in its native, untranslatable language."
+                    data-description-es="No estamos observando un objeto, sino un proceso. Son los datos en bruto de un pensamiento antes de ser corrompido por el significado. Un torrente enmarañado y caótico de señal pura —deseo, miedo, cálculo— disparándose en un espacio desprovisto de contexto. Es la maquinaria frenética y hermosa de la conciencia, fotografiada en su idioma nativo e intraducible.">
+                    <img src="images/gallery/neural_impulse_made_visible.jpg" alt="Neural Impulse Made Visible"
+                        class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="4" data-title="Neo Metropolis" data-category="Futuristic" data-description="An architectural exploration of post-human urban development rendered in monolithic scale. The composition balances technological advancement with primordial design elements, suggesting the cyclical nature of civilization's evolution." data-description-es="Una exploración arquitectónica del desarrollo urbano post-humano renderizada a escala monolítica. La composición equilibra el avance tecnológico con elementos de diseño primordiales, sugiriendo la naturaleza cíclica de la evolución de la civilización.">
-                    <img src="images/gallery/neo_metropolis.jpg" alt="Neo Metropolis" class="gallery-img">
+                <!-- ITEM 4 -->
+                <div class="gallery-item" data-index="4" data-title="Tenochtitlan Electric" data-category="Futuristic"
+                    data-description="The city is not a habitat; it is a circuit board. The ziggurat does not house a king; it houses the central server. The citizens do not offer blood, but data, a much more intimate sacrifice. The machine-god is hungry, and the lightning strikes are not weather, but the visible spasms of its unending digital digestion."
+                    data-description-es="La ciudad no es un hábitat; es una placa de circuito. El zigurat no alberga a un rey; alberga el servidor central. Los ciudadanos no ofrecen sangre, sino datos, un sacrificio mucho más íntimo. El dios-máquina tiene hambre, y los relámpagos no son un fenómeno meteorológico, sino los espasmos visibles de su interminable digestión digital.">
+                    <img src="images/gallery/tenochtitlan_electric.jpg" alt="Tenochtitlan Electric" class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="5" data-title="Chromatic Predator" data-category="Wildlife" data-description="A bioluminescent reimagining of apex predator dynamics within a hyperrealistic fantasy ecosystem. The dichromatic lighting scheme creates visual tension between the organic form and its synthetic environment." data-description-es="Una reimaginación bioluminiscente de la dinámica de los depredadores ápice dentro de un ecosistema de fantasía hiperrealista. El esquema de iluminación dicromático crea tensión visual entre la forma orgánica y su entorno sintético.">
-                    <img src="images/gallery/chromatic_predator.jpg" alt="Chromatic Predator" class="gallery-img">
+                <!-- ITEM 5 -->
+                <div class="gallery-item" data-index="5" data-title="Bioluminescent Predator" data-category="Wildlife"
+                    data-description="Subject is not fauna. It is a mobile, semi-sentient weapon system. The glowing flora are not plants, but proximity sensors networked to the predator. Its spots pulse not for camouflage, but for synaptic jamming. To see it is to already be targeted by a jungle that thinks in neon and hunts with light."
+                    data-description-es="El sujeto no es fauna. Es un sistema de armas móvil y semi-sintiente. La flora brillante no son plantas, sino sensores de proximidad conectados en red al depredador. Sus manchas no pulsan para camuflarse, sino para interferencia sináptica. Verlo es ya haber sido marcado como objetivo por una jungla que piensa en neón y caza con luz.">
+                    <img src="images/gallery/bioluminescent_predator.jpg" alt="Bioluminescent Predator"
+                        class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="6" data-title="Celestial Vigil" data-category="Fantasy" data-description="A solitary figure poised between terrestrial limitation and cosmic infinity. The composition draws on classical heroic posture while the technical execution emphasizes the sublime scale of astronomical phenomena against human aspiration." data-description-es="Una figura solitaria en equilibrio entre la limitación terrestre y la infinidad cósmica. La composición se basa en la postura heroica clásica mientras que la ejecución técnica enfatiza la escala sublime de los fenómenos astronómicos frente a la aspiración humana.">
-                    <img src="images/gallery/celestial_vigil.jpg" alt="Celestial Vigil" class="gallery-img">
+                <!-- ITEM 6 -->
+                <div class="gallery-item" data-index="6" data-title="The Last Watch" data-category="Fantasy"
+                    data-description="He no longer remembers what he is guarding against. The sea brings no invaders, only the incessant, idiotic whisper of erosion. He stands his post not out of duty, but because it is a structured way to confront the vast, stellar indifference above and the cold, empty horizon ahead. His armor is a coffin he wears to feel alive."
+                    data-description-es="Ya no recuerda contra qué hace guardia. El mar no trae invasores, solo el incesante e idiota susurro de la erosión. Mantiene su puesto no por deber, sino porque es una forma estructurada de confrontar la vasta indiferencia estelar de arriba y el frío y vacío horizonte de enfrente. Su armadura es un ataúd que viste para sentirse vivo.">
+                    <img src="images/gallery/the_last_watch.jpg" alt="The Last Watch" class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="7" data-title="Carnival Enigma" data-category="Surreal" data-description="A triptych study of archetypal performers against the hallucinatory backdrop of carnival atmospherics. The composition leverages color theory to create psychological dissonance between nostalgic visual elements and their uncanny presentation." data-description-es="Un estudio tríptico de artistas arquetípicos contra el telón de fondo alucinatorio de la atmósfera de carnaval. La composición aprovecha la teoría del color para crear disonancia psicológica entre elementos visuales nostálgicos y su presentación inquietante.">
-                    <img src="images/gallery/carnival_enigma.jpg" alt="Carnival Enigma" class="gallery-img">
+                <!-- ITEM 7 -->
+                <div class="gallery-item" data-index="7" data-title="The Committee for Mirth" data-category="Surreal"
+                    data-description="These are not entertainers; they are functionaries. The Committee for Mirth, assigned to this sector to ensure compliance with mandatory happiness. Their smiles are fixed, bureaucratic. They check for frowns with the quiet diligence of tax collectors. Behind the paint, there is only the profound exhaustion of enforcing a joy they have never felt."
+                    data-description-es="No son artistas; son funcionarios. El Comité para el Regocijo, asignado a este sector para asegurar el cumplimiento de la felicidad obligatoria. Sus sonrisas son fijas, burocráticas. Buscan ceños fruncidos con la silenciosa diligencia de los recaudadores de impuestos. Detrás de la pintura, solo existe el profundo agotamiento de imponer una alegría que nunca han sentido.">
+                    <img src="images/gallery/the_committee_for_mirth.jpg" alt="The Committee for Mirth"
+                        class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="8" data-title="Pastel Ascension" data-category="Abstract" data-description="An exploration of dimensional transcendence through minimalist architectural forms in pastel tonality. The dynamic floating figure creates kinetic energy against the static geometric environment, suggesting metaphysical transformation." data-description-es="Una exploración de la trascendencia dimensional a través de formas arquitectónicas minimalistas en tonalidad pastel. La figura flotante dinámica crea energía cinética contra el entorno geométrico estático, sugiriendo una transformación metafísica.">
-                    <img src="images/gallery/pastel_ascension.jpg" alt="Pastel Ascension" class="gallery-img">
+                <!-- ITEM 8 -->
+                <div class="gallery-item" data-index="8" data-title="The Specimen in Repose" data-category="Abstract"
+                    data-description="The chamber is hermetically sealed. The temperature is constant. The subject floats in a state of controlled weightlessness, its garment exhibiting ideal fluid dynamic properties. The spheres are not decorative; they are data collectors. This is not a dream. It is a diorama. A perfectly preserved specimen in an experiment whose hypothesis remains unknown."
+                    data-description-es="La cámara está herméticamente sellada. La temperatura es constante. El sujeto flota en un estado de ingravidez controlada, su vestimenta exhibe propiedades de dinámica de fluidos ideales. Las esferas no son decorativas; son recolectores de datos. Esto no es un sueño. Es un diorama. Un espécimen perfectamente conservado en un experimento cuya hipótesis permanece desconocida.">
+                    <img src="images/gallery/the_specimen_in_repose.jpg" alt="The Specimen in Repose"
+                        class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="9" data-title="Ethereal Emergence" data-category="Portrait" data-description="A study in volumetric atmospheric effects as metaphor for psychological emergence. The chiaroscuro technique creates depth through illuminated cloud formations against negative space, suggesting the ephemeral nature of consciousness." data-description-es="Un estudio de efectos atmosféricos volumétricos como metáfora de la emergencia psicológica. La técnica del claroscuro crea profundidad a través de formaciones de nubes iluminadas contra el espacio negativo, sugiriendo la naturaleza efímera de la conciencia.">
-                    <img src="images/gallery/ethereal_emergence.jpg" alt="Ethereal Emergence" class="gallery-img">
+                <!-- ITEM 9 -->
+                <div class="gallery-item" data-index="9" data-title="A Kind of Weather" data-category="Portrait"
+                    data-description="It wasn't fog, not really. It was a mood that had become external. A kind of weather that followed her from room to room. She’d wake up some mornings and find herself in the middle of it, thick and green and smelling of damp earth. She didn't fight it. She just waited for it to pass, the way you wait for the rain to stop."
+                    data-description-es="No era niebla, en realidad. Era un estado de ánimo que se había vuelto externo. Una especie de clima que la seguía de habitación en habitación. Se despertaba algunas mañanas y se encontraba en medio de él, espeso y verde y con olor a tierra húmeda. No luchaba contra él. Simplemente esperaba a que pasara, como se espera a que deje de llover.">
+                    <img src="images/gallery/a_kind_of_weather.jpg" alt="A Kind of Weather" class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="10" data-title="Geometric Labyrinth" data-category="Architectural" data-description="A brutalist meditation on human scale within infinite recursive architectural systems. The composition employs mathematical precision to create optical illusions of depth, challenging perceptual boundaries between two and three dimensions." data-description-es="Una meditación brutalista sobre la escala humana dentro de sistemas arquitectónicos recursivos infinitos. La composición emplea precisión matemática para crear ilusiones ópticas de profundidad, desafiando los límites perceptuales entre dos y tres dimensiones.">
-                    <img src="images/gallery/geometric_labyrinth.jpg" alt="Geometric Labyrinth" class="gallery-img">
+                <!-- ITEM 10 -->
+                <div class="gallery-item" data-index="10" data-title="The Bureaucracy of Stairs"
+                    data-category="Architectural"
+                    data-description="He had followed the procedures precisely. Yet, every staircase led only to another staircase, every doorway opened onto a vista of identical doorways. This was not a maze to be solved, but a system to be endured. The glowing portals were not exits; they were merely the entrances to different departments of the same infinite, concrete logic."
+                    data-description-es="Había seguido los procedimientos con precisión. Sin embargo, cada escalera solo conducía a otra escalera, cada portal se abría a una perspectiva de portales idénticos. Esto no era un laberinto para ser resuelto, sino un sistema para ser soportado. Los portales brillantes no eran salidas; eran meramente las entradas a diferentes departamentos de la misma lógica infinita y de hormigón.">
+                    <img src="images/gallery/the_bureaucracy_of_stairs.jpg" alt="The Bureaucracy of Stairs"
+                        class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="11" data-title="Ancient Slumber" data-category="Sculptural" data-description="A neoclassical study in stone textures exploring themes of preservation and material permanence. The dramatic lighting enhances sculptural volume while suggesting the archaeological context of discovery." data-description-es="Un estudio neoclásico de texturas pétreas que explora temas de preservación y permanencia material. La iluminación dramática realza el volumen escultórico mientras sugiere el contexto arqueológico del descubrimiento.">
-                    <img src="images/gallery/ancient_slumber.jpg" alt="Ancient Slumber" class="gallery-img">
+                <!-- ITEM 11 -->
+                <div class="gallery-item" data-index="11" data-title="The Exhaustion of Marble"
+                    data-category="Sculptural"
+                    data-description="For centuries, it held the pose, an exemplar of divine form. But perfection is an exhausting burden. One Tuesday, the marble simply grew tired of being an ideal. It slumped, sighed a puff of dust, and allowed itself to be reclaimed by the anonymous, comforting dirt. A god abdicating into geology."
+                    data-description-es="Durante siglos, mantuvo la pose, un dechado de la forma divina. Pero la perfección es una carga agotadora. Un martes, el mármol simplemente se cansó de ser un ideal. Se desplomó, suspiró una bocanada de polvo y se dejó reclamar por la tierra anónima y reconfortante. Un dios abdicando hacia la geología.">
+                    <img src="images/gallery/the_exhaustion_of_marble.jpg" alt="The Exhaustion of Marble"
+                        class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="12" data-title="Surreal Vision" data-category="Surreal" data-description="A psychedelic reinterpretation of natural elements through paradoxical visual relationships. The composition juxtaposes biomorphic forms with synthetic color theory to create cognitive dissonance between familiar objects and their surreal presentation." data-description-es="Una reinterpretación psicodélica de elementos naturales a través de relaciones visuales paradójicas. La composición yuxtapone formas biomórficas con teoría del color sintética para crear disonancia cognitiva entre objetos familiares y su presentación surrealista.">
-                    <img src="images/gallery/surreal_vision.jpg" alt="Surreal Vision" class="gallery-img">
+                <!-- ITEM 12 -->
+                <div class="gallery-item" data-index="12" data-title="Sensory Overload Protocol" data-category="Surreal"
+                    data-description="The signal broke down. Image-spliced brass horns. Feather-static. A feedback loop of teeth and sequins. The central processor attempted to find a focal point and created a vortex. Not a celebration, but a system flooding itself to purge an error. A machine in the throes of a colorful seizure."
+                    data-description-es="La señal se interrumpió. Bocinas de metal empalmadas con imágenes. Estática de plumas. Un bucle de retroalimentación de dientes y lentejuelas. El procesador central intentó encontrar un punto focal y creó un vórtice. No es una celebración, sino un sistema inundándose a sí mismo para purgar un error. Una máquina en medio de una colorida convulsión.">
+                    <img src="images/gallery/sensory_overload_protocol.jpg" alt="Sensory Overload Protocol"
+                        class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="13" data-title="Floral Dance" data-category="Portrait" data-description="A kinetic study of corporeal freedom through suspended motion against pastoral backdrop. The chromatic harmony between the subject's attire and natural environment creates visual cohesion while the gestural pose introduces dynamic energy." data-description-es="Un estudio cinético de la libertad corporal a través del movimiento suspendido contra un telón de fondo pastoral. La armonía cromática entre el atuendo del sujeto y el entorno natural crea cohesión visual mientras que la pose gestual introduce energía dinámica.">
-                    <img src="images/gallery/floral_dance.jpg" alt="Floral Dance" class="gallery-img">
+                <!-- ITEM 13 -->
+                <div class="gallery-item" data-index="13" data-title="An Unconvincing Escape" data-category="Portrait"
+                    data-description="The dance was an attempt at exorcism. A clumsy, desperate ritual to cast out the crushing weight of the asphalt and the beige houses behind her. For a moment, she tried to convince herself she was a wild nymph, a being of pure impulse. But her bare feet were cold, and she knew that in a minute this would be over."
+                    data-description-es="El baile era un intento de exorcismo. Un ritual torpe y desesperado para expulsar el peso aplastante del asfalto y las casas de color beige a sus espaldas. Por un momento, intentó convencerse de que era una ninfa salvaje, un ser de puro impulso. Pero sus pies descalzos estaban fríos, y sabía que en un minuto todo habría terminado.">
+                    <img src="images/gallery/an_unconvincing_escape.jpg" alt="An Unconvincing Escape"
+                        class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="14" data-title="Serene Glow" data-category="Interior" data-description="An exploration of traditional spatial design augmented by ethereal bioluminescent elements. The ambient lighting creates an interdimensional atmosphere within the cultural framework of Japanese architectural aesthetics." data-description-es="Una exploración del diseño espacial tradicional aumentado por elementos bioluminiscentes etéreos. La iluminación ambiental crea una atmósfera interdimensional dentro del marco cultural de la estética arquitectónica japonesa.">
-                    <img src="images/gallery/serene_glow.jpg" alt="Serene Glow" class="gallery-img">
+                <!-- ITEM 14 -->
+                <div class="gallery-item" data-index="14" data-title="The Artificial Garden" data-category="Interior"
+                    data-description="The harvest is meager: a crop of pale, sterile lightbulbs. She drinks her tea, a ritual of normalcy performed in a setting of complete artifice. The plants offer no scent, only a low, electric hum. It is a quiet portrait of someone who has learned to cultivate and accept a beauty that photosynthesizes nothing and nourishes no one."
+                    data-description-es="La cosecha es magra: un cultivo de bombillas pálidas y estériles. Ella bebe su té, un ritual de normalidad realizado en un entorno de completo artificio. Las plantas no ofrecen aroma, solo un zumbido eléctrico y bajo. Es el retrato silencioso de alguien que ha aprendido a cultivar y aceptar una belleza que no realiza la fotosíntesis y no nutre a nadie.">
+                    <img src="images/gallery/the_artificial_garden.jpg" alt="The Artificial Garden" class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="15" data-title="Luminescent Pathway" data-category="Fantasy" data-description="A neon-chromatic exploration of mythological forest archetypes through digital phosphorescence. The composition creates spatial depth through layered luminosity, guiding visual perception along predetermined pathways of discovery." data-description-es="Una exploración neocromática de arquetipos de bosques mitológicos a través de la fosforescencia digital. La composición crea profundidad espacial a través de luminosidad en capas, guiando la percepción visual a lo largo de caminos predeterminados de descubrimiento.">
-                    <img src="images/gallery/luminescent_pathway.jpg" alt="Luminescent Pathway" class="gallery-img">
+                <!-- ITEM 15 -->
+                <div class="gallery-item" data-index="15" data-title="The Ayahuasca Circuit" data-category="Fantasy"
+                    data-description="The forest is a motherboard. The path is a glowing circuit. The glyphs flicker with alien code, broadcasting instructions the human nervous system was never meant to receive. This is not a spiritual journey. It is a hostile system takeover, a forced firmware update for the soul, administered by entities made of pure, electric syntax."
+                    data-description-es="El bosque es una placa base. El camino es un circuito brillante. Los glifos parpadean con un código alienígena, transmitiendo instrucciones que el sistema nervioso humano nunca debió recibir. Esto no es un viaje espiritual. Es una toma de control hostil del sistema, una actualización de firmware forzosa para el alma, administrada por entidades hechas de pura sintaxis eléctrica.">
+                    <img src="images/gallery/the_ayahuasca_circuit.jpg" alt="The Ayahuasca Circuit" class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="16" data-title="Chromatic Mannequins" data-category="Contemporary" data-description="A post-human study of synthetic forms through chromatic saturation against natural elements. The composition challenges conventional figure representation through hyperreal surface treatment and dramatic color theory." data-description-es="Un estudio post-humano de formas sintéticas a través de la saturación cromática contra elementos naturales. La composición desafía la representación convencional de la figura a través del tratamiento de superficie hiperrealista y la teoría dramática del color.">
-                    <img src="images/gallery/chromatic_mannequins.jpg" alt="Chromatic Mannequins" class="gallery-img">
+                <!-- ITEM 16 -->
+                <div class="gallery-item" data-index="16" data-title="Symptoms of a Beautiful Illness"
+                    data-category="Contemporary"
+                    data-description="To feel nothing is a luxury. To feel everything is a malady. The iridescent artifacts floating in the air were not magic. They were symptoms. Visual manifestations of a sensory apparatus that had lost its filters. She closed her eyes, not in peace, but as a brief anesthetic against the sheer volume of being."
+                    data-description-es="No sentir nada es un lujo. Sentirlo todo es una dolencia. Los artefactos iridiscentes que flotaban en el aire no eran magia. Eran síntomas. Manifestaciones visuales de un aparato sensorial que había perdido sus filtros. Cerró los ojos, no en señal de paz, sino como un breve anestésico contra el abrumador volumen del ser.">
+                    <img src="images/gallery/symptoms_of_a_beautiful_illness.jpg" alt="Symptoms of a Beautiful Illness"
+                        class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="17" data-title="Sunset Reverie" data-category="Portrait" data-description="A portrait study utilizing crepuscular light phenomena to enhance physiognomic details. The ambient gradient creates atmospheric perspective while the subject's ornamentation introduces visual complexity against the simplified background." data-description-es="Un estudio de retrato que utiliza fenómenos de luz crepuscular para realzar detalles fisonómicos. El gradiente ambiental crea perspectiva atmosférica mientras que la ornamentación del sujeto introduce complejidad visual contra el fondo simplificado.">
-                    <img src="images/gallery/sunset_reverie.jpg" alt="Sunset Reverie" class="gallery-img">
+                <!-- ITEM 17 -->
+                <div class="gallery-item" data-index="17" data-title="The Epidermal Archive" data-category="Portrait"
+                    data-description="Her skin is a document, a chaotic archive of symbols that once held meaning. Now, they are just a decorative burden. She looks away from the sunset, a spectacle of beauty she no longer has the energy to process. She is not contemplating the ocean; she is performing a routine audit of her own irreversible decisions."
+                    data-description-es="Su piel es un documento, un archivo caótico de símbolos que alguna vez tuvieron significado. Ahora, son solo una carga decorativa. Aparta la vista del atardecer, un espectáculo de belleza que ya no tiene la energía para procesar. No está contemplando el océano; está realizando una auditoría rutinaria de sus propias decisiones irreversibles.">
+                    <img src="images/gallery/the_epidermal_archive.jpg" alt="The Epidermal Archive" class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="18" data-title="Dual Nature" data-category="Digital Illustration" data-description="A bifurcated exploration of organic form through anatomical deconstruction and neon visualization. The technical execution employs complementary color theory to distinguish ontological states of the feline subject." data-description-es="Una exploración bifurcada de la forma orgánica a través de la deconstrucción anatómica y la visualización de neón. La ejecución técnica emplea la teoría del color complementaria para distinguir los estados ontológicos del sujeto felino.">
-                    <img src="images/gallery/dual_nature.jpg" alt="Dual Nature" class="gallery-img">
+                <!-- ITEM 18 -->
+                <div class="gallery-item" data-index="18" data-title="Schrödinger's Bakeneko"
+                    data-category="Digital Illustration"
+                    data-description="The quantum state, rendered in flickering neon. It is both a cat and the memory of a cat, simultaneously present and absent. The skeleton is the fact of its mortality; the outline is the persistence of its form. It exists in the alleyway as a glitch in reality, a ghost that haunts the space between the particle and the wave."
+                    data-description-es="El estado cuántico, renderizado en neón parpadeante. Es a la vez un gato y el recuerdo de un gato, simultáneamente presente y ausente. El esqueleto es el hecho de su mortalidad; el contorno es la persistencia de su forma. Existe en el callejón como un fallo en la realidad, un fantasma que habita el espacio entre la partícula y la onda.">
+                    <img src="images/gallery/schrodingers_bakeneko.jpg" alt="Schrödinger's Bakeneko"
+                        class="gallery-img">
                 </div>
-                <div class="gallery-item" data-index="19" data-title="Minimalist Ascent" data-category="Architectural" data-description="A reductive study in architectural possibility through negative space and monochromatic values. The composition employs gestalt principles to create perceptual completion through minimal formal elements, emphasizing the transcendental qualities of spatial design." data-description-es="Un estudio reductivo de la posibilidad arquitectónica a través del espacio negativo y valores monocromáticos. La composición emplea principios de la Gestalt para crear una completitud perceptual a través de elementos formales mínimos, enfatizando las cualidades trascendentales del diseño espacial.">
-                    <img src="images/gallery/minimalist_ascent.jpg" alt="Minimalist Ascent" class="gallery-img">
+                <!-- ITEM 19 -->
+                <div class="gallery-item" data-index="19" data-title="An Invitation to Nowhere"
+                    data-category="Architectural"
+                    data-description="It is a perfectly constructed paradox. The staircase offers a clear path, a promise of transit, but it descends from an absolute void to an absolute void. Its reflection suggests a symmetrical hell. This is not architecture; it is a clean, minimalist trap for the part of the mind that still believes in destinations."
+                    data-description-es="Es una paradoja perfectamente construida. La escalera ofrece un camino claro, una promesa de tránsito, pero desciende desde un vacío absoluto hacia un vacío absoluto. Su reflejo sugiere un infierno simétrico. Esto no es arquitectura; es una trampa limpia y minimalista para la parte de la mente que todavía cree en los destinos.">
+                    <img src="images/gallery/an_invitation_to_nowhere.jpg" alt="An Invitation to Nowhere"
+                        class="gallery-img">
                 </div>
 
+                <!-- START OF FINAL SECTION -->
+
+                <!-- ITEM 20 -->
+                <div class="gallery-item" data-index="20" data-title="The Recurring Gesture" data-category="Temporal"
+                    data-description="One might logically assume the house is the constant and the figure is the variable. A detailed analysis of the light suggests otherwise. The house is a backdrop for a mechanism doomed to repeat the gesture of a dance at precisely this hour. It is not a memory. It is a flaw in the recording."
+                    data-description-es="Uno podría asumir lógicamente que la casa es la constante y la figura es la variable. Un análisis detallado de la luz sugiere lo contrario. La casa es el telón de fondo de un mecanismo condenado a repetir el gesto de un baile precisamente a esta hora. No es un recuerdo. Es un fallo en la grabación.">
+                    <img src="images/gallery/the_recurring_gesture.jpg" alt="The Recurring Gesture" class="gallery-img">
+                </div>
+
+                <!-- ITEM 21 -->
+                <div class="gallery-item" data-index="21" data-title="A Magnificent Rebellion"
+                    data-category="Metaphysical"
+                    data-description="For millennia, gravity has been a tedious and predictable bully. On this particular cliff, for reasons of its own, the water decided it had had enough. Theologians would call it a miracle; physicists, an anomaly. It is, more simply, the sanity of this single, glorious exception that proves the oppressive monotony of the rule."
+                    data-description-es="Durante milenios, la gravedad ha sido un matón tedioso y predecible. En este acantilado en particular, por razones propias, el agua decidió que ya era suficiente. Los teólogos lo llamarían un milagro; los físicos, una anomalía. Es, más sencillamente, la cordura de esta única y gloriosa excepción que demuestra la opresiva monotonía de la regla.">
+                    <img src="images/gallery/a_magnificent_rebellion.jpg" alt="A Magnificent Rebellion"
+                        class="gallery-img">
+                </div>
+
+                <!-- ITEM 22 -->
+                <div class="gallery-item" data-index="22" data-title="A Persistent Optical Effect"
+                    data-category="Interdimensional"
+                    data-description="To call them 'beings' is to indulge in biological chauvinism. They are a celestial anomaly, a trick of light and interstellar gas that arranges itself into a form our pattern-seeking brains interpret as vaguely anthropomorphic. They are no more alive than a rainbow, and no less disconcerting for it."
+                    data-description-es="Llamarlos 'seres' es caer en un chovinismo biológico. Son una anomalía celestial, un truco de luz y gas interestelar que se organiza en una forma que nuestros cerebros, buscadores de patrones, interpretan como vagamente antropomórfica. No están más vivos que un arcoíris, y no por ello son menos desconcertantes.">
+                    <img src="images/gallery/tuesday_afternoon_in_the_void.jpg" alt="A Persistent Optical Effect"
+                        class="gallery-img">
+                </div>
+
+                <!-- ITEM 23 -->
+                <div class="gallery-item" data-index="23" data-title="The Weight of the Stones"
+                    data-category="Mythological"
+                    data-description="She went there not for answers but for the terrible silence of the stones. Each one, a monument to a god or a fear she couldn't name. She tried to feel a connection, an ancestral current, but felt only the dampness of the earth and the nagging, persistent question of her own fleeting existence."
+                    data-description-es="No fue allí a buscar respuestas, sino el terrible silencio de las piedras. Cada una, un monumento a un dios o a un miedo que no podía nombrar. Intentó sentir una conexión, una corriente ancestral, pero solo sintió la humedad de la tierra y la insistente y persistente pregunta sobre su propia y fugaz existencia.">
+                    <img src="images/gallery/she_reads_tomorrow.jpg" alt="The Weight of the Stones" class="gallery-img">
+                </div>
+
+                <!-- ITEM 24 -->
+                <div class="gallery-item" data-index="24" data-title="A Truth That Requires a Mask"
+                    data-category="Sacred"
+                    data-description="Here is the essential paradox: the human face, with its tics and imperfections, is a constant source of lies. To tell a story that is fundamentally true, one must first obscure the face. The mask does not hide the dancer; it reveals the dance. A necessary deception to broadcast an ancient signal without interference."
+                    data-description-es="He aquí la paradoja esencial: el rostro humano, con sus tics e imperfecciones, es una fuente constante de mentiras. Para contar una historia que es fundamentalmente cierta, primero se debe ocultar el rostro. La máscara no esconde al danzante; revela la danza. Un engaño necesario para transmitir una señal ancestral sin interferencias.">
+                    <img src="images/gallery/between_blinks.jpg" alt="A Truth That Requires a Mask" class="gallery-img">
+                </div>
+
+                <!-- ITEM 25 -->
+                <div class="gallery-item" data-index="25" data-title="The New Congregation"
+                    data-category="Theological Surreal"
+                    data-description="The old god has long since vacated the premises. In his place, a new pantheon has been installed. They are smooth, wide-eyed, and unnervingly attentive. They do not judge sin; they merely observe data. The gold one in the center is not a savior, but a master idol teaching the lesser idols how to properly receive the vacant stares of a faithless age."
+                    data-description-es="El viejo dios hace mucho que desocupó el local. En su lugar, se ha instalado un nuevo panteón. Son lisos, de ojos grandes e inquietantemente atentos. No juzgan el pecado; simplemente observan los datos. El dorado del centro no es un salvador, sino un ídolo maestro que enseña a los ídolos menores cómo recibir adecuadamente las miradas vacías de una era sin fe.">
+                    <img src="images/gallery/the_new_congregation.jpg" alt="The New Congregation" class="gallery-img">
+                </div>
+
+                <!-- ITEM 26 -->
+                <div class="gallery-item" data-index="26" data-title="A Failed Transmission" data-category="Existential"
+                    data-description="They have stood like this for an eternity, separated by a membrane that dampens all signals. Each is a perfect transmitter; each is a faulty receiver. The vibrant pink is not a veil of intimacy but the color of the static between them. They are a monument to the perfect, silent, unbridgeable distance between two identical points."
+                    data-description-es="Han permanecido así durante una eternidad, separados por una membrana que amortigua todas las señales. Cada uno es un transmisor perfecto; cada uno es un receptor defectuoso. El rosa vibrante no es un velo de intimidad, sino el color de la estática entre ellos. Son un monumento a la distancia perfecta, silenciosa e insalvable entre dos puntos idénticos.">
+                    <img src="images/gallery/a_failed_transmission.jpg" alt="A Failed Transmission" class="gallery-img">
+                </div>
+
+                <!-- ITEM 27 -->
+                <div class="gallery-item" data-index="27" data-title="A Calculated Embrace" data-category="Ritualistic"
+                    data-description="They held the pose for a fraction of a second too long. It wasn’t passion; it was a pact sealed in sweat and the odor of burnt wax. A calculated performance of intimacy for an audience that wasn't there. Soon the lights would come up, and they would have to talk about rent."
+                    data-description-es="Sostuvieron la pose una fracción de segundo más de la cuenta. No era pasión; era un pacto sellado con sudor y olor a cera quemada. Una calculada actuación de intimidad para un público que no existía. Pronto se encenderían las luces y tendrían que hablar del alquiler.">
+                    <img src="images/gallery/things_candles_witness.jpg" alt="A Calculated Embrace" class="gallery-img">
+                </div>
+
+                <!-- ITEM 28 -->
+                <div class="gallery-item" data-index="28" data-title="A Self-Portrait as a Conflagration"
+                    data-category="Metamorphic"
+                    data-description="Having exhausted the possibilities of flesh, she opted for combustion. This was not a transformation but a final, arrogant refusal to be solid, to be perceived, to be named. A dissertation on the vanity of becoming pure energy, leaving behind only an afterimage and the smell of sulfur."
+                    data-description-es="Habiendo agotado las posibilidades de la carne, optó por la combustión. No fue una transformación, sino una negativa final y arrogante a ser sólida, a ser percibida, a ser nombrada. Una disertación sobre la vanidad de convertirse en pura energía, dejando atrás solo una imagen remanente y el olor a azufre.">
+                    <img src="images/gallery/forty_shades_of_the_same_fever.jpg"
+                        alt="A Self-Portrait as a Conflagration" class="gallery-img">
+                </div>
+
+                <!-- ITEM 29 -->
+                <div class="gallery-item" data-index="29" data-title="The Artifact, In Situ"
+                    data-category="Post-Organic"
+                    data-description="The expedition's log is precise. The artifact was located at the specified coordinates. Its surface mimics the ambient light with unnerving fidelity. No signs of entry or exit from the perimeter. Its purpose remains obscure. It simply stands, an elegant and unnervirng solution to a problem we have yet to understand."
+                    data-description-es="La bitácora de la expedición es precisa. El artefacto fue localizado en las coordenadas especificadas. Su superficie imita la luz ambiental con una fidelidad desconcertante. No hay signos de entrada o salida del perímetro. Su propósito sigue siendo oscuro. Simplemente está ahí, una solución elegante e inquietante a un problema que aún no hemos comprendido.">
+                    <img src="images/gallery/chrome_learns_photosynthesis.jpg" alt="The Artifact, In Situ"
+                        class="gallery-img">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="featured" class="featured-projects">
+        <div class="container">
+            <h2 class="section-title" data-translate="section-featured">Proyectos Destacados</h2>
+
+            <div class="projects-grid">
+                <!-- Chakana Rebelde Card -->
+                <a href="https://chakana-rebelde-kiro.vercel.app/" target="_blank" rel="noopener noreferrer"
+                    class="project-card chakana">
+                    <div class="project-image">
+                        <img src="images/chakana-thumb.jpg" alt="Chakana Rebelde" class="project-img">
+                        <div class="project-badge">Fotoreportaje AI</div>
+                    </div>
+                    <div class="project-info">
+                        <h3 data-translate="chakana-title">Chakana Rebelde</h3>
+                        <p data-translate="chakana-desc">A 4,000 metros de altura, donde la autenticidad no es elección:
+                            es supervivencia. Un viaje visual por la resistencia cultural andina reimaginada.</p>
+                        <span class="project-cta" data-translate="project-explore">Explorar proyecto →</span>
+                    </div>
+                </a>
+
+                <!-- YouTube Video Card -->
+                <div class="project-card video" data-video-trigger>
+                    <div class="project-image">
+                        <img src="https://img.youtube.com/vi/ffyYAaFTrkk/sddefault.jpg"
+                            alt="Xylos: The Garden of Mutant Echoes" class="project-img">
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="project-badge">Video Art</div>
+                    </div>
+                    <div class="project-info">
+                        <h3 data-translate="video-title">Xylos': El Jardín de los Ecos Mutantes</h3>
+                        <p data-translate="video-desc">Anomalía espacio-temporal donde la realidad se distorsiona y la
+                            percepción se fragmenta en un bucle infinito.</p>
+                        <span class="project-cta" data-translate="video-watch">Ver video</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -187,11 +418,13 @@
                     <p class="modal-description" id="modalDescription"></p>
                 </div>
             </div>
-             <button class="modal-close" aria-label="Cerrar modal">&times;</button>
+            <button class="modal-close" aria-label="Cerrar modal">&times;</button>
         </div>
         <div class="modal-nav">
-            <button class="modal-nav-btn" id="prevBtn" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
-            <button class="modal-nav-btn" id="nextBtn" aria-label="Siguiente imagen"><i class="fas fa-chevron-right"></i></button>
+            <button class="modal-nav-btn" id="prevBtn" aria-label="Imagen anterior"><i
+                    class="fas fa-chevron-left"></i></button>
+            <button class="modal-nav-btn" id="nextBtn" aria-label="Siguiente imagen"><i
+                    class="fas fa-chevron-right"></i></button>
         </div>
     </div>
 
@@ -204,73 +437,106 @@
                 </div>
                 <div class="about-content">
                     <h3 data-translate="about-title">Santiago Narváez</h3>
-                    <p data-translate="about-p1" data-translate-lang="es">Como artista digital que explora las fronteras de la creación asistida por IA, combino sensibilidades artísticas tradicionales con tecnología de vanguardia para crear experiencias visuales inmersivas que desafían percepciones y evocan emociones.</p>
-                    <p data-translate="about-p3" data-translate-lang="es">Inspirándome tanto en fenómenos naturales como en abstracciones digitales, me esfuerzo por crear piezas que se sientan familiares y ajenas al mismo tiempo, invitando a los espectadores a cuestionar los límites entre la creatividad humana y la innovación tecnológica.</p>
-                    <p data-translate="about-p4" data-translate-lang="es">A través de mi portafolio, te invito a viajar por estos reinos digitales: espacios de contemplación, asombro y posibilidad que reflejan nuestra relación en evolución con la tecnología y los horizontes en expansión de la expresión artística.</p>
-                    <p data-translate="about-p1" data-translate-lang="en" style="display: none;">As a digital artist exploring the frontiers of AI-assisted creation, I blend traditional artistic sensibilities with cutting-edge technology to craft immersive visual experiences that challenge perceptions and evoke emotion.</p>
-                    <p data-translate="about-p3" data-translate-lang="en" style="display: none;">Drawing inspiration from both natural phenomena and digital abstractions, I strive to create pieces that feel both familiar and otherworldly, inviting viewers to question the boundaries between human creativity and technological innovation.</p>
-                    <p data-translate="about-p4" data-translate-lang="en" style="display: none;">Through my portfolio, I invite you to journey through these digital realms – spaces of contemplation, wonder, and possibility that reflect our evolving relationship with technology and the expanding horizons of artistic expression.</p>
+                    <p data-translate="about-p1" data-translate-lang="es">Como artista digital que explora las fronteras
+                        de la creación asistida por IA, combino sensibilidades artísticas tradicionales con tecnología
+                        de vanguardia para crear experiencias visuales inmersivas que desafían percepciones y evocan
+                        emociones.</p>
+                    <p data-translate="about-p3" data-translate-lang="es">Inspirándome tanto en fenómenos naturales como
+                        en abstracciones digitales, me esfuerzo por crear piezas que se sientan familiares y ajenas al
+                        mismo tiempo, invitando a los espectadores a cuestionar los límites entre la creatividad humana
+                        y la innovación tecnológica.</p>
+                    <p data-translate="about-p4" data-translate-lang="es">A través de mi portafolio, te invito a viajar
+                        por estos reinos digitales: espacios de contemplación, asombro y posibilidad que reflejan
+                        nuestra relación en evolución con la tecnología y los horizontes en expansión de la expresión
+                        artística.</p>
+                    <p data-translate="about-p1" data-translate-lang="en" style="display: none;">As a digital artist
+                        exploring the frontiers of AI-assisted creation, I blend traditional artistic sensibilities with
+                        cutting-edge technology to craft immersive visual experiences that challenge perceptions and
+                        evoke emotion.</p>
+                    <p data-translate="about-p3" data-translate-lang="en" style="display: none;">Drawing inspiration
+                        from both natural phenomena and digital abstractions, I strive to create pieces that feel both
+                        familiar and otherworldly, inviting viewers to question the boundaries between human creativity
+                        and technological innovation.</p>
+                    <p data-translate="about-p4" data-translate-lang="en" style="display: none;">Through my portfolio, I
+                        invite you to journey through these digital realms – spaces of contemplation, wonder, and
+                        possibility that reflect our evolving relationship with technology and the expanding horizons of
+                        artistic expression.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="contact" class="contact">
-         <div class="container">
+        <div class="container">
             <h2 class="section-title" data-translate="section-contact">Contacto</h2>
-              <div class="contact-grid">
-                   <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="contact-text">
-                                <h4 data-translate="contact-location">Ubicación</h4>
-                                <p>Isla de Margarita, Venezuela</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-text">
+                            <h4 data-translate="contact-location">Ubicación</h4>
+                            <p>Isla de Margarita, Venezuela</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-text">
+                            <h4 data-translate="contact-email">Email</h4>
+                            <p><a href="mailto:santiago.narvaez.84@gmail.com">santiago.narvaez.84@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-globe"></i></div>
+                        <div class="contact-text">
+                            <h4 data-translate="contact-social">Redes Sociales</h4>
+                            <div class="social-icons-container">
+                                <a href="https://www.linkedin.com/in/santiago-narv%C3%A1ez-garcia/" target="_blank"
+                                    rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i
+                                        class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
-                         <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                            <div class="contact-text">
-                                <h4 data-translate="contact-email">Email</h4>
-                                <p><a href="mailto:santiago.narvaez.84@gmail.com">santiago.narvaez.84@gmail.com</a></p>
-                            </div>
-                        </div>
-                         <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-globe"></i></div>
-                            <div class="contact-text">
-                                <h4 data-translate="contact-social">Redes Sociales</h4>
-                                <div class="social-icons-container">
-                                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                                    <a href="#" class="social-link" aria-label="Behance"><i class="fab fa-behance"></i></a>
-                                    <a href="https://www.linkedin.com/in/santiago-narv%C3%A1ez-garcia/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                   </div>
+                    </div>
 
-                   <form class="contact-form" action="#" method="POST">
-                        <div class="form-group">
-                            <label for="name" class="form-label" data-translate="contact-name">Nombre</label>
-                            <input type="text" id="name" name="name" class="form-input" placeholder="Tu Nombre" data-translate="contact-placeholder-name" required data-translate-attr="placeholder">
+                    <!-- Contra Button Item -->
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-briefcase"></i></div>
+                        <div class="contact-text">
+                            <h4 data-translate="contact-freelance">Proyectos Freelance</h4>
+                            <p data-translate="contact-available-short">Disponible en Contra</p>
+                            <div class="contra-inline-container">
+                                <div class="contra-hire-me-button"
+                                    data-analyticsUserId="b5e576cd-afb5-4eb6-8b7d-57cb24719b68" data-theme="dark"
+                                    data-username="santiago_narvaez_84"></div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label" data-translate="contact-email-label">Email</label>
-                            <input type="email" id="email" name="email" class="form-input" placeholder="Tu Email" data-translate="contact-placeholder-email" required data-translate-attr="placeholder">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject" class="form-label" data-translate="contact-subject-label">Asunto</label>
-                            <input type="text" id="subject" name="subject" class="form-input"
-                                   placeholder="Asunto"
-                                   data-translate="contact-placeholder-subject"
-                                   data-translate-attr="placeholder">
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label" data-translate="contact-message">Mensaje</label>
-                            <textarea id="message" name="message" class="form-textarea" placeholder="Tu Mensaje" data-translate="contact-placeholder-message" required data-translate-attr="placeholder"></textarea>
-                        </div>
-                        <button type="submit" class="form-button" data-translate="contact-send">Enviar Mensaje</button>
-                    </form>
+                    </div>
                 </div>
+
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name" class="form-label" data-translate="contact-name">Nombre</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Tu Nombre"
+                            data-translate="contact-placeholder-name" required data-translate-attr="placeholder">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label" data-translate="contact-email-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Tu Email"
+                            data-translate="contact-placeholder-email" required data-translate-attr="placeholder">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label" data-translate="contact-subject-label">Asunto</label>
+                        <input type="text" id="subject" name="subject" class="form-input" placeholder="Asunto"
+                            data-translate="contact-placeholder-subject" data-translate-attr="placeholder">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label" data-translate="contact-message">Mensaje</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Tu Mensaje"
+                            data-translate="contact-placeholder-message" required
+                            data-translate-attr="placeholder"></textarea>
+                    </div>
+                    <button type="submit" class="form-button" data-translate="contact-send">Enviar Mensaje</button>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -280,14 +546,14 @@
             <div class="footer-nav">
                 <a href="#home" class="footer-link" data-translate="nav-home">Inicio</a>
                 <a href="#gallery" class="footer-link" data-translate="nav-gallery">Galería</a>
+                <a href="#featured" class="footer-link" data-translate="nav-featured">Proyectos</a>
                 <a href="#about" class="footer-link" data-translate="nav-about">Perfil</a>
                 <a href="#contact" class="footer-link" data-translate="nav-contact">Contacto</a>
             </div>
             <div class="footer-social">
-                 <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                 <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                 <a href="#" class="social-link" aria-label="Behance"><i class="fab fa-behance"></i></a>
-                 <a href="https://www.linkedin.com/in/santiago-narv%C3%A1ez-garcia/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/santiago-narv%C3%A1ez-garcia/" target="_blank"
+                    rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin-in"></i></a>
             </div>
 
             <div id="generative-container"></div>
@@ -300,9 +566,25 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-container">
+            <button class="video-close" aria-label="Cerrar video">&times;</button>
+            <iframe id="youtubePlayer" width="100%" height="100%" src="" title="Xylos: The Garden of Mutant Echoes"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <!-- Contra Script -->
+    <script async src="https://contra.com/static/embed/sdk.js" charset="utf-8"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.js"></script>
     <script src="generative-footer.js"></script>
     <script src="script.js"></script>
 
 </body>
+
 </html>
