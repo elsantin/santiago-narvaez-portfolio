@@ -130,57 +130,21 @@
             scrollbar-color: var(--accent-color) rgba(0, 0, 0, 0.2);
         }
 
-        /* Botón Volver Arriba */
-        #backToTop {
-            display: none;
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 100;
-            border: none;
-            outline: none;
-            background-color: var(--accent-color);
-            color: var(--primary-bg);
-            cursor: pointer;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 22px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
-            opacity: 0;
-            transform: translateY(10px);
-            justify-content: center;
-            align-items: center;
-        }
-
-        #backToTop.show {
-            display: flex;
-            opacity: 0.8;
-            transform: translateY(0);
-        }
-
-        #backToTop:hover {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
-
+        /* Estilos específicos de tipografía para back-to-top (el resto en style.css) */
         #backToTop.option-5 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
             font-size: 18px;
             letter-spacing: 1px;
         }
-
-        #backToTop.option-5:hover {
-            background-color: #fff;
-            color: var(--accent-color);
-        }
     </style>
 
 </head>
 
 <body oncontextmenu="return false;">
+
+    <!-- === SCROLL PROGRESS BAR === -->
+    <div id="scrollProgress"></div>
 
     <header class="nav-container">
         <div class="container header-container">
@@ -588,7 +552,13 @@
                         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                         <div class="contact-text">
                             <h4 data-translate="contact-email">Email</h4>
-                            <p><a href="mailto:santiago.narvaez.84@gmail.com">santiago.narvaez.84@gmail.com</a></p>
+                            <p>
+                                <a href="mailto:santiago.narvaez.84@gmail.com" id="emailLink">santiago.narvaez.84@gmail.com</a>
+                                <button id="copyEmailBtn" class="copy-email-btn" aria-label="Copiar email" title="Copiar email">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </p>
+                            <span id="copyToast" class="copy-toast">✓ Email copiado</span>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -690,20 +660,67 @@
 
     <!-- SCRIPTS PERSONALIZADOS -->
     <script>
-        // Lógica para el botón "Volver Arriba"
+        // === UX ENHANCEMENTS - Feature Set 1 ===
+
+        // 1. SCROLL PROGRESS BAR + Back to Top Button
         const backToTopButton = document.getElementById('backToTop');
+        const scrollProgress = document.getElementById('scrollProgress');
 
         window.onscroll = () => {
+            // Back to Top Button Logic
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                 backToTopButton.classList.add('show');
             } else {
                 backToTopButton.classList.remove('show');
             }
+
+            // Scroll Progress Bar Logic
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            scrollProgress.style.width = scrolled + '%';
         };
 
         backToTopButton.onclick = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         };
+
+        // 2. COPY TO CLIPBOARD FUNCTIONALITY
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        const copyToast = document.getElementById('copyToast');
+        const emailText = 'santiago.narvaez.84@gmail.com';
+
+        copyEmailBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            
+            try {
+                // Modern clipboard API
+                await navigator.clipboard.writeText(emailText);
+                showToast();
+            } catch (err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = emailText;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast();
+                } catch (err2) {
+                    console.error('Failed to copy email:', err2);
+                }
+                document.body.removeChild(textArea);
+            }
+        });
+
+        function showToast() {
+            copyToast.classList.add('show');
+            setTimeout(() => {
+                copyToast.classList.remove('show');
+            }, 2000);
+        }
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.js"></script>

@@ -963,16 +963,12 @@ img {
   border-radius: 50%;
   border: 2px solid var(--accent-color);
   color: var(--accent-color);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none;
   z-index: 999;
-  font-size: 1.2rem;
-
+  
   /* === DEPTH DESIGN: Floating Button === */
   background: linear-gradient(
     135deg,
@@ -984,10 +980,20 @@ img {
   backdrop-filter: blur(10px);
 }
 
-#backToTop.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+#backToTop.show {
+  display: flex;
+  animation: fadeInUp 0.3s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 #backToTop:hover {
@@ -2156,4 +2162,184 @@ img {
 /* Bloquear scroll cuando menú está abierto */
 body.menu-open {
   overflow: hidden;
+}
+
+/* ========================================
+   UX ENHANCEMENTS - Feature Set 1
+   ======================================== */
+
+/* === 1. SCROLL PROGRESS BAR === */
+#scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color) 0%, #d4a574 100%);
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(166, 124, 82, 0.5);
+}
+
+/* === 2. COPY TO CLIPBOARD BUTTON === */
+.copy-email-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 0.5rem;
+  background: var(--bg-elevated);
+  border: 1px solid rgba(166, 124, 82, 0.3);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-subtle);
+  vertical-align: middle;
+}
+
+.copy-email-btn:hover {
+  background: var(--bg-surface);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.copy-email-btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Toast notification */
+.copy-toast {
+  display: none;
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, var(--accent-color) 0%, #8f6943 100%);
+  color: white;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-elevated);
+  animation: slideInRight 0.3s ease-out;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+/* Flecha del toast apuntando al botón */
+.copy-toast::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid var(--accent-color);
+}
+
+.copy-toast.show {
+  display: inline-block;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+/* Ajuste para el contenedor del email */
+.contact-text p {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* === 3. PARALLAX HERO ENHANCEMENT === */
+/* Mejora sutil del parallax existente */
+.hero::after {
+  will-change: transform;
+  animation: heroZoom 45s linear infinite alternate, heroParallax 45s ease-in-out infinite alternate;
+}
+
+@keyframes heroParallax {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.025) translateY(-10px);
+  }
+  100% {
+    transform: scale(1.05) translateY(0);
+  }
+}
+
+/* Optimización de rendimiento */
+.hero,
+.hero::before,
+.hero::after {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 768px) {
+  #scrollProgress {
+    height: 2px;
+  }
+
+  .copy-email-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+
+  .copy-toast {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+    bottom: -30px;
+  }
+
+  /* Desactivar parallax en móvil para mejor rendimiento */
+  .hero::after {
+    animation: heroZoom 45s linear infinite alternate;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #scrollProgress {
+    transition: none;
+  }
+
+  .copy-email-btn {
+    transition: none;
+  }
+
+  @keyframes slideInRight {
+    from,
+    to {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+
+  /* Respetar preferencias de movimiento reducido */
+  .hero::after {
+    animation: none !important;
+    transform: scale(1) !important;
+  }
 }
