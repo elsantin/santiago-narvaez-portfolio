@@ -556,9 +556,9 @@
                                 <a href="mailto:santiago.narvaez.84@gmail.com" id="emailLink">santiago.narvaez.84@gmail.com</a>
                                 <button id="copyEmailBtn" class="copy-email-btn" aria-label="Copiar email" title="Copiar email">
                                     <i class="fas fa-copy"></i>
+                                    <span id="copyToast" class="copy-toast">✓ Email copiado</span>
                                 </button>
                             </p>
-                            <span id="copyToast" class="copy-toast">✓ Email copiado</span>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -720,6 +720,163 @@
             setTimeout(() => {
                 copyToast.classList.remove('show');
             }, 2000);
+        }
+
+        // 3. SMOOTH REVEAL ON SCROLL
+        // Intersection Observer para revelar elementos al hacer scroll
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Opcionalmente, dejar de observar después de revelar
+                    // revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15, // Se activa cuando 15% del elemento es visible
+            rootMargin: '0px 0px -50px 0px' // Se activa un poco antes de que sea totalmente visible
+        });
+
+        // Observar secciones y títulos
+        document.querySelectorAll('.section-title').forEach(el => {
+            el.classList.add('reveal-up');
+            revealObserver.observe(el);
+        });
+
+        // Observar elementos de galería con stagger
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach((item, index) => {
+            item.classList.add('reveal-stagger');
+            // Agregar delay progresivo (máximo 5 delays)
+            const delayClass = `reveal-delay-${Math.min((index % 6) + 1, 5)}`;
+            item.classList.add(delayClass);
+            revealObserver.observe(item);
+        });
+
+        // Observar project cards
+        document.querySelectorAll('.project-card').forEach(el => {
+            el.classList.add('reveal');
+            revealObserver.observe(el);
+        });
+
+        // Observar sección about
+        const aboutImg = document.querySelector('.about-img');
+        const aboutContent = document.querySelector('.about-content');
+        if (aboutImg) {
+            aboutImg.classList.add('reveal');
+            revealObserver.observe(aboutImg);
+        }
+        if (aboutContent) {
+            aboutContent.classList.add('reveal-fade');
+            revealObserver.observe(aboutContent);
+        }
+
+        // 4. IMAGE ZOOM IN MODAL
+        const modalContent = document.querySelector('.modal-content');
+        const modalImg = document.querySelector('.modal-img');
+        const modal = document.querySelector('.modal');
+
+        if (modalImg && modalContent) {
+            let isZoomed = false;
+            let isTextHidden = false;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+            const zoomScale = 2.5;
+
+            // Clic simple: Toggle texto
+            modalImg.addEventListener('click', (e) => {
+                // Evitar si es double click
+                if (e.detail === 2) return;
+
+                if (!isZoomed) {
+                    isTextHidden = !isTextHidden;
+                    modalContent.classList.toggle('text-hidden', isTextHidden);
+                }
+            });
+
+            // Doble clic: Zoom in/out
+            modalImg.addEventListener('dblclick', (e) => {
+                e.preventDefault();
+                
+                if (!isTextHidden) {
+                    // Si el texto está visible, primero ocultarlo
+                    isTextHidden = true;
+                    modalContent.classList.add('text-hidden');
+                    return;
+                }
+
+                isZoomed = !isZoomed;
+                
+                if (isZoomed) {
+                    // Zoom in
+                    modalContent.classList.add('zoomed');
+                    modalImg.style.transform = `scale(${zoomScale}) translate(${translateX}px, ${translateY}px)`;
+                } else {
+                    // Zoom out
+                    modalContent.classList.remove('zoomed');
+                    modalImg.style.transform = 'scale(1)';
+                    translateX = 0;
+                    translateY = 0;
+                }
+            });
+
+            // Pan cuando está zoomed
+            modalImg.addEventListener('mousedown', (e) => {
+                if (!isZoomed) return;
+                
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                modalImg.classList.add('dragging');
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                modalImg.style.transform = `scale(${zoomScale}) translate(${translateX}px, ${translateY}px)`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    modalImg.classList.remove('dragging');
+                }
+            });
+
+            // ESC: Volver a estado inicial
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    if (isZoomed) {
+                        // Primero quitar zoom
+                        isZoomed = false;
+                        modalContent.classList.remove('zoomed');
+                        modalImg.style.transform = 'scale(1)';
+                        translateX = 0;
+                        translateY = 0;
+                    } else if (isTextHidden) {
+                        // Luego mostrar texto
+                        isTextHidden = false;
+                        modalContent.classList.remove('text-hidden');
+                    }
+                    // Si no hay zoom ni texto oculto, el modal se cierra (lógica existente en script.js)
+                }
+            });
+
+            // Reset al cerrar modal
+            const modalClose = document.querySelector('.modal-close');
+            if (modalClose) {
+                modalClose.addEventListener('click', () => {
+                    isZoomed = false;
+                    isTextHidden = false;
+                    modalContent.classList.remove('zoomed', 'text-hidden');
+                    modalImg.style.transform = 'scale(1)';
+                    translateX = 0;
+                    translateY = 0;
+                });
+            }
         }
     </script>
 
