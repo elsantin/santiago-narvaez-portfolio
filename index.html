@@ -130,51 +130,12 @@
             scrollbar-color: var(--accent-color) rgba(0, 0, 0, 0.2);
         }
 
-        /* Botón Volver Arriba */
-        #backToTop {
-            display: none;
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 100;
-            border: none;
-            outline: none;
-            background-color: var(--accent-color);
-            color: var(--primary-bg);
-            cursor: pointer;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 22px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
-            opacity: 0;
-            transform: translateY(10px);
-            justify-content: center;
-            align-items: center;
-        }
-
-        #backToTop.show {
-            display: flex;
-            opacity: 0.8;
-            transform: translateY(0);
-        }
-
-        #backToTop:hover {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
-
+        /* Botón Volver Arriba - Estilos mínimos (los principales están en style.css) */
         #backToTop.option-5 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
             font-size: 18px;
             letter-spacing: 1px;
-        }
-
-        #backToTop.option-5:hover {
-            background-color: #fff;
-            color: var(--accent-color);
         }
     </style>
 
@@ -695,9 +656,9 @@
 
         window.onscroll = () => {
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                backToTopButton.classList.add('show');
+                backToTopButton.classList.add('visible');
             } else {
-                backToTopButton.classList.remove('show');
+                backToTopButton.classList.remove('visible');
             }
         };
 
