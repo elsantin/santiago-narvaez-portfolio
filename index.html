@@ -549,7 +549,12 @@
                         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                         <div class="contact-text">
                             <h4 data-translate="contact-email">Email</h4>
-                            <p><a href="mailto:santiago.narvaez.84@gmail.com">santiago.narvaez.84@gmail.com</a></p>
+                            <p style="display: flex; align-items: center; gap: 0.75rem;">
+                                <span id="emailText">santiago.narvaez.84@gmail.com</span>
+                                <button id="copyEmailBtn" class="copy-email-btn" aria-label="Copiar email" title="Copiar email">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -634,6 +639,12 @@
         SN
     </button>
 
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check"></i>
+        <span id="toastMessage"></span>
+    </div>
+
     <!-- Video Modal -->
     <div class="video-modal" id="videoModal">
         <div class="video-container">
@@ -665,6 +676,140 @@
         backToTopButton.onclick = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         };
+
+        // === COPY TO CLIPBOARD FEATURE ===
+        function showToast(message, buttonElement) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            console.log('showToast called', message, buttonElement);
+            
+            if (!toast || !toastMessage) {
+                console.error('Toast elements not found!');
+                alert(message); // Fallback para debug
+                return;
+            }
+            
+            // Set message
+            toastMessage.textContent = message;
+            
+            // Get button position RELATIVE TO VIEWPORT (not document)
+            // Toast uses position:fixed so we DON'T need scrollTop/scrollLeft
+            const rect = buttonElement.getBoundingClientRect();
+            
+            // Position toast next to button in viewport coordinates
+            const topPos = rect.top + (rect.height / 2) - 25;
+            const leftPos = rect.right + 15;
+            
+            toast.style.top = topPos + 'px';
+            toast.style.left = leftPos + 'px';
+            toast.style.display = 'flex';
+            
+            console.log('Toast positioned at (viewport):', topPos, leftPos);
+            console.log('Button rect:', rect);
+            
+            // Show with delay for animation
+            requestAnimationFrame(() => {
+                toast.classList.add('show');
+            });
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Botón de copiar email
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, setting up copy button');
+            
+            const copyEmailBtn = document.getElementById('copyEmailBtn');
+            const emailText = document.getElementById('emailText');
+            
+            console.log('Copy button:', copyEmailBtn);
+            console.log('Email text:', emailText);
+            
+            if (copyEmailBtn && emailText) {
+                copyEmailBtn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    console.log('Copy button clicked!');
+                    
+                    const email = emailText.textContent.trim();
+                    console.log('Email to copy:', email);
+                    
+                    try {
+                        // Try modern clipboard API first
+                        if (navigator.clipboard && window.isSecureContext) {
+                            await navigator.clipboard.writeText(email);
+                            console.log('Copied via Clipboard API');
+                        } else {
+                            // Fallback
+                            const textArea = document.createElement("textarea");
+                            textArea.value = email;
+                            textArea.style.position = "fixed";
+                            textArea.style.left = "-9999px";
+                            document.body.appendChild(textArea);
+                            textArea.select();
+                            document.execCommand('copy');
+                            document.body.removeChild(textArea);
+                            console.log('Copied via fallback');
+                        }
+                        
+                        showToast('Copiado', copyEmailBtn);
+                    } catch (err) {
+                        console.error('Copy failed:', err);
+                        showToast('Error al copiar', copyEmailBtn);
+                    }
+                });
+                
+                console.log('Copy button listener added');
+            } else {
+                console.error('Copy button or email text not found!');
+            }
+        });
+
+        // === PARALLAX HERO FEATURE ===
+        const heroBackground = document.querySelector('.hero::before') || document.querySelector('.hero');
+        let ticking = false;
+
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            
+            if (hero) {
+                const heroHeight = hero.offsetHeight;
+                
+                // Solo aplicar parallax mientras el hero es visible
+                if (scrolled < heroHeight) {
+                    // Velocidad conservadora: 0.5 (50% más lento que el scroll)
+                    const parallaxSpeed = 0.5;
+                    const yPos = scrolled * parallaxSpeed;
+                    
+                    // Limitar el movimiento máximo
+                    const maxTransform = 100;
+                    const limitedYPos = Math.min(yPos, maxTransform);
+                    
+                    // Aplicar transformación al pseudo-elemento ::before a través de CSS custom property
+                    hero.style.setProperty('--parallax-offset', `${limitedYPos}px`);
+                }
+            }
+            
+            ticking = false;
+        }
+
+        // Detectar preferencia de movimiento reducido
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!prefersReducedMotion) {
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateParallax);
+                    ticking = true;
+                }
+            });
+        }
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.js"></script>
