@@ -935,10 +935,10 @@ h5 {
 /* --- SunsetLabs Credit --- */
 .sunsetlabs-credit {
   text-align: center;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
 }
 
 .sunsetlabs-link {
@@ -976,7 +976,7 @@ h5 {
 .sunset-text {
   font-weight: 700;
   font-size: 1rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.025em;
   color: #fdad1f;
   text-shadow: 0 0 15px rgba(253, 173, 31, 0.4);
 }
@@ -984,7 +984,7 @@ h5 {
 .labs-text {
   font-weight: 700;
   font-size: 1rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.025em;
   color: #c682b1;
   text-shadow: 0 0 15px rgba(198, 130, 177, 0.4);
   transition: color 0.3s ease;
