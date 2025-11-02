@@ -75,6 +75,16 @@ const translations = {
   "contact-email-label": ["Email", "Email"],
   "contact-freelance": ["Freelance Projects", "Proyectos Freelance"],
   "contact-available-short": ["Available on Contra", "Disponible en Contra"],
+
+  // Footer
+  "footer-copyright": [
+    "All rights reserved.",
+    "Todos los derechos reservados.",
+  ],
+  "sunsetlabs-tagline": [
+    "Web Development from Margarita Island, Venezuela 🏝️",
+    "Desarrollo Web desde Isla de Margarita, Venezuela 🏝️",
+  ],
 };
 
 // Espera a que el contenido HTML esté completamente cargado
