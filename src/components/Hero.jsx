@@ -8,10 +8,10 @@ export default function Hero({ lang = 'es' }) {
         <img 
           src="/images/gallery/the_recurring_gesture.jpg" 
           alt="" 
-          className="w-full h-full object-cover object-center opacity-30 grayscale scale-105"
+          className="w-full h-full object-cover object-center opacity-85 contrast-[1.05]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/85 to-[#0a0a0a]/50"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/80 via-transparent to-[#0a0a0a]"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/60 via-transparent to-[#0a0a0a]"></div>
       </div>
 
       {/* Main Text Content */}
