@@ -8,10 +8,10 @@ export default function Hero({ lang = 'es' }) {
         <img 
           src="/images/gallery/the_recurring_gesture.jpg" 
           alt="" 
-          className="w-full h-full object-cover object-center opacity-85 contrast-[1.05]"
+          className="w-full h-full object-cover object-center opacity-95"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/60 via-transparent to-[#0a0a0a]"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/40 via-transparent to-[#0a0a0a]/80"></div>
       </div>
 
       {/* Main Text Content */}
@@ -20,6 +20,7 @@ export default function Hero({ lang = 'es' }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
         >
           <span className="inline-block mb-6 text-sm font-medium tracking-[0.2em] text-[var(--color-brand-accent)] uppercase">
             SANTIAGO NARVÁEZ
