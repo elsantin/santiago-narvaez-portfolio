@@ -2,8 +2,8 @@ import { motion } from 'motion/react';
 
 export default function Hero({ lang = 'es' }) {
   return (
-    <section className="relative min-h-[100dvh] flex items-center justify-between pt-24 pb-12 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
-      <div className="relative z-10 max-w-2xl">
+    <section className="relative min-h-[100dvh] flex flex-col lg:flex-row items-center justify-between pt-28 pb-16 px-6 md:px-12 max-w-7xl mx-auto gap-12 lg:gap-8 overflow-hidden">
+      <div className="relative z-10 max-w-2xl w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -12,7 +12,7 @@ export default function Hero({ lang = 'es' }) {
           <span className="inline-block mb-6 text-sm font-medium tracking-[0.2em] text-[var(--color-brand-accent)] uppercase">
             SANTIAGO NARVÁEZ
           </span>
-          <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[1.1] mb-6">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter leading-[1.1] mb-6">
             {lang === 'en' ? 'Visual Fiction & Synthetic Narrative' : 'Ficción visual y narrativa sintética'}
           </h1>
           <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-[40ch] leading-relaxed">
@@ -36,9 +36,9 @@ export default function Hero({ lang = 'es' }) {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-        className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[45vw] max-w-[800px]"
+        className="w-full lg:w-[45vw] max-w-[600px] lg:max-w-[800px] lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2"
       >
-        <div className="aspect-[4/5] relative bg-zinc-900 overflow-hidden shadow-2xl group cursor-default">
+        <div className="aspect-[16/9] sm:aspect-[4/3] lg:aspect-[4/5] relative bg-zinc-900 overflow-hidden shadow-2xl group cursor-default border border-white/5 rounded-sm">
            <img 
              src="/images/gallery/the_recurring_gesture.jpg" 
              alt="The Recurring Gesture — Santiago Narváez" 
