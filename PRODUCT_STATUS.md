@@ -1,6 +1,6 @@
 # PRODUCT STATUS — Portfolio Santiago Narváez
 
-## Estado General: V2.0 en Producción (Desplegado en Vercel)
+## Estado General: V2.0 en Producción (Desplegado en Vercel & Actualizado a Vite 6)
 
 ### 🚀 Características Activas (En Producción)
 - **Posicionamiento y Copywriting:**
@@ -17,14 +17,19 @@
   - Copiar email al portapapeles con ícono de check animado.
   - Animaciones de Scroll Reveal y Stagger en cuadrícula de galería.
   - Lightbox modal interactivo con navegación de teclado (flechas / ESC).
-  - Open Graph y Twitter Cards configurados para compartir en redes.
+- **Assets & Identidad Visual:**
+  - Favicon SVG Vectorial personal en `public/favicon.svg` (`S` roja `#e63946` sobre negro).
+  - Open Graph y Twitter Cards con la obra auténtica *The Recurring Gesture* sin textos superpuestos.
+  - Rendimiento óptimo en miniaturas móviles de WhatsApp y previsualizaciones 16:9 en Facebook/Twitter.
+- **Seguridad & Core Stack:**
+  - Actualizado a **Vite 6.4.3** y **esbuild 0.25.12**.
+  - **8 vulnerabilidades de Dependabot resueltas (0 alertas abiertas en GitHub)**.
 
 ### ⏳ Pendiente (Fase 2)
 - Formulario de contacto funcional con backend (Resend / Formspree).
-- Favicon e imagen OG personalizadas.
-- Edición editorial de descripciones individuales de obras (captions).
+- Edición editorial de descripciones individuales de obras (captions) en `portfolio.json`.
 
 ---
-**Última actualización:** 01/08/2026  
+**Última actualización:** 04/08/2026  
 **Rama principal:** `main`  
 **Rama histórica:** `legacy`
