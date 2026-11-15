@@ -68,7 +68,7 @@ export default function Contact({ lang = 'en' }) {
                {lang === 'en' ? 'Social Media' : 'Redes Sociales'}
              </h4>
              <div className="flex gap-6">
-               <a href="https://linkedin.com/in/santiago-narváez-ab8024213/" target="_blank" rel="noreferrer" className="text-xl hover:text-[#e63946] transition-colors">
+               <a href="https://www.linkedin.com/in/santiago-narvaez-garcia" target="_blank" rel="noreferrer" className="text-xl hover:text-[#e63946] transition-colors">
                  LinkedIn
                </a>
              </div>
